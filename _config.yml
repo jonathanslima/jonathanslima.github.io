@@ -1,13 +1,13 @@
 # Site settings
-title: Clean Blog
+title: Jonathan Lima
 header-img: img/home-bg.jpg
-email: your-email@yourdomain.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
+email: jonathan633.jl@gmail.com
+description: "Blog sobre desenvolvimento front end e design de interfaces"
 baseurl: ""
-url: "http://yourdomain.com"
-twitter_username: SBootstrap
-github_username:  davidtmiller
-facebook_username:  IronSummitMedia
+url: "http://jonathan_slima.com"
+twitter_username: jonathan_slima
+github_username:  jonathanslima
+facebook_username:  jonathansilva.86
 
 # Build settings
 markdown: kramdown
