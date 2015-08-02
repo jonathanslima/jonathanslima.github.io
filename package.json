@@ -1,8 +1,8 @@
 {
-    "name": "clean-blog",
-    "title": "Clean Blog",
+    "name": "Jonathan Lima",
+    "title": "Blog sobre desenvolvimento front end e design de interfaces",
     "version": "1.0.0",
-    "homepage": "http://startbootstrap.com",
+    "homepage": "http://jonathanslima.github.io/",
     "author": "Start Bootstrap",
     "license": {
         "type": "Apache 2.0",
@@ -17,6 +17,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll.git"
+        "url": "https://github.com/jonathanslima/jonathanslima.github.io.git"
     }
 }
