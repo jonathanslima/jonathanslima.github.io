@@ -1,17 +1,42 @@
-# Site settings
-title: Jonathan Lima
-header-img: img/home-bg.jpg
-email: jonathan633.jl@gmail.com
-description: "Blog sobre desenvolvimento front end e design de interfaces"
-baseurl: ""
-url: "http://jonathan_slima.com"
-twitter_username: jonathan_slima
-github_username:  jonathanslima
-facebook_username:  jonathansilva.86
+name: Jonathan Lima
+description: Desenvolvimento Front-End e Design de Interfaces
+meta_description: "Desenvolvedor front end, design de interfaces"
 
-# Build settings
-markdown: kramdown
+aboutPage: true
+
+markdown: redcarpet
 highlighter: pygments
-permalink: pretty
-paginate: 5
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+paginate: 20
+baseurl: /
+domain_name: 'jonathanslima.github.io'
+google_analytics: 'UA-XXXXXXXX-X'
+disqus: true
+disqus_shortname: 'your-disqus-shortname'
+
+# Details for the RSS feed generator
+url:            'http://your-blog-url.example.com'
+author:         'Jonathan'
+authorTwitter:  '@jonathan_slima'
+
+permalink:       /:year/:title/
+
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post
