@@ -107,4 +107,20 @@
 
 .social-media {
   width: 40px;
+  margin-top: 30px;
+  -webkit-transition: all 1000ms ease;
+  -moz-transition: all 1000ms ease;
+  -ms-transition: all 1000ms ease;
+  -o-transition: all 1000ms ease;
+  transition: all 1000ms ease;
+}
+
+.social-media:hover {
+/*rotação*/
+-moz-transform: scale(1.1) rotate(360deg);
+-webkit-transform: scale(1.1) rotate(360deg);
+-o-transform: scale(1.1) rotate(360deg);
+-ms-transform: scale(1.1) rotate(360deg);
+transform: scale(1.1) rotate(360deg);
+
 }
