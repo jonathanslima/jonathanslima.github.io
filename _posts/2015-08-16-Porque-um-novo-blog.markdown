@@ -6,7 +6,7 @@ date: 2015-08-16 09:45:00
 
 ##Uma pausa pra introdução
 
-Bem pessoal, pra que não me conhece, meu nome é Jonathan, sou **Designer de Interfaces** aqui em **Recife**, <del>pelo menos acho</del>, e caso queiram saber um pouco mais sobre este que vos escreve, acessem os links das redes sociais logo abaixo, pra gente bater um papo.
+Bem pessoal, pra que não me conhece, meu nome é Jonathan, sou **Designer de Interfaces | Desenvolvedor Front-End** aqui em **Recife**, <del>pelo menos acho</del>, e caso queiram saber um pouco mais sobre este que vos escreve, acessem os links das redes sociais logo abaixo, pra gente bater um papo.
 
 ![imagem](/assets/images/lone_tree.jpg)
 
