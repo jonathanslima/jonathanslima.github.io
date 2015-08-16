@@ -1,7 +1,7 @@
 ---
 title:  "Por que um novo blog?"
 description: Novas expectativas
-## date: 2015-08-08 10:18:00
+date: 2015-08-16 09:45:00
 ---
 
 ##Uma pausa pra introdução
