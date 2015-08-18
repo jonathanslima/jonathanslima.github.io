@@ -1,4 +1,3 @@
 User-Agent: *
-Disallow: 
 
 Sitemap: http://jonathanslima.github.io/sitemap.xml.gz
