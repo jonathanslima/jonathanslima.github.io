@@ -4,13 +4,14 @@ permalink: about/
 profile: true
 ---
 
-Olá, meu nome é [Jonathan][Jonathan], moro atualmente em Recife, tenho 28 anos e resolvi sair pra explorar o mundo depois de uns cinco anos no ostracismo, em má fase e trancado nas profundezas da minha própria acomodação.
+Olá, meu nome é [Jonathan][Jonathan], moro atualmente em Recife, tenho 29 anos e depois de um longo período no ostracismo e acomodado, decidi mudar de vida. 
 
-Comecei brincando com HTML e CSS há pouco mais de três anos atrás, e de lá pra cá venho me interessando cada vez mais por **software livre**, **desenvolvimento front-end**, **design de interfaces**, **experiência do usuário** e tudo que envolve mudar a vidas das pessoas através da interação delas com dispositivos e/ ou produtos digitais.
+Não, eu não ganhei na Tele Sena, nem o condomínio da Magazine Luiza. Simplesmente decidi largar minha vida estável de pouco desafio e boa remuneração, por uma vida incerta e, imagino eu, mais desafiadora. 
 
-Somente no último ano, que eu decidi apostar alto as minhas fichas nessa área e me tornar um **Designer de Interfaces** profissional. 
+Aliás quem nunca?
+ 
+Como a história termina? Não sei. Mas a gente pode descobrir junto. Vamos lá?
 
-Nesse meio tempo de brincadeira, acabei me formando em Produção Publicitária pela IBGM e no momento estou pós graduando em Design de Interação pela FG/ C.E.S.A.R. 
 
 [Jonathan]: https://twitter.com/jonathan_slima
 
