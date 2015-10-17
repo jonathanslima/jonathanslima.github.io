@@ -119,13 +119,5 @@
 }
 
 .social-media:hover {
-/*rotação
--moz-transform: scale(1.1) rotate(360deg);
--webkit-transform: scale(1.1) rotate(360deg);
--o-transform: scale(1.1) rotate(360deg);
--ms-transform: scale(1.1) rotate(360deg);
-transform: scale(1.1) rotate(360deg);*/
-
 border-bottom: 3px solid #5996f1;
-
 }
