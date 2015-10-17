@@ -1,3 +1,6 @@
 _site
+projects/
+ssh-key-blog
+ssh-key-blog.pub
 node_modules
 .DS_Store
