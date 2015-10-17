@@ -648,8 +648,8 @@ h2.month {
 	float: left;
 }
 
-.info{
-	float: right;}
+.info{ float: right; }
+.info:hover{ text-decoration: underline; }
 
 /* Media Queries */
 @media screen and (max-width: 540px) {
