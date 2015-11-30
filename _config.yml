@@ -13,6 +13,7 @@ domain_name: 'jonathanslima.github.io'
 google_analytics: 'UA-66392540-1'
 disqus: true
 disqus_shortname: 'jonathanslima'
+nofollow: 'rel="nofollow"'
 
 # Details for the RSS feed generator
 url:            'http://jonathanslima.github.io/'
