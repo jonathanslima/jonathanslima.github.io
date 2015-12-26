@@ -121,3 +121,22 @@
 .social-media:hover {
 border-bottom: 3px solid #5996f1;
 }
+
+/* =============== Star Wars Wallpapers =============== */
+
+.wallpaper-starwars, .wallpaper-starwars img{
+  margin-bottom: 15px;
+  
+}
+
+.wallpaper-starwars img{
+  border: 1px solid #333;
+}
+
+.size{
+  text-align: center;
+}
+
+.phrase{
+  text-align: right;
+}
