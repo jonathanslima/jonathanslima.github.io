@@ -4,7 +4,7 @@ meta_description: "Designer de interfaces em recife, redesign e desenvolvimento 
 
 aboutPage: true
 
-markdown: redcarpet
+markdown: kramdown
 highlighter: rouge
 
 paginate: 20
