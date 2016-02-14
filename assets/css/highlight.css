@@ -141,6 +141,11 @@ border-bottom: 3px solid #5996f1;
   text-align: right;
 }
 
+.title-job h1{
+  font: 25px/1.3 "Arvo",helvetica,Arial,sans-serif;
+  margin-bottom: 20px;
+}
+
 /* ========== CSS para post Padrões de Interface ========== */
 
 .unidade-padrao{

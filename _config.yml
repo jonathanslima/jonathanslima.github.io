@@ -17,7 +17,7 @@ nofollow: 'rel="nofollow"'
 
 # Details for the RSS feed generator
 url:            'http://jonathanslima.github.io/'
-author:         'Jonathan'
+author:         'Jonathan Lima'
 authorTwitter:  'jonathan_slima'
 
 permalink:       /:year/:title/
