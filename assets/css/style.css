@@ -57,6 +57,11 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
+figcaption{
+	text-align: right;
+	font-size: 0.8em;
+}
+
 h1 {
 	font-size: 30px;
 	letter-spacing: -1px;
