@@ -135,8 +135,12 @@ nav.main-nav a {
 	/*font-weight: bold;*/
 	line-height: 1.35;
 	border-radius: 3px;
-
 }
+
+nav.main-nav a:hover {
+	text-decoration: underline;
+}
+
 nav.main-nav a.cta {
 	background: #5badf0;
 	color: #fff;
@@ -172,6 +176,10 @@ a,
 	text-decoration: none;
 	color: #5badf0;
 	color: #5694f1;
+}
+
+a:hover{
+	text-decoration: underline;
 }
 
 p a { color: #5694f1; }
@@ -646,7 +654,7 @@ h2.month {
 }
 
 .tools-skills{
-	color: #5badf0;
+	color: red;
 	font-family: "Helvetica Neue", Helvetica,Arial,sans-serif;
 }
 

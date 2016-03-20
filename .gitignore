@@ -5,4 +5,5 @@ ssh-key-blog.pub
 node_modules
 .DS_Store
 _drafts
-assets/images/portfolio/capa-starwars.psd
+assets/images/portfolio/capa-starwars.psdassets/_mix/
+assets/_mix/
