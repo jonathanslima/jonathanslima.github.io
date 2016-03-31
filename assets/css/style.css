@@ -238,7 +238,6 @@ em, i { font-style: italic; }
 
 .post header {
 	text-align:center;
-
 }
 
 .post h1 {
@@ -249,8 +248,8 @@ em, i { font-style: italic; }
 
 .post h2 {
 	margin-bottom: 40px;
-	  font: 300 24px/1.5 "Arvo",Helvetica,Arial,sans-serif;
-	  color: #111;
+	font: 300 24px/1.5 "Arvo",Helvetica,Arial,sans-serif;
+	color: #111;
 }
 
 
@@ -295,8 +294,16 @@ p.small {
 }
 
 blockquote {
-	padding-left: 15px;
-	border-left: 3px solid #eee;
+	border-left: 3px solid red;
+	padding-left: 5%;
+	margin: 30px 0px;
+	margin-left: 10%;
+	font-style: italic;
+	font-size: 1.6em;
+}
+
+q{
+	font-size: 0.5em;
 }
 
 hr {
