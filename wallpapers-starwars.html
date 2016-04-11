@@ -1,14 +1,41 @@
----
-layout: default
----   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="p:domain_verify" content="d292cd60a9e80743ba95214153b10dc7"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{ { page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url } }">
+  
+    <meta name="description" content="Front end em recife, redesign e desenvolvimento de sites" />
 
-  <div class="profile">
-    <section id="wrapper">
-      <header id="header">
-        <h1>Wallpapers minimalistas de Star Wars</h1>
-      </header>
-    </section>
-  </div>
+  <title>Jonathan Lima - Front End Designer</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/assets/css/highlight.css">
+
+<!-- ============= Tipografia ============= -->
+
+  <link href='https://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
+  <!-- ==================================== -->
+</head>
+<body>
+
+  <nav class="main-nav">
+    <a href='/'> <span class="arrow">←</span> Home </a>
+    <a href='/about'>About </a>
+    <a href='/portfolio'>Portfolio </a>
+    <a class="cta" href="/feed.xml">Subscribe</a>
+  </nav>
+
+    <div class="profile">
+      <section id="wrapper">
+        <header id="header">
+          <h1>Wallpapers minimalistas de Star Wars</h1>
+        </header>
+      </section>
+    </div>
   
   <section id="wrapper" class="home">
 
@@ -83,11 +110,21 @@ layout: default
     <hr>
 
     <section id="sharing">
-        <p class="phrase"><i>"May the Force be with you"</i></p> {% include share.html %}
+        <p class="phrase"><i>"May the Force be with you"</i></p> 
+
+        <a class="twitter" href="https://twitter.com/intent/tweet?text={{ site.domain_name }}{{ page.url }} - {{page.title}} by @{{ site.authorTwitter }}"><span class="icon-twitter"> Tweet</span></a>
+
+        <a class="facebook" href="#" onclick="
+            window.open(
+              'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+              'facebook-share-dialog',
+              'width=626,height=436');
+            return false;"><span class="icon-facebook-rect"> Share</span>
+        </a>
     </section><br>
     
     <footer id="footer">
-        <p class="small">© Copyright 2015 Jonathan | Designer de Interfaces</p>
+        <p class="small">© Copyright 2016 Jonathan | Front-End Designer</p>
     </footer>
   </section>
 
@@ -105,3 +142,6 @@ layout: default
     ga('create', 'UA-66392540-1', 'auto');
     ga('send', 'pageview');
   </script>
+</body>
+</html>
+
