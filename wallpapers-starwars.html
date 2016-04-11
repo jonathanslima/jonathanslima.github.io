@@ -10,8 +10,6 @@
   
     <meta name="description" content="Front end em recife, redesign e desenvolvimento de sites" />
 
-  
-
   <title>Jonathan Lima - Front End Designer</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -26,34 +24,19 @@
 <body>
 
   <nav class="main-nav">
-    
-        <a href='/'> <span class="arrow">←</span> Home </a>
-    
-
-    
-        
-            <a href='/about'>About </a>
-        
-    
-
-    
-        
-            <a href='/portfolio'>Portfolio </a>
-        
-    
+    <a href='/'> <span class="arrow">←</span> Home </a>
+    <a href='/about'>About </a>
+    <a href='/portfolio'>Portfolio </a>
     <a class="cta" href="/feed.xml">Subscribe</a>
-</nav>
+  </nav>
 
-  
-
-  <section id="wrapper" class="">
-  <div class="profile">
-    <section id="wrapper">
-      <header id="header">
-        <h1>Wallpapers minimalistas de Star Wars</h1>
-      </header>
-    </section>
-  </div>
+    <div class="profile">
+      <section id="wrapper">
+        <header id="header">
+          <h1>Wallpapers minimalistas de Star Wars</h1>
+        </header>
+      </section>
+    </div>
   
   <section id="wrapper" class="home">
 
@@ -128,11 +111,21 @@
     <hr>
 
     <section id="sharing">
-        <p class="phrase"><i>"May the Force be with you"</i></p> {% include share.html %}
+        <p class="phrase"><i>"May the Force be with you"</i></p> 
+
+        <a class="twitter" href="https://twitter.com/intent/tweet?text={{ site.domain_name }}{{ page.url }} - {{page.title}} by @{{ site.authorTwitter }}"><span class="icon-twitter"> Tweet</span></a>
+
+        <a class="facebook" href="#" onclick="
+            window.open(
+              'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+              'facebook-share-dialog',
+              'width=626,height=436');
+            return false;"><span class="icon-facebook-rect"> Share</span>
+        </a>
     </section><br>
     
     <footer id="footer">
-        <p class="small">© Copyright 2015 Jonathan | Designer de Interfaces</p>
+        <p class="small">© Copyright 2016 Jonathan | Front-End Designer</p>
     </footer>
   </section>
 
