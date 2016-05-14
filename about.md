@@ -4,9 +4,9 @@ permalink: about/
 profile: true
 ---
 
-Olá, meu nome é [Jonathan][Jonathan], moro atualmente em Recife, tenho 29 anos e depois de um longo período no ostracismo e acomodado, decidi estudar para me tornar <strong>Designer de Interfaces</strong> e assim conseguir mudar o mundo!
+Olá, meu nome é [Jonathan][Jonathan], moro atualmente em Recife, tenho 29 anos e depois de um longo período no ostracismo e acomodado, decidi estudar para me tornar <strong>Designer de Interfaces | Front End</strong> e assim conseguir mudar o mundo!
 
-Formei-me em Produção Publicitária e me matriculei numa pós em Designer de Interação no C.E.S.A.R. que não começa nunca...
+Formei-me em Produção Publicitária e me matriculei numa pós em Front End que estou esperando começar...
 
 [Jonathan]: https://twitter.com/jonathan_slima
 
