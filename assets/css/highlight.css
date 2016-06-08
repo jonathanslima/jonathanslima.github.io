@@ -106,7 +106,6 @@
 }
 
 .social-media {
-  width: 40px;
   margin: 0px 5px;
   margin-top: 25px;
   -webkit-transition: all 500ms ease;
@@ -114,19 +113,17 @@
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
-
-  border-bottom: 3px ridge #fff;
+  border-bottom: 3px solid #fff;
 }
 
 .social-media:hover {
-border-bottom: 3px solid #5996f1;
+  border-bottom: 3px solid #5996f1;
 }
 
 /* =============== Star Wars Wallpapers =============== */
 
 .wallpaper-starwars, .wallpaper-starwars img{
   margin-bottom: 15px;
-  
 }
 
 .wallpaper-starwars img{
@@ -177,5 +174,3 @@ border-bottom: 3px solid #5996f1;
   color: #fff;
   text-decoration: underline;
 }
-
-

@@ -771,7 +771,9 @@ h2.month {
 	color: #fff;
 }
 
-
+.social-media {
+  width: 22px;
+ }
 
 /* Media Queries */
 @media screen and (max-width: 540px) {
@@ -797,11 +799,11 @@ h2.month {
 	.post h2.headline { font-size: 13px; }
 	.post h1 { font-size:24px; }
 	.post h2 { font-size:20px; }
+	.social-media { width: 44px; }
 }
 
 @media screen and (max-width: 594px) {
 	
-
 	.title-job{
 		text-align: center;
 		width: 100%;
@@ -857,7 +859,7 @@ h2.month {
 		border-bottom: 1px solid #eee;
 	}
 
-	.info a{
-		margin-bottom: 10px;
-	}
+	.info a{ margin-bottom: 10px; }
+
+	.social-media { width: 44px; }
 }
