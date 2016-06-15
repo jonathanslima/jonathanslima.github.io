@@ -23,13 +23,14 @@ Baseado nos projetos de [Jennifer Dewalt](http://jenniferdewalt.com/) e de [John
 
 Assim como John Resig, vou colocar alguns parâmetros que seguirei à risca:
 
-- Código tem que ser **útil**;
-- Posso incrementar código antigo, mas tem que ser com uma técnica **aprendida recentemente**;
-- O código não será necessariamente em JS, já que também estou estudando **HTML e CSS**;
-- Escrever **um post por mês** aqui, contando minha evolução;
-- Código deverá ser **comentado em pt-br e inglês** (praticar o idioma);
-- Subir diariamente, **antes da 00:00h**, o código no Github e colocar o link no meu [daily-log](https://github.com/jonathanslima/daily-logs);
-- Obrigatório **uma folga** na semana :)
++ Código tem que ser útil;
++ Posso incrementar código antigo, mas tem que ser com uma técnica aprendida recentemente;
++ O código não será necessariamente em JS, já que também estou estudando HTML e CSS;
++ Escrever um post por trimestre aqui, contando minha evolução;
++ Código deverá ser comentado em inglês (praticar o idioma);
++ Sempre que possível, subir diariamente, antes da 00:00h, o código no Github e colocar o link no meu daily-log;
++ Se não for código, tem que ser algo trabalhado em um projeto. (Por exemplo técnicas, métodos e entregáveis de UX, UI).
++ Obrigatório uma folga na semana :)
 
 <br>
 
