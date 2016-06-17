@@ -1,13 +1,21 @@
----
-title: About
-permalink: about/
-profile: true
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jonathan Lima - Interface Designer | Front-end Developer</title>
 
-Olá, meu nome é [Jonathan][Jonathan], moro atualmente em Recife, tenho 29 anos e depois de um longo período no ostracismo e acomodado, decidi estudar para me tornar <strong>Designer de Interfaces | Front End</strong> e assim conseguir mudar o mundo!
+	<script>
+		location.href="http://jonathanlima.com.br/sobre.html"
+	</script>
+</head>
+<body>
 
-Formei-me em Produção Publicitária e me matriculei numa pós em Design web Apps com Tecnologias Front End <del>que estou esperando começar...</del>
+<p>Caso você esteja vendo esta página, ou você está com o JavaScript desabilitado ou aconteceu algum outro problema.</p>
 
-[Jonathan]: https://twitter.com/jonathan_slima
+<p>Essa página foi movida.</p>
 
-{% include footer.html %}
+<p>O novo blog está nesse endereço: <a href="http://jonathanlima.com.br">http://jonathanlima.com.br</a></p>
+	
+</body>
+</html>
+ 
