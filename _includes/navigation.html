@@ -1,14 +1,13 @@
 <nav class="main-nav">
     {% if page.url == "/index.html" %}
-			<a class="cta" href="http://jonathanlima.com.br">Voltar para o Site</a>
+		<a class="cta" href="http://jonathanlima.com.br">Voltar para o Site</a>
     {% endif %}
 
-		{% if page.url != "/index.html" %}
+	{% if page.url !== "/index.html" %}
     	<a href='{{ site.baseurl }}{{ page.about }}'> <span class="arrow">←</span> Home </a>
     {% endif %}
 
-    {% if page.url != "/portfolio/" %}
-			<a href='http://jonathanlima.com.br/projetos.html'>Portfolio </a>
-    {% endif %}
+		<a href='http://jonathanlima.com.br/projetos.html'>Portfolio </a>
+
     	<a href="{{ site.baseurl }}feed.xml">Feed</a>
 </nav>
