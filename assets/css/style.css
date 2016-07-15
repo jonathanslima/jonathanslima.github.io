@@ -396,6 +396,10 @@ img {
 /*=========================================
 Post List
 =========================================== */
+figcaption{
+	text-align: center;
+}
+
 #post-list,#archive-list {
 	margin-top: 100px;
 }
