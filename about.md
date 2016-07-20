@@ -14,7 +14,7 @@
 
 <p>Essa página foi movida.</p>
 
-<p>O novo blog está nesse endereço: <a href="http://jonathanlima.com.br">http://jonathanlima.com.br</a></p>
+<p>Essa página agora está nesse endereço: <a href="http://jonathanlima.com.br">http://jonathanlima.com.br</a></p>
 	
 </body>
 </html>
