@@ -18,6 +18,7 @@ Obtém-se diversos benefícios ao utilizar padrões reconhecidos de interface:
 * Oferece um ambiente de uso agradável, pois os padrões já são reconhecidos pelos usuários;
 * Diminui o tempo de desenvolvimento;
 
+<br />
 
 ## **Alguns padrões de interfaces web**
 

@@ -4,7 +4,7 @@ date:   2015-11-01 11:05:00
 description: Estudo realizado pela Stanford Persuasive Technology Lab
 ---
 
-![Homem na lua](../../assets/images/homem-na-lua.jpg)
+![Imagem de astronauta na lua](../../assets/images/homem-na-lua.jpg)
 
 Os websites tem nos dias atuais uma importância absurda dentro de uma estratégia de negócios de uma empresa. Através deles podem ser fornecidos serviços, produtos, divulgação de eventos, servir como intermediário entre relações interpessoais, dentre milhares de outras coisas. 
 
@@ -24,43 +24,43 @@ O estudo revelou que elementos visuais, podem influenciar para o bem e para o ma
 
 Por causa disso, eles desenvolveram uma lista com **10 fatores de design que influenciam na credibilidade de um site**. Essas guidelines foram baseadas em três anos de pesquisa com mais de 4.500 pessoas.
 
-1 - <b>Deixe de fácil acesso as verificações de informações do seu site.</b>
+###1 - Deixe de fácil acesso as verificações de informações do seu site.
 
 Você pode construir a credibilidade de seu site, oferecendo formas (citações, referências, materiais) de comprovar que aquela informação é de confiança. Mesmo se ninguém acessar esse material de apoio, isso já faz com que seu site seja bem visto.
 
-2 - <b>Mostre que existe uma organização real por trás daquela interface digital.</b>
+###2 - Mostre que existe uma organização real por trás daquela interface digital.
 
 Mostre que sua organização é legítima e real. A maneira mais fácil, é você possuir um endereço físico.
 
-3 - <b>Destaque a <i>expertise</i> da sua organização nos produtos e serviços oferecidos.</b>
+###3 - Destaque a <i>expertise</i> da sua organização nos produtos e serviços oferecidos.
 
 Deixe clara a qualidade do serviço ou produto oferecido.  Cerque-se de pessoas capacitadas e de credibilidade. Não indique sites externos que não são confiáveis.
 
-4 - <b>Mostre que há pessoas honestas e honradas comandando aquela organização real.</b>
+###4 - Mostre que há pessoas honestas e honradas comandando aquela organização real.
 
 Descubra uma forma de passar para as pessoas que as pessoas por trás daquele produto são pessoas reais e confiáveis. Forneça meios de identificar os responsáveis pelo conteúdo.
 
-5 - <b>Ofereça formas simples e eficientes de ser contatado.</b>
+###5 - Ofereça formas simples e eficientes de ser contatado.
 
 Números de telefone, endereço físico, endereço de e-mail, redes sociais, área de suporte, reclamação...
 
-6 - <b>O design do seu site deve ser profissional.</b>
+###6 - O design do seu site deve ser profissional.
 
 As pessoas avaliam seu site primeiro pelo design. Invista em um layout profissional.
 
-7 - <b>Faça com que seu site seja útil e de boa usabilidade.</b>
+###7 - Faça com que seu site seja útil e de boa usabilidade.
 
 Forneça um produto ou serviço realmente útil e que seja simples de utilizar. Seja único para seu cliente/ usuário.
 
-8 - <b>Mantenha seu conteúdo constantemente atualizado.</b>
+###8 - Mantenha seu conteúdo constantemente atualizado.
 
 Conteúdo constantemente atualizado e revisado, causa sempre boa impressão. Mas cuidado para não sufocar as pessoas com informação em excesso.
 
-9 - <b>Seja cauteloso com conteúdos promocionais.</b>
+###9 - Seja cauteloso com conteúdos promocionais.
 
 Se possível evite <i>ads</i> no seu site. Se tiver, cuide para que ele forneça algo realmente útil e voltado para o público do seu site. Cuidado para não sobrecarregar visualmente e sobrepujar o conteúdo.
 
-10 - <b>Elimine erros de todos os tipos, por menor que pareçam.</b>
+###10 - Elimine erros de todos os tipos, por menor que pareçam.
 
 Erros ortográficos e links quebrados, são alguns dos principais fatores que ferem a credibilidade do seu site. Elimine-os.
 

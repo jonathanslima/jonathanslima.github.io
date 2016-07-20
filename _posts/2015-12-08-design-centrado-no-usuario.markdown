@@ -28,7 +28,7 @@ Segue abaixo os capítulos do livro com uma breve descrição.
 Uma visão do autor sobre as mudanças que viriam a ocorrer a partir do lançamento do primeiro iPhone. Mudança de postura das empresas, das pessoas e dos desenvolvedores, em relação as novas maneiras de interagir com dispositivos e sistemas digitais.
 
 ### 2. O que é Design Centrado no Usuário
-Aqui uma explicação bem bacana sobre as diferenças entre Experiência do Usuário, Design Centrado no Usuário, Usabilidade e Interface Homem-Computador. E uma explanação maior sobre alguns conceitos e vantagens que envolvem o DCU.
+Aqui uma explicação bem bacana sobre as diferenças entre *Experiência do Usuário*, *Design Centrado no Usuário*, *Usabilidade* e *Interface Homem-Computador*. E uma explanação maior sobre alguns conceitos e vantagens que envolvem o DCU.
 
 ### 3. Trabalhando com Usuários
 Capítulo dedicado a demonstrar como lidar com diversos tipos de usuários, e assim poder extrair as melhores informações acerca do seu produto.
@@ -40,7 +40,7 @@ Aqui o autor explica sobre a importância de se planejar todos os passos do dese
 Considere ter uma definição de visão para seu produto. Saber exatamente o propósito dele. Aqui é demonstrado a importância de se criar uma narrativa, desenvolver as personas e criar os respectivos cenários.
 
 ### 6. Criatividade e Experiência de Usuário
-Aqui pra mim, o melhor capítulo do livro. O autor desbanca aqui o argumento que muita gente utiliza por aí; Coisas do tipo “não sei nada de design”, “eu não sou tão criativo”. Travis demonstra que isso é falta de treinamento constante. Até as pessoas naturalmente mais “criativas” trabalham muito, e vivem imersas na procura de desenvolver soluções cada vez mais inteligentes.
+Aqui pra mim, o melhor capítulo do livro. O autor desbanca aqui o argumento que muita gente utiliza por aí; Coisas do tipo *“não sei nada de design”*, *“eu não sou tão criativo”*. Travis demonstra que isso é falta de treinamento constante. Até as pessoas naturalmente mais “criativas” trabalham muito, e vivem imersas na procura de desenvolver soluções cada vez mais inteligentes.
 
 ### 7. Princípios de Design
 Aqui é tratado sobre diversos tipos de princípios de design, que se seguidos já garantem uma boa margem de acerto no desenvolvimento de sua interface. Princípios como feedback, consistência, hierarquia, princípio da proximidade são abordados.
