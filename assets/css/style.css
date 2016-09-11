@@ -719,6 +719,16 @@ h2.month {
   float: left;
 }
 
+.line-code{
+	width: 100%;
+	background-color: #efefef;
+	border-bottom: 3px solid #f55567;
+	padding: 10px;
+	color: #f55567;
+	font-style: italic;
+	font-size: 14px;
+}
+
 /* == End of Don't repeat yourself == */
 
 /* == left == */
