@@ -1,0 +1,39 @@
+{
+  "name": "blogjonathan",
+  "version": "1.0.0",
+  "description": "Blog sobre front end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://https://github.com/jonathanslima/jonathanslima.github.io.git"
+  },
+  "keywords": [
+    "frontend",
+    "javascript",
+    "html",
+    "css",
+    "sass",
+    "gulp",
+    "less",
+    "grunt",
+    "jade",
+    "git",
+    "flexbox"
+  ],
+  "author": "jonathanLima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathanslima/jonathanslima.github.io/issues"
+  },
+  "homepage": "https://github.com/jonathanslima/jonathanslima.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglify": "^2.0.0"
+  }
+}
