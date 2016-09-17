@@ -16,6 +16,10 @@ google_analytics: 'UA-66392540-1'
 disqus: true
 disqus_shortname: 'jonathanslima'
 nofollow: 'rel="nofollow"'
+exclude:
+  - package.json
+  - node_modules
+  - gulpfile.js
 
 # Details for the RSS feed generator
 url:            'http://jonathanslima.github.io/'
