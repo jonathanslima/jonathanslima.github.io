@@ -21,6 +21,9 @@ exclude:
   - node_modules
   - gulpfile.js
 
+post_image: post15-jsday.jpg
+
+
 # Details for the RSS feed generator
 url:            'http://jonathanslima.github.io/'
 author:         'Jonathan Lima'
