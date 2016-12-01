@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@jonathan_slima">
   <meta name="twitter:creator" content="@jonathan_slima">
   {% if page.title %}
@@ -20,8 +20,12 @@
     <meta name="twitter:description" content="{{ site.description }}">
   {% endif %}
 
-    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/post14-inspired-landscape-highway.jpg">
 
+  {% if page.post_image %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/post15-jsday.jpg">
+  {% else %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/post14-inspired-landscape-highway.jpg">
+  {% endif %}
 
   <link rel="canonical" href="{ { page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url } }">
   {% if page.description %}
