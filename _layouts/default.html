@@ -19,7 +19,11 @@
   {% else %}
     <meta name="twitter:description" content="{{ site.description }}">
   {% endif %}
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/{{page.image}}">
+
+  {% if page.image %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/{{page.image}}">
+  {% endif %}
+
   <link rel="canonical" href="{ { page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url } }">
   {% if page.description %}
     <meta name="description" content="{{page.description}}" />
