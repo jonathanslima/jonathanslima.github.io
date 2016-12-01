@@ -2,6 +2,7 @@
 title:  "Três meses codificando diariamente"
 description: Como foram os 3 primeiros meses
 date: 2016-06-10 23:20:00
+image: contribution-github.jpg
 ---
 
 Três meses se passaram desde que decidi [começar a escrever código todo dia](http://jonathanslima.github.io/2016/projeto-coding-everyday/). O intuito inicial havia sido melhorar minhas habilidades em HTML, CSS e JS, mas como todo e qualquer projeto que se preze, este também evoluiu, e teve seu propósito inicial um pouco modificado.

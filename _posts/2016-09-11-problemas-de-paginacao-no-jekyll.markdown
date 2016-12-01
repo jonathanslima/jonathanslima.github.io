@@ -2,6 +2,7 @@
 title:  "Problemas de paginação no blog com o Jekyll 3"
 description: Como consertar?
 date: 2016-09-11 15:30:00
+image: post13-jekyll-commands.jpg
 ---
 
 E aew pessoal blz? Postzinho rápido pra deixar aqui como resolvi esse problema, e espero que possa ajudar alguém, já que não achei esse material em pt-br.

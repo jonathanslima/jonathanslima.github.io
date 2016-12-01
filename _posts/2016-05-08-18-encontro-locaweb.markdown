@@ -2,6 +2,7 @@
 title:  "18º Encontro Locaweb"
 description: Para Antenados
 date: 2016-05-08 01:00:00
+image: encontro-locaweb.jpg
 ---
 
 Aconteceu no Cinemark do Shopping Riomar do Recife, no dia 05/05/16, o [18º Encontro Locaweb](http://eventos.locaweb.com.br/18o-encontro-locaweb-recife/). Iniciativa da Locaweb que reúne profissionais da área digital para debater novidades sobre Marketing e Desenvolvimento web. 

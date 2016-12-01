@@ -2,6 +2,7 @@
 title:  "Sobre Front Enders e Unicórnios"
 description: Lá e de volta outra vez
 date: 2016-03-30 22:00:00
+image: full-stack.png
 ---
 
 Não tenho uma história bacana, como muitos outros possuem, de ter anos de experiência em áreas de programação e/ou design. Comecei nessa área já velho para os padrões das idades dos novos (ou nem tão novos) desenvolvedores/ designers. Na verdade por muito tempo quis ser jornalista. Isso me fez ler e escrever muito, e de certa forma me ajudou a realmente amar estudar.

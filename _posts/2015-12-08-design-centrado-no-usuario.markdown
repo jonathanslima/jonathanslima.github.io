@@ -2,6 +2,7 @@
 title:  "Review: Design Centrado no Usuário – Travis Lowdermilk"
 description: Review do livro Design Centrado no Usuário
 date: 2015-12-08 08:30:00
+image: livro-designer-centrado-usuario.jpg
 ---
 
 Pouca gente dá valor ao poder que um usuário exerce sobre uma interface. Preferem desenvolver aquela ideia genial que tiveram para o produto/ sistema, colocá-lo em produção e depois esperar a enxurrada de elogios que vão receber por seu trabalho perfeito.

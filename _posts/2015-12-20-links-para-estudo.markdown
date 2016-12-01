@@ -2,6 +2,7 @@
 title:  "Lista de links com artigos e sites para estudo"
 description: Links para sites/ blogs com conteúdo voltado para diferentes áreas de tecnologia
 date: 2015-12-20 15:40:00
+image: pilha-papel.jpg
 ---
 
 Um post bem rápido. 
