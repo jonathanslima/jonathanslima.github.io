@@ -2,6 +2,7 @@
 title:  "10 Princípios de Design de Interface Mobile"
 description: Baseados nos workshops do consultor mobile Jonathan Stark
 date: 2016-02-28 00:00:00
+image: smartphone-evolution.jpg
 ---
 
 *Esse texto é uma tradução do artigo [10 princípios de design de interface mobile](https://jonathanstark.com/blog/the-10-principles-of-mobile-interface-design), que o consultor mobile, Jonathan Stark, compilou de seus workshops.*

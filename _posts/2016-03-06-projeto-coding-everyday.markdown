@@ -1,6 +1,7 @@
 ---
 title:  "Projeto Coding Everyday"
 description: Escrever código útil todo dia
+image: terminator.jpg
 ---
 
 Tenho tido problemas pra organizar minha agenda e focar no que realmente tenho que focar. Sou extremamente motivado a desafios e análises de métricas do que faço. Tomando essas características como qualidades, decidi usá-las em prol de coisas que venho procrastinando há algum tempo. Um exemplo foi sobre aprender Python, conforme [escrevi sobre isso aqui](http://jonathanslima.github.io/2015/Porque-um-novo-blog/). Desde então tive dificuldades em conciliar horários pra estudar a linguagem e acabei parando no tempo.

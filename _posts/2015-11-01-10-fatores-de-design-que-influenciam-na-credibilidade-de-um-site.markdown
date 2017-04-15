@@ -2,6 +2,7 @@
 title:  "10 Fatores de Design que influenciam na credibilidade de um site"
 date:   2015-11-01 11:05:00
 description: Estudo realizado pela Stanford Persuasive Technology Lab
+image: homem-na-lua.jpg
 ---
 
 ![Imagem de astronauta na lua](../../assets/images/homem-na-lua.jpg)

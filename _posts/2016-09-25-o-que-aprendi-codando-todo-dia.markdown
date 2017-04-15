@@ -2,6 +2,7 @@
 title: "O que aprendi codando todo dia nos últimos seis meses"
 description: Além das ferramentas e tecnologias
 date: 2016-09-25 01:30:00
+image: post14-inspired-landscape-highway.jpg
 ---
 
 ![imagem inspiradora de uma longa estrada](/assets/images/post14-inspired-landscape-highway.jpg)

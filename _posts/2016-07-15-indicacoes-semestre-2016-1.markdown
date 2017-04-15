@@ -2,6 +2,7 @@
 title:  "#1 Indicações do semestre 2016.1"
 description: Os 3 melhores materiais que consumi no primeiro semestre
 date: 2016-07-15 11:40:00
+image: ux-para-webdesigners.jpg
 ---
 
 Passamos da metade do ano de 2016, [alguns planos/sonhos estão se concretizando](https://github.com/jonathanslima/lista-coisas-dev), outros [nem tanto](http://jonathanslima.github.io/2015/decidi-aprender-python/), hora de reavaliar algumas coisas, ajustar outras. Hora de fazer um balanço e valorizar as pequenas vitórias, mas de também olhar a bússola pra não se perder.

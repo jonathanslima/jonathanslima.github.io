@@ -2,6 +2,7 @@
 title:  "Decidi Aprender Python - Parte 0"
 date:   2015-10-11 06:53:00
 description: Por que isso agora?
+image: python-logo.png
 ---
 
 É, simples assim. 
