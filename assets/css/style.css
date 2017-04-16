@@ -260,7 +260,7 @@ em, i { font-style: italic; }
 
 .description {
 	float: right;
-	font: italic 14px/1.4em Georgia,serif;
+	font: italic 14px/1.4em "Suez one",serif;
 	color: #aaa;
 }
 
@@ -276,7 +276,7 @@ em, i { font-style: italic; }
 }
 
 .home h2 {
-	font: italic 19px/1.3em Georgia,serif;
+	font: normal 19px/1.3em "Suez one",serif;
 	color: #90A5A2;
 }
 
@@ -689,7 +689,7 @@ h2.month {
 
 .title-job{
 	font-family: "Suez one";
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 .img-job{
@@ -700,29 +700,6 @@ h2.month {
 	width: 45%;
 }
 
-.tools-skills{
-	color: #333;
-	font-weight: bold;
-	font-size: 0.7em;
-	font-family: "Varela", Helvetica,Arial,sans-serif;
-}
-
-.tools-skills .label-code,
-.tools-skills .label-tools,
-.tools-skills .label-general{
-	background-color: #35ff69;
-	padding: 5px;
-	margin: 0 2px 0 0;
-	display: inline-block;
-}
-
-.tools-skills .label-tools{
-	background-color: #f00;
-}
-
-.tools-skills .label-general{
-	background-color: #fde74c;
-}
 
 .screen-devices img{
 	display: inline;
@@ -745,34 +722,15 @@ h2.month {
 	font-size: 14px;
 }
 
-/* == End of Don't repeat yourself == */
-
-/* == left == */
-
-.title-job-left, .mask-job-left, .img-job-left, 
-.tools-skills-left, .screen-devices-left img, 
-.job-description-left, .info-left{
-	float: left;
-}
-/* == end left == */
-
-/* == right == */
-
-.title-job-right, .img-job-right, .mask-job-right, 
-.tools-skills-right, .screen-devices-right img,
-.job-description-right, .info-right{
-	float: right;
-}
-
-/* == end right == */
-
 #portfolio{
 	margin-top: 50px;
+	display: table;
 }
 
 #portfolio section{
-	margin-bottom: 70px;
+	margin-bottom: 10px;
 	float: left;
+	width: 100%;
 }
 
 .job-portfolio{
@@ -786,9 +744,12 @@ h2.month {
 	transition: all ease 1s;
 }
 
-.job-portfolio figure img{
+.job-portfolio p{
+	font-size: 14px;
+}
 
-	box-shadow: 5px 5px 5px #777;
+.job-portfolio p .btn{
+	background-color: #0B2B5C;
 }
 
 .info{ 
@@ -879,50 +840,15 @@ a:hover{
 @media screen and (max-width: 594px) {
 	
 	.title-job{
-		text-align: center;
 		width: 100%;
 	}
 
 	.job-portfolio{
 		display: inline;
-		padding: 10px;
 		float: left;
 		width: 100%;
 		height: 100%;
-		margin: 10px;
 		transition: 1s all ease;
-	}
-
-	.job-portfolio figure img{
-		width: 100%;
-		float: left;
-	}
-
-	.job-portfolio figure{
-		width: 100%;
-	}
-
-	.img-job{
-		width: 100%;
-		text-align: center;
-	}
-
-	.mask-job{
-		width: 100%;
-	}
-
-	.tools-skills{
-		color: #333;
-		font-weight: bold;
-		font-family: "Varela", Helvetica,Arial,sans-serif;
-		width: 100%;
-		margin-top: 20px;
-	}
-
-	.screen-devices img{
-		display: inline;
-		width: 44px;
-		float: right;
 	}
 
 	.info{
