@@ -4,7 +4,7 @@ permalink: sobre/
 profile: true
 ---
 
-Olá, meu nome é [Jonathan][Jonathan], sou Desenvolvedor Front End aqui em Recife, trabalho atualmente na agência Bold Comunicação.
+Olá, meu nome é [Jonathan][Jonathan], sou Desenvolvedor Front End aqui em Recife, trabalho atualmente na agência Cartello.
 
 Sou formado em Produção publicitária, mas com uma base acadêmica voltada para estudos da área de UX. 
 
