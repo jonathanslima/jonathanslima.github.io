@@ -15,12 +15,12 @@ Abaixo algumas skills que possuo:
 - HTML
 - CSS
 - Javascript/ jQuery
-- Grunt/ Gulp
+- Grunt/ Gulp/ NPM/ Yarn
 - Wordpress
 - Git (Github/ BitBucket)
 - Usabilidade e UX
 - Pré Processadores CSS (Less, Sass, Stylus)
-- Frameworks/ Boilerplates (Bootstrap, Lost, Skeleton)
+- Frameworks/ Boilerplates (Bootstrap, Lost, Skeleton, Materialize)
 
 [Jonathan]: https://twitter.com/jonathan_slima
 
