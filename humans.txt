@@ -18,3 +18,11 @@ Last update: {{ site.time | date: "%Y/%m/%d" }}
 Standards: HTML5, CSS3
 Components: Jekyll
 Software: Sublime Text, Photoshop
+
+Install and Test
+
+- Download or clone repo git clone git@github.com:joshgerdes/jekyll-uno.git
+- Enter the folder: cd jekyll-uno/
+- If you don't have bundler installed: gem install bundler
+- Install Ruby gems: bundle install
+- Start Jekyll server: bundle exec jekyll serve --watch
