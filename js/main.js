@@ -5,6 +5,10 @@ sitemap:
 ---
 
 $(document).ready(function () {
+  var host = "jonathanslima.github.io"
+  if (window.location.host == host && window.location.protocol != "https:") {
+    window.location.protocol = "https:"
+  }
   $('a.blog-button').click(function (e) {
     if ($('.panel-cover').hasClass('panel-cover--collapsed')) return
     currentWidth = $('.panel-cover').width()
