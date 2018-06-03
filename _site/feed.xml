@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jonathan</title>
+    <description>Desenvolvedor Front End</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 03 Jun 2018 18:52:11 -0300</pubDate>
+    <lastBuildDate>Sun, 03 Jun 2018 18:52:11 -0300</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Google Maps - Indo um pouco além do básico</title>
+        <description>&lt;p&gt;Voltando a escrever aqui após um pequeno hiato. Tempo esse que foi bastante proveitoso, mas isso fica pra outro post. Eis que estou de volta pra trazer algo que foi bem bacana de desenvolver. Surgiu essa demanda em um site da agência onde trabalho e achei legal compartilhar aqui.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post16-mapa.png&quot; alt=&quot;Mapa finalizado&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;objetivo&quot;&gt;Objetivo&lt;/h2&gt;
+&lt;p&gt;O job era pra ajudar Nicholas Cage a achar pontos importantes em Hollywood, e talvez até ajudá-lo a achar um bom filme pra atuar…&lt;/p&gt;
+
+&lt;p&gt;Mentira, mas seria bem legal se fosse isso…&lt;/p&gt;
+
+&lt;p&gt;Mas o espírito era esse. Por exemplo, você tem um hotel e pode colocar as opções do que tem nas redondezas do seu estabelecimento, como as academias, os shoppings, os restaurantes e por aí vai. Tudo de forma mais amigável, intuitiva e personalizada.&lt;/p&gt;
+
+&lt;h2 id=&quot;gerando-o-mapa-e-o-html-dos-controles&quot;&gt;Gerando o mapa e o HTML dos controles&lt;/h2&gt;
+&lt;p&gt;Primeiramente você deve &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/reference&quot;&gt;gerar uma key&lt;/a&gt;. Você pode pegar mais referências &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/get-api-key&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Gerado sua chave, vamos chamar a API:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;amp;callback=initMap&amp;amp;libraries=places&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Onde tem YOUR_API_KEY substitua pela chave que você acabou de gerar. Se não tiver, você precisa adicionar o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;libraries=places&lt;/code&gt; no final.&lt;/p&gt;
+
+&lt;p&gt;Vamos gerar nosso html. Também bastante simples.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;map-location&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Seria bacana estilizar esse mapa até mesmo para que ele apareça.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#map-location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;500px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Chame também o jQuery acima da chamada da API. Vamos utilizá-la pra criarmos o evento de clique em nossas opções.&lt;/p&gt;
+
+&lt;p&gt;Essa é minha lista de opções. Crio um id para cada um:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lista-interesses&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gym&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img/icons/gym.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;b&amp;gt;&lt;/span&gt;Academias&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bank&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img/icons/bank.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;b&amp;gt;&lt;/span&gt;Bancos&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img/icons/bar.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;b&amp;gt;&lt;/span&gt;Bares&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;school&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img/icons/school.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;b&amp;gt;&lt;/span&gt;Escolas&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;vamos-para-o-js&quot;&gt;Vamos para o JS&lt;/h2&gt;
+
+&lt;p&gt;Primeiramente criaremos as variáveis. O código está comentado pra dar uma força no entendimento. Esse código é quase &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/places#place_search_requests&quot;&gt;todo oferecido aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/* Chamamos as imagens aqui */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'img/mapa/icons'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;icones&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;gym&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-gym.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;bank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-bank.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-bar.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;school&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-school.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;university&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-university.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pharmacy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-pharmacy.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hospital&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-hospital.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;bakery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-bakery.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;park&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-park.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;restaurant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-restaurant.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;shopping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-shopping.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;gas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;baseURL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/pin-gas.png'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;iconeAtual&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* Aqui o pin principal, da localização do seu estabelecimento, lugar */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nicholasCage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;s1&quot;&gt;'img/icons/map-marker.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* Essas serão utilizadas mais a frente */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;infowindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vamos chamar a função que vai iniciar o mapa:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/* Chamo a função com um parâmetro (pinPlace) */&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* Esse parâmetro vai ser um atributo que vai identificar qual */&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* pin vai aparecer após o clique em uma das opções de nossa lista de lugares */&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;initMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pinPlace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;iconeAtual&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pinPlace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* Aqui você seta latitude e longitude */&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pyrmont&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;34.092809&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;118.328661&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/* Cria uma referência para o elemento #map-location */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'map-location'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* Seu local baseado nas coordenadas */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pyrmont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* O zoom no mapa */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;zoom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* Disabilita o scroll */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;scrollwheel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/* Se houve um evento de clique na lista */&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* E essa lista enviou o parâmetro que vai */&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* Setar quais lugares vão aparecer no mapa */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pinPlace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;infowindow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;InfoWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;places&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlacesService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nearbySearch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    	&lt;span class=&quot;cm&quot;&gt;/* O local (baseado nas coordenadas) */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pyrmont&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* O raio em metros  */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* Os types oferecidos (Ver link após esse código) */&lt;/span&gt;
+      &lt;span class=&quot;cm&quot;&gt;/* type: ['gym', 'bank', 'bar', 'school', 'university', 'pharmacy', 'hospital', 'bakery', 'park', 'restaurant', 'shopping_mall', '', 'gas_station', '', ''] */&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pinPlace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;places&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlacesServiceStatus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;OK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      	&lt;span class=&quot;cm&quot;&gt;/* Adicione Nicholas Cage */&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;pinBuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/* Adicione os marcadores na página */&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;createMarker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  	&lt;span class=&quot;cm&quot;&gt;/* Se não foi selecionado nenhum pin, então mostre Só Nicholas Cage */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;pinBuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Aqui estão alguns &lt;a href=&quot;https://developers.google.com/places/supported_types?hl=pt-br&quot;&gt;types suportados&lt;/a&gt;. Achei bizarro porque não tem supermercado, foi removido recentemente.&lt;/p&gt;
+
+&lt;p&gt;Logo em seguida vem a função que coloca literalmente Nicholas Cage no mapa.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pinBuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* Mesma localização usada na varável pyrmont */&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;placeLoc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;34.092809&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;118.328661&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;placeLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nicholasCage&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Função que cria o pin no mapa, que já foi invocada logo acima:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createMarker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;placeLoc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geometry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geometry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;icones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;iconeAtual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;marker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;infowindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;infowindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E por último e não menos importante, vamos disparar nosso evento de clique:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* Seleciono a lista a cada clique em uma &quot;li&quot; dessa lista */&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.lista-interesses'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'li'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* Pego o valor do seu atributo */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$attr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/* E invoco a função repassando o valor do atributo por parâmetro
+    Esse valor é que vai definir a lista de locais que vão 
+    Aparecer no mapa */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;initMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bacana não? E também não tão complicado quanto parece.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;../../assets/downloads/mapa-nicholas-cage.zip&quot;&gt;Download do código&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jonathanslima/google-maps&quot;&gt;Código no Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Não sou expert no Google Maps (aliás, bem longe disso), nem mergulhei tão a fundo assim na documentação. Fui apenas um pouco além do básico e me surpreendi do quão fantástico é essa ferramenta, e do absurdo de opções que ela pode oferecer.&lt;/p&gt;
+
+&lt;p&gt;Por isso não desista pelo tamanho do código, nem se não entender todos os pormenores. Vá com calma que dá pra chegar lá, não é coisa de outro mundo.&lt;/p&gt;
+
+&lt;p&gt;E se você só fez pegar o código, fez copy%paste pra entregar a demanda, volte outra vez, com um pouco mais de tempo e calma e tente entender o que acontece por baixo dos panos. Da próxima vez, vai sair melhor e com mais opções. Você pode melhorar isso bastante, talvez até mesmo desenvolvendo aquela pequena feature que pode ser matadora para seu cliente. E ainda proporcionando uma melhor experiência para o usuário ;)&lt;/p&gt;
+
+&lt;p&gt;Bem é isso, espero que ajude você, deixa um feedback bacana, sua dúvida, sua crítica aew embaixo nos comentários, se puder ajudar em algo mais, ficarei bastante satisfeito.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/cEYFeDB8PpXqYekMuPK/giphy.gif&quot; alt=&quot;Nicholas cage dançando&quot; /&gt;
+Nick agradece sua ajuda&lt;/p&gt;
+</description>
+        <pubDate>Sat, 13 May 2017 21:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2017/google-maps-indo-alem-do-basico/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/google-maps-indo-alem-do-basico/</guid>
+        
+        <category>code</category>
+        
+        <category>api</category>
+        
+        <category>google maps</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>JS Day Recife - 2016</title>
+        <description>&lt;p&gt;Aconteceu no último dia 26/11, o JSDay Recife, evento realizado pelo CESAR, reunindo a comunidade Javascript recifense através de talks e networking. Fechando minha ida em eventos nesse ano de 2016 (tentei ir no mínimo em três), primeiro fui ao &lt;a href=&quot;http://jonathanslima.github.io/2016/18-encontro-locaweb/&quot;&gt;18º Encontro Locaweb&lt;/a&gt;, depois a Campus Party, que decidi nem escrever sobre, tamanha a decepção, e agora o JSDay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-jsday.jpg&quot; alt=&quot;JS Day Recife 2016&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;O evento foi fantástico. Super organizado. Mas vou elencar os pontos positivos e negativos e destacar minha opinião sobre as palestras.&lt;/p&gt;
+
+&lt;h2 id=&quot;pontos-negativos&quot;&gt;Pontos negativos&lt;/h2&gt;
+
+&lt;p&gt;Quem me conhece diz que só vivo reclamando &lt;del&gt;(não concordo)&lt;/del&gt;, mas dessa vez não tive motivos. Fiz esforço pra tentar lembrar de alguma situação, mas realmente não consigo encontrar. Nem forçando a barra. A única coisa ruim é a localização. Fica numa área muito esquisita. O CESAR é localizado num dos pontos turísticos mais famosos da cidade, e se esse lugar é abandonado não se pode criticar a instituição.&lt;/p&gt;
+
+&lt;h2 id=&quot;pontos-positivos&quot;&gt;Pontos positivos&lt;/h2&gt;
+
+&lt;p&gt;Bem, chegamos a parte boa. É bom sair de um lugar com a sensação de que seu dinheiro foi muito bem investido.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Inclusão:&lt;/strong&gt; Tivemos especialistas em linguagem de sinais pra passar o conteúdo às pessoas com problemas de audição. Sensacional!&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Local:&lt;/strong&gt; Embora estivesse lotado, e os corredores são um pouco apertados, o espaço disponibilizado foi bastante confortável e a mobilidade das pessoas em momento nenhum ficou comprometido. Mas o evento vem crescendo e acredito que ano que vem será maior. Tem que se estudar pra nesse caso, não ficar muito lotado.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Organização:&lt;/strong&gt; Tudo foi muito organizado. Sem filas, a entrada/ saída foi tranquila, o coffee também, banheiros limpos, pessoal atencioso.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Palestras:&lt;/strong&gt; pelo menos pra mim, foi de alto nível. Não deu para acompanhar todas, até porque tivemos palestras simultâneas e não dá pra estar em dois locais ao mesmo tempo. Vou falar um pouco mais abaixo.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Brindes:&lt;/strong&gt; Brinde é brinde. Quem ficou até o final ainda participou de sorteios. Como sempre não ganhei nada :(&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Coffee break:&lt;/strong&gt; Foi fantástico. Tapioca, sanduiches, achocolatados, refrigerantes, água, café a vontade.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;palestras&quot;&gt;Palestras&lt;/h2&gt;
+
+&lt;p&gt;O post tá ficando extenso, vou só passar uma linha sobre as palestras.&lt;/p&gt;
+
+&lt;h4 id=&quot;javascript-robotics-for-everyone&quot;&gt;JavaScript Robotics for Everyone&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-felipe-de-olinda.jpg&quot; alt=&quot;Felipe de Olinda e o capacete que faz sua cabeça&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;felipe-de-albuquerque-front-end-engineer-cesar&quot;&gt;Felipe de Albuquerque Front-end Engineer, C.E.S.A.R&lt;/h5&gt;
+
+&lt;p&gt;Mostrou como é simples controlar robôs e drones com JavaScript. Falou sobre a plataforma IoT Johnny-five.io, comunidade nodebots e embora tenha tido pouco tempo de talk (cerca de 10 minutos) atiçou e muito minha curiosidade. Algo que vou procurar estudar com certeza.&lt;/p&gt;
+
+&lt;h4 id=&quot;html-acessível-um-guia-rápido-para-melhorar-a-acessibilidade-das-suas-páginas-web&quot;&gt;HTML Acessível: Um guia rápido para melhorar a acessibilidade das suas páginas Web&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-reinaldo-ferraz.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;reinaldo-ferraz-web-development-specialist-w3c--cewebbr&quot;&gt;Reinaldo Ferraz Web Development Specialist, W3C / Ceweb.br&lt;/h5&gt;
+
+&lt;p&gt;Outro que sempre traz conteúdo e relevante. É um tapa na cara toda vez que assisto o Reinaldo palestrar. Tenho que melhorar e muito meu estudo e prática sobre acessibilidade.&lt;/p&gt;
+
+&lt;h4 id=&quot;testes-em-js-como-você-nunca-viu-antes&quot;&gt;Testes em JS como você nunca viu antes&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-lucas-fernandes-costa.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;lucas-f-costa-fullstack-developer-mytapp&quot;&gt;Lucas F. Costa FullStack Developer, MyTapp&lt;/h5&gt;
+
+&lt;p&gt;Palestra muito boa sobre testes, eu que não conhecia nada do assunto fiquei entusiasmado e é algo que tenho que colocar no meu radar de estudos. O Lucas parecia nervoso no início, mas depois se soltou e conseguiu passar muito bem o conteúdo.&lt;/p&gt;
+
+&lt;h4 id=&quot;programação-funcional-com-acarajé-e-dendê&quot;&gt;Programação Funcional com Acarajé e Dendê&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-jonata-weber.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;jonata-weber-software-engineer-weberschool&quot;&gt;Jonata Weber Software Engineer, WeberSchool&lt;/h5&gt;
+
+&lt;p&gt;Mostrou de forma muito simples (com uma receita de acarajé!!!) conceitos sobre programação funcional. Sensacional a abordagem e a simplicidade como foi passado o conteúdo. Um dev que vou procurar acompanhar.&lt;/p&gt;
+
+&lt;h4 id=&quot;progressive-web-apps-e-o-javascript-com-isso&quot;&gt;Progressive Web Apps: e o JavaScript com isso?&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-jose-marcilio.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;jose-marcilio-software-engineer-cesar&quot;&gt;Jose Marcilio Software Engineer, C.E.S.A.R&lt;/h5&gt;
+
+&lt;p&gt;Palestra que eu estava mais ansioso pra ver. Estou me preparando pra entrar de cabeça em Progressive web apps e to tentando agora absorver todo conceito sobre ele que puder. Conteúdo completo, bem tranquilo de absorver.&lt;/p&gt;
+
+&lt;h4 id=&quot;web-machine-learning---desbravando-a-aprendizagem-de-máquina-com-javascript&quot;&gt;Web Machine Learning - Desbravando a aprendizagem de máquina com JavaScript&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-joao-gabriel-lima.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;joão-gabriel-lima-phd-cadidate-em-computação-aplicada-e-inteligência-computacional-epitrack&quot;&gt;João Gabriel Lima PhD Cadidate em computação aplicada e inteligência computacional, Epitrack&lt;/h5&gt;
+
+&lt;p&gt;Falou sobre inteligência artificial em aplicações web. Conteúdo interessante, mas que não me interessa no momento. Mas mesmo assim serviu pra expandir a mente e mostrar um pouco do poder do Javascript, pra quem ainda duvida dele.&lt;/p&gt;
+
+&lt;h4 id=&quot;explore-o-mundo-do-iot-com-o-matrix&quot;&gt;Explore o mundo do IoT com o MATRIX&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-diego-leite.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;diego-leite-software-developer-admobilize&quot;&gt;Diego Leite Software Developer, AdMobilize&lt;/h5&gt;
+
+&lt;p&gt;Única talk da outra trilha (essa foi da &lt;em&gt;YELLOW&lt;/em&gt;, todas as outras foram &lt;em&gt;BLACK&lt;/em&gt;) que assisti em outra sala. Confesso que fui assistir essa palestra porque as cadeiras eram mais confortáveis, e acabou sendo a melhor coisa que fiz no evento. Palestra mais divertida e que apresentou o melhor produto. Quem puder conheça sobre &lt;a href=&quot;http://www.matrix.one/#/matrix/index&quot;&gt;Matrix&lt;/a&gt;. Vale muito a pena.&lt;/p&gt;
+
+&lt;h4 id=&quot;talvez-você-não-precise-de-um-framework&quot;&gt;Talvez você não precise de um framework&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post15-marcelo-theodoro.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;marcelo-theodoro-senior-consultant-thoughtworks&quot;&gt;Marcelo Theodoro Senior Consultant, ThoughtWorks&lt;/h5&gt;
+
+&lt;p&gt;Essa palestra foi a mais fraca. Não que tenha sido ruim, achei o nível das palestras e dos palestrantes bastante alto. Mas essa ficou devendo. O maior problema foi a forma como foi passada. O Marcelo parecia não acreditar muito no que ele tentava passar. Quando vi a proposta do tema, achei que ele defenderia com mais vontade. Mesmo assim o conteúdo passado serviu pra quebrar paradigmas e suscitar reflexões e debates, te fazendo pensar.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusões-e-expectativas&quot;&gt;Conclusões e expectativas&lt;/h3&gt;
+
+&lt;p&gt;O evento foi sensacional, parabéns ao &lt;a href=&quot;https://twitter.com/felipedeolinda&quot;&gt;Felipe&lt;/a&gt; e aos organizadores. O CESAR está de parabéns por oferecer conteúdo bacana, de alto nível, por um preço acessível. Que venha o próximo ano.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Always bet on JS \m/&lt;/em&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 27 Nov 2016 06:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/jsday-recife-2016/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/jsday-recife-2016/</guid>
+        
+        <category>eventos</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>O que aprendi codando todo dia nos últimos seis meses</title>
+        <description>&lt;p&gt;&lt;img src=&quot;../../assets/images/post14-inspired-landscape-highway.jpg&quot; alt=&quot;imagem inspiradora de uma longa estrada&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pouco mais de 90 dias se passaram desde o último post onde eu contava como havia sido meus &lt;a href=&quot;http://jonathanslima.github.io/2016/tres-meses-codificando-diariamente/&quot;&gt;últimos 3 meses codando todo dia&lt;/a&gt;. Prometi escrever um post quando completasse 180 dias e cá estou.&lt;/p&gt;
+
+&lt;p&gt;Criei um projeto que me ajudasse a &lt;a href=&quot;http://jonathanslima.github.io/2016/projeto-coding-everyday/&quot;&gt;codar todo dia&lt;/a&gt;, como uma forma de aprender algo diferente todo dia, ou melhorar o que ja sei. Melhorar 1% diariamente, como diz o Zeno Rocha.&lt;/p&gt;
+
+&lt;p&gt;Muita coisa mudou desde então. Novas tecnologias estão surgindo, outras morrendo (será?), comecei a trabalhar em um lugar foda que sinto que posso evoluir bastante, e desde então tenho codado/estudado bastante. Por isso, no último dia 19/09 decidi encerrar o projeto por achar que ele já havia cumprido com o seu propósito. Mais do que aprender sobre tecnologias e ferramentas, aprendi muito sobre responsabilidade e comprometimento. Aprendi a focar melhor meus estudos. Controlar ansiedade…&lt;/p&gt;
+
+&lt;p&gt;A vida é dinâmica e requer objetivos dinâmicos. E assim eu venho abastecendo a minha vida desde então. Aprendi Sass, Jquery, mais sobre &lt;a href=&quot;http://jonathanslima.github.io/2016/problemas-de-paginacao-no-jekyll/&quot;&gt;Jekyll&lt;/a&gt;, Bootstrap, Gulp, Jade, tô entrando forte em  Javascript, entretanto isso não foi o mais importante. O mais importante foi entender meus próprios limites. Acho que antes de estudar Inglês ou o framework da moda, vale passar um tempo tentando se conhecer melhor, e direcionar seus esforços nas coisas que vão lhe trazer mais resultados.&lt;/p&gt;
+
+&lt;p&gt;Entendo que possa parecer filosofia barata, ou auto ajuda dos empreendedores de palco. Mas entender minhas próprias necessidades e limitações vem me livrando de frustrações nessa jornada.&lt;/p&gt;
+
+&lt;p&gt;Duvida?&lt;/p&gt;
+
+&lt;p&gt;Faça o teste!&lt;/p&gt;
+
+&lt;p&gt;Indico a todos que puderem percorrer esse caminho. Sim, é cansativo, arbitrário, medonho, angustiante… necessário. Independente da área que você ocupa hoje, estabelecer metas e desafios diários vão te tornando um profissional melhor.&lt;/p&gt;
+
+&lt;p&gt;Estou ansioso para meus próximos seis meses… você deveria estar pelos seus.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 24 Sep 2016 22:30:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/o-que-aprendi-codando-todo-dia/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/o-que-aprendi-codando-todo-dia/</guid>
+        
+        <category>motivacional</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Problemas de paginação no blog com o Jekyll 3</title>
+        <description>&lt;p&gt;E aew pessoal blz? Postzinho rápido pra deixar aqui como resolvi esse problema, e espero que possa ajudar alguém, já que não achei esse material em pt-br.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-gênese-do-problema&quot;&gt;A Gênese do problema&lt;/h2&gt;
+
+&lt;p&gt;Tudo começou quando resolvi mudar meu terminal, saindo do padrão que vem no mac e indo para o Iterm2. Demorei um pouco para resolver uns problemas de configuração, mas tá tudo rodando perfeito. Até que eu resolvi escrever um novo post sobre as ferramentas (hardware/ sofware) que trabalho hoje e ao rodar o Jekyll no terminal apareceu isto:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post13-jekyll-commands.jpg&quot; alt=&quot;Terminal não reconhece o comando jekyll&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;hehe, pode ver que digitei três vezes de forma diferente, pois havia pensado que tinha errado o comando pra chamar o server. Até que percebi que ele não estava reconhecendo o comando Jekyll. :o&lt;/p&gt;
+
+&lt;p&gt;Blz, novo terminal, vamos reinstalar o Jekyll sem problemas. Instalei e quando fui rodar novamente apareceu isto:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post13-deprecation-jekyll.jpg&quot; alt=&quot;Mensagem de erro no jekyll, informando que falta a gem jekyll-paginate&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;Deprecation: You appear to have pagination turned on, but you haven't included the `jekyll-paginate` gem. Ensure you have `gems: [jekyll-paginate]` in your configuration file.&lt;/blockquote&gt;
+
+&lt;p&gt;E isto no localhost:&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/post13-view-blog.jpg&quot; alt=&quot;imagem do meu blog sem aparecer as postagens&quot; /&gt;
+	&lt;figcaption&gt;WTF!&lt;/figcaption&gt;
+	&lt;br /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Fiz o que todo mundo deveria fazer quando encontra um problema que você não sabe como resolver, consultei o &lt;a href=&quot;https://www.google.com.br/&quot;&gt;guru da montanha que tem todas as respostas&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bem, vou mostrar como resolvi:&lt;/p&gt;
+
+&lt;p&gt;1 - Primeiramente dei o comando no terminal:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;line-code&quot;&gt;sudo gem install jekyll-paginate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;2 - Fui no arquivo de configuração &lt;strong&gt;_config.yml&lt;/strong&gt; e coloquei a seguinte linha lá:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;line-code&quot;&gt;gems: [jekyll-paginate]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;E voilá. Tudo voltou a funcionar.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-aconteceu&quot;&gt;O que aconteceu?&lt;/h2&gt;
+
+&lt;p&gt;Basicamente isto:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/post13-jekyll-doc.jpg&quot; alt=&quot;documentação do jekyll informando como resolver o problema de paginação&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Para o Jekyll 3, tinha de incluir o plugin &lt;strong&gt;jekyll-paginate&lt;/strong&gt; no meu &lt;strong&gt;gemfile&lt;/strong&gt; e no meu &lt;strong&gt;_config.yml&lt;/strong&gt;. Pra quem usava o Jekyll 2 (que era meu caso antes do Iterm), isto já era um padrão.&lt;/p&gt;
+
+&lt;h3 id=&quot;referências&quot;&gt;Referências&lt;/h3&gt;
+
+&lt;p&gt;Fica aqui uma listinha dos links que visitei como referência:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/poole/lanyon/issues/159&quot;&gt;https://github.com/poole/lanyon/issues/159&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/3393&quot;&gt;https://github.com/jekyll/jekyll/issues/3393&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/pagination/#enable-pagination&quot;&gt;http://jekyllrb.com/docs/pagination/#enable-pagination&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://teamtreehouse.com/community/jekyllpaginate-gem&quot;&gt;https://teamtreehouse.com/community/jekyllpaginate-gem&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Até a próxima!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Sep 2016 12:30:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/problemas-de-paginacao-no-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/problemas-de-paginacao-no-jekyll/</guid>
+        
+        <category>code</category>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>#1 Indicações do semestre 2016.1</title>
+        <description>&lt;p&gt;Passamos da metade do ano de 2016, &lt;a href=&quot;https://github.com/jonathanslima/lista-coisas-dev&quot;&gt;alguns planos/sonhos estão se concretizando&lt;/a&gt;, outros &lt;a href=&quot;http://jonathanslima.github.io/2015/decidi-aprender-python/&quot;&gt;nem tanto&lt;/a&gt;, hora de reavaliar algumas coisas, ajustar outras. Hora de fazer um balanço e valorizar as pequenas vitórias, mas de também olhar a bússola pra não se perder.&lt;/p&gt;
+
+&lt;p&gt;Enquanto o ano não acaba, vou começar aqui nesse espaço, uma série, onde vou indicar os três melhores materiais que eu consumi nos últimos seis meses. Antes de escolher decidi adotar alguns critérios:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tem que influenciar diretamente na área de desenvolvimento de interfaces;&lt;/li&gt;
+  &lt;li&gt;Não vou limitar as indicações para material de língua portuguesa;&lt;/li&gt;
+  &lt;li&gt;O material tem que ser novo ou relançado recentemente &lt;em&gt;(estipulei prazo máximo de até 3 anos)&lt;/em&gt;;&lt;/li&gt;
+  &lt;li&gt;Pode ser material anterior a 2013, contanto que continue ainda sendo mantido e com uma atualização aceitável.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;livro-design-para-quem-não-é-designer--robin-williams&quot;&gt;Livro: Design para quem não é designer | Robin Williams&lt;/h2&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/design-para-nao-designer.jpg&quot; alt=&quot;capa do livro design para quem não é designer da autora Robin Williams&quot; /&gt;
+	&lt;figcaption&gt;Design para quem não é designer: 4ª Edição - (2013)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Livro fantástico que dá uma visão geral sobre princípios de design, cores e tipografia.&lt;/p&gt;
+
+&lt;p&gt;Embora seja focado em design gráfico, muitas das dicas podem ser utilizadas na concepção de interfaces web. Como combinar fontes para obter o melhor efeito, utilização de cores, e organização e apresentação de conteúdo utilizando os 4 princípios, que são Proximidade, Alinhamento, Contraste e Repetição.&lt;/p&gt;
+
+&lt;p&gt;Além de oferecer uma boa base de conhecimento em design em geral, permitindo que você possua conhecimento suficiente para debater e trocar ideias com designers, sobre algumas peças que eles por ventura possam estarem fazendo.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;vídeo-aulas-desvendando-a-linguagem-javascript--rodrigo-branas&quot;&gt;Vídeo Aulas: Desvendando a linguagem Javascript | Rodrigo Branas&lt;/h2&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/093dIOCNeIc?list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;São quinze aulas repletas de conteúdo, com ótima didática e exemplos simples de serem absorvidos. Rodrigo Branas nos brinda com um conteúdo fantástico para desenvolvedores que querem entrar de vez no mundo do Javascript.&lt;/p&gt;
+
+&lt;p&gt;Quer iniciar ou solidificar conceitos base sobre JS? Aqui pra mim foi o melhor começo.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&quot;&gt;Desvendando a linguagem JavaScript&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;curso-curso-online-de-ux-para-web-designers--luis-felipe-fernandes&quot;&gt;Curso: Curso Online de UX para Web Designers | Luis Felipe Fernandes&lt;/h2&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/ux-para-webdesigners.jpg&quot; alt=&quot;home page do site do curso UX para web designers, ministrado pelo professor Luis Felipe Fernandes&quot; /&gt;
+	&lt;figcaption&gt;UX para Web Designers&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Indo na esteira de professores com ótima didática, aqui vai pra mim o melhor deles. Luis consegue passar um conteúdo como se estivesse ao seu lado, literalmente pegando na sua mão e ensinando a como pegar um monte de dados e transformar em belas interfaces.&lt;/p&gt;
+
+&lt;p&gt;Você pode vê-lo em ação e constatar se estou certo em várias mídias, seja em vídeos no &lt;a href=&quot;https://www.youtube.com/watch?v=iGb4tC-2t_A&quot;&gt;Youtube&lt;/a&gt;, ou &lt;a href=&quot;https://www.youtube.com/watch?v=8AftjIeAeS0&quot;&gt;palestrando&lt;/a&gt; e em &lt;a href=&quot;https://medium.com/design-rd/capycast-gravado-na-uxconf-br-com-luis-felipe-fernandes-da-ux-academy-c58d831d0c89#.r2sz5xf0z&quot;&gt;podcasts&lt;/a&gt;. Além de ser um cara acessível e gente boa, sempre disposto a ajudar.&lt;/p&gt;
+
+&lt;p&gt;O curso é pago, mas vale cada centavo investido.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.uxacademy.com.br/&quot;&gt;UX para webdesigners&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Jul 2016 08:40:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/indicacoes-semestre-2016-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/indicacoes-semestre-2016-1/</guid>
+        
+        <category>ux</category>
+        
+        <category>design</category>
+        
+        <category>javascript</category>
+        
+        <category>review</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Três meses codificando diariamente</title>
+        <description>&lt;p&gt;Três meses se passaram desde que decidi &lt;a href=&quot;http://jonathanslima.github.io/2016/projeto-coding-everyday/&quot;&gt;começar a escrever código todo dia&lt;/a&gt;. O intuito inicial havia sido melhorar minhas habilidades em HTML, CSS e JS, mas como todo e qualquer projeto que se preze, este também evoluiu, e teve seu propósito inicial um pouco modificado.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/contribution-github.jpg&quot; alt=&quot;Commits efetuados&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Não mudei a regra do jogo com o campeonato iniciado, apenas &lt;a href=&quot;https://github.com/jonathanslima/projeto-coding-everyday/blob/master/regras.md&quot;&gt;fiz um adendo&lt;/a&gt; que veio contribuir muito para o processo não ficar engessado.&lt;/p&gt;
+
+&lt;p&gt;Apareceram jobs no meio do caminho, &lt;a href=&quot;https://github.com/training-projects&quot;&gt;novos projetos&lt;/a&gt;, e nem sempre eu escrevia código. Havia prótotipos, desenhos da interface, enfim, um monte de outras coisas a se fazer que muitas vezes não envolviam código.&lt;/p&gt;
+
+&lt;p&gt;Enfim, decidi que os commits seriam com código, ou com algum outro tipo de processo, contanto que fosse diário, respeitando as outras resoluções das regras impostas por mim mesmo. Ainda me comprometi a explicar todo dia no &lt;a href=&quot;http://jonathanslima.github.io/2016/projeto-coding-everyday/&quot;&gt;log do projeto&lt;/a&gt; o que estava sendo feito, independente do projeto em que eu estivesse trabalhando.&lt;/p&gt;
+
+&lt;p&gt;Houve dias que não deu pra fazer o &lt;em&gt;push&lt;/em&gt; para o repositório, mas o mais importante é que o trabalho diário estava sendo feito, sempre respeitando, às vezes até a contragosto, a folga semanal.&lt;/p&gt;
+
+&lt;h2 id=&quot;evolução&quot;&gt;Evolução&lt;/h2&gt;
+
+&lt;p&gt;Apesar de eu ter muita coisa pra elencar sobre esse aprendizado no primeiro semestre, nada chegou perto do que estudei sobre CSS.&lt;/p&gt;
+
+&lt;p&gt;Foi fantástico essa experiência de &lt;a href=&quot;https://codepen.io/jonathanslima/&quot;&gt;brincar com animações&lt;/a&gt; e conhecer um pouco do verdadeiro poder das CSS. Um agradecimento aqui ao &lt;a href=&quot;https://twitter.com/afonsopacifer&quot;&gt;Afonso Pacifer&lt;/a&gt; cuja &lt;a href=&quot;http://codepen.io/afonsopacifer/post/hora-de-aventura-com-css-1-formas-basicas&quot;&gt;série de posts&lt;/a&gt; foi a mola propulsora pra que eu estudasse mais sobre o assunto.&lt;/p&gt;
+
+&lt;p&gt;Também aprendi Jade (que relutava um pouco em mexer), Sass e no momento estou aprendendo a mexer com o Gulp. Como tenho um conhecimento prévio em Grunt, tá sendo mais simples de assimilar como trabalhar com ele.&lt;/p&gt;
+
+&lt;p&gt;Embora seja mais simples do que o Grunt, ainda não sei se vou incorporá-lo ao meu workflow.&lt;/p&gt;
+
+&lt;h2 id=&quot;os-próximos-três-meses&quot;&gt;Os próximos três meses&lt;/h2&gt;
+
+&lt;p&gt;Aqui vai uma listinha do que espero conseguir nos próximos três meses:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Consolidar meu conhecimento nas novas features do CSS, aplicando em projetos que venho trabalhando&lt;/li&gt;
+  &lt;li&gt;Ter mais experiência com os automatizadores e poder escolher meu favorito.&lt;/li&gt;
+  &lt;li&gt;Aprender o &lt;a href=&quot;https://github.com/peterramsing/lost&quot;&gt;Lost&lt;/a&gt;, pra que eu saia da minha zona de conforto com o &lt;a href=&quot;http://getskeleton.com/&quot;&gt;Skeleton&lt;/a&gt;/ &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Entrar de cabeça no Javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Então é isso, veremos o que o próximo trimestre reserva.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 10 Jun 2016 20:20:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/tres-meses-codificando-diariamente/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/tres-meses-codificando-diariamente/</guid>
+        
+        <category>motivacional</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>18º Encontro Locaweb</title>
+        <description>&lt;p&gt;Aconteceu no Cinemark do Shopping Riomar do Recife, no dia 05/05/16, o &lt;a href=&quot;http://eventos.locaweb.com.br/18o-encontro-locaweb-recife/&quot;&gt;18º Encontro Locaweb&lt;/a&gt;. Iniciativa da Locaweb que reúne profissionais da área digital para debater novidades sobre Marketing e Desenvolvimento web.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/encontro-locaweb.jpg&quot; alt=&quot;18º Encontro Locaweb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Falando assim limita muito o escopo do evento. Dessa vez procurei fazer algo diferente e não fui para a sala Dev. Assisti as palestras focadas para o pessoal de Marketing, e mesmo sem sacar muita coisa posso dizer que foi uma experiência fantástica. Pela primeira vez vi autoridades falando sobre como expandiram seu negócios, técnicas novas utilizadas no mercado e muita coisa boa que deixou minha cabeça fervilhando de ideias.&lt;/p&gt;
+
+&lt;p&gt;Vale a pena reforçar aqui. Se você nunca buscou participar de eventos de outras áreas, não perca tempo e vá. A gente passa tanto tempo mergulhado em livros, vídeos, podcasts sobre a nossa área que terminamos fechando nossas cabeças para o que está acontecendo fora da caixa.&lt;/p&gt;
+
+&lt;p&gt;Não é pra a partir de agora, abandonar os eventos da sua área. Apenas viva novas ideias, novas linguagens (falo de termos, não de programação), novas ideias, isso soma muito ao que já fazemos no dia a dia.&lt;/p&gt;
+
+&lt;h2 id=&quot;sobre-o-evento&quot;&gt;Sobre o Evento&lt;/h2&gt;
+
+&lt;h3 id=&quot;-pontos-negativos&quot;&gt;➤ Pontos negativos&lt;/h3&gt;
+&lt;p&gt;Foram pouquíssimos pra falar a verdade. Eu não sabia que seria no cinema, tanto que abdiquei do computador pra levar um caderno. Mas isso não foi um ponto negativo, longe disso, mas o fato do equipamento falhar muito no momento das perguntas dos participantes.&lt;/p&gt;
+
+&lt;p&gt;O refletor virado para a plateia chegou a incomodar em certos momentos, mas nada que causasse revolta.&lt;/p&gt;
+
+&lt;p&gt;Os organizadores perderam a mão na quantidade do público, talvez eles não esperassem mais de 500 pessoas! Isso num dia de quinta feira em um evento que durou o dia inteiro. Ninguém esperaria por isso!&lt;/p&gt;
+
+&lt;p&gt;A sala Dev tinha menos pessoas e a de Marketing estava lotada, com pessoas assistindo as palestras em pé e sentadas no corredor. Nada mau que a organização agiu rápido, e se desculpou na hora com todos, oferecendo 3 anos gratuitos dos próximos eventos para os afortunados que chegaram atrasados e estavam acomodados no chão ou em cadeiras improvisadas. 
+Palmas para a Locaweb.&lt;/p&gt;
+
+&lt;p&gt;Embora aquela cadeira do cinema que eu estava sentado, era terrivelmente desconfortável… ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;-pontos-positivos&quot;&gt;➤ Pontos positivos&lt;/h3&gt;
+
+&lt;p&gt;Começar pela localização. Pra mim foi ótimo, foi tão perto que poderia ter ido caminhando se quisesse. O evento acontecer no cinema foi uma bela surpresa, mas como disse antes, a sala ficou lotada e tivemos a promessa que no próximo ano eles alugariam salas maiores.&lt;/p&gt;
+
+&lt;p&gt;Tem que ser assim mesmo, o evento vem crescendo, problemas aparecem, mas vimos uma grande disponibilidade do pessoal em se mostrar disposto a melhorar.&lt;/p&gt;
+
+&lt;p&gt;O host do evento foi ninguém mais, ninguém menos do que o &lt;a href=&quot;https://twitter.com/erickalbuquer_Q&quot;&gt;“Tio” Erick&lt;/a&gt;, fantástico como sempre. Os palestrantes, pelo menos os que vi, foram grandes acertos e os assuntos, pra mim que entendia muito pouco, foram sensacionais. O coffee break foi absurdo e ainda teve duas vezes! :)&lt;/p&gt;
+
+&lt;h3 id=&quot;-palestras&quot;&gt;➤ Palestras&lt;/h3&gt;
+
+&lt;h4 id=&quot;fernando-cirne---locaweb&quot;&gt;Fernando Cirne - Locaweb&lt;/h4&gt;
+
+&lt;h5 id=&quot;panorama-do-e-commerce--mobile--novas-mídias&quot;&gt;Panorama do E-Commerce | Mobile | Novas mídias&lt;/h5&gt;
+
+&lt;p&gt;Falou sobre ecommerce e relação entre vendas varejo e online. Mostrou dados e apresentou sua correlação com a economia atual. Falou sobre as quatro empresas da Locaweb e como a empresa vem expandindo seus negócios. Foi uma palestra introdutória e a abertura oficial do evento.&lt;/p&gt;
+
+&lt;h4 id=&quot;welington-sousa&quot;&gt;Welington Sousa&lt;/h4&gt;
+
+&lt;h5 id=&quot;brain-marketing---atenção-memória-e-emoção&quot;&gt;Brain Marketing - Atenção, Memória e Emoção&lt;/h5&gt;
+
+&lt;p&gt;Abordou técnicas e descobertas de neuromarketing sobre atenção, memória e emoção. Também falou sobre o comportamento de compra e seus estágios na vida do consumidor.&lt;/p&gt;
+
+&lt;p&gt;Explicou sobre Neuromarketing e Behavioral Marketing, assuntos interessantíssimos, que deixei anotado para ler com mais atenção no futuro.&lt;/p&gt;
+
+&lt;p&gt;Assuntos tão importantes quanto saber como a mente funciona quando você fala que a vaca bebe leite.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/captain-america-reference.jpg&quot; alt=&quot;Captain America&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welington abordou de forma simples e com bom humor um assunto bem complexo. Tudo devidamente explicado e a inserção dos vídeos como complemento me ajudou bastante a fixar os conceitos.&lt;/p&gt;
+
+&lt;h4 id=&quot;felipe-schepers---coo-da-opinion-box&quot;&gt;Felipe Schepers - COO da Opinion Box&lt;/h4&gt;
+
+&lt;h5 id=&quot;inovação-x-crise-as-oportunidades-disfarçadas-em-tempos-difíceis&quot;&gt;Inovação x Crise: As oportunidades disfarçadas em tempos difíceis&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/felipe-schepers.jpg&quot; alt=&quot;Felipe Schepers&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Uma visão sobre a crise no mercado e a busca de inovação. A Opinion Box fez uma pesquisa exclusiva para o Encontro Locaweb com a participação de mais de 1.000 empresas em todo o país, basicamente buscando entender sobre o quanto uma empresa entendia sobre o workflow do Marketing, e como o digital podia aplicar técnicas para encontrar as oportunidades escondidas em meio à crise.&lt;/p&gt;
+
+&lt;p&gt;O Felipe é bem articulado e conseguiu passar bem as informações. Embora tenha sido uma palestra mais densa, com muitos dados, foi bem dinâmica e em momento algum se mostrou cansativa. O pouco tempo da palestra ajudou também.&lt;/p&gt;
+
+&lt;h4 id=&quot;ricardo-pomeranz---co-presidente-rapp-brasil&quot;&gt;Ricardo Pomeranz - Co-Presidente Rapp BRasil&lt;/h4&gt;
+
+&lt;h5 id=&quot;a-nova-mídia-online&quot;&gt;A nova mídia Online&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/ricardo-pomeranz.jpg&quot; alt=&quot;Ricardo Pomeranz&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Palestra muito rica, sobre plataformas digitais. Google, Facebook, YouTube, Portais, GDN, DSP. Ricardo Pomeranz trouxe um assunto que, acredito que pouca gente ali conhecia. Pelo menos foi o que senti, contudo posso estar completamente equivocado.&lt;/p&gt;
+
+&lt;p&gt;Com a evolução de mídias online, qual é aquela que mais agrega à seu produto/ serviço na hora da divulgação. Será que pagar ao Facebook sem tentar entender aonde seu público está, é uma boa sacada? Pagar (caro) por palavras-chave no Google, sem se preocupar com qualidade, é garantia de sucesso?&lt;/p&gt;
+
+&lt;h4 id=&quot;andré-siqueira---co-fundador-da-resultados-digitais&quot;&gt;André Siqueira - Co-fundador da Resultados Digitais&lt;/h4&gt;
+
+&lt;h5 id=&quot;inbound-marketing-criando-um-processo-sistemático-para-aquisição-de-clientes&quot;&gt;Inbound Marketing: Criando um processo sistemático para aquisição de clientes&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/andre-siqueira.jpg&quot; alt=&quot;André Siqueira&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Marketing pra gerar oportunidades e calcular o ROI mostrando que o Marketing não é centro de custo. Já havia ouvido falar sobre Inbound Marketing, mas nunca tinha lido nada sobre. André mostrou como aplicar na sua estratégia.&lt;/p&gt;
+
+&lt;p&gt;Embora tenha entendido pouca coisa, fiquei interessado sobre o assunto e é outro que pretendo ler com mais calma à frente.&lt;/p&gt;
+
+&lt;h4 id=&quot;lúcio-cordeiro&quot;&gt;Lúcio Cordeiro&lt;/h4&gt;
+
+&lt;h5 id=&quot;estratégia-de-penetração-do-mercado&quot;&gt;Estratégia de penetração do mercado&lt;/h5&gt;
+
+&lt;p&gt;Infelizmente teve problemas pessoais e precisou deixar o evento antes de palestrar.&lt;/p&gt;
+
+&lt;h4 id=&quot;maurício-cid---não-salvo&quot;&gt;Maurício Cid - Não Salvo&lt;/h4&gt;
+
+&lt;h5 id=&quot;desafio-aceito-conteúdo-viral-a-favor-das-marcas&quot;&gt;Desafio Aceito: Conteúdo viral a favor das marcas&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/mauricio-cid.jpg&quot; alt=&quot;Maurício Cid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;O que o Cid faz, quando não está zoando o mundo e o próprio pai?&lt;/p&gt;
+
+&lt;p&gt;Palestra (quase um stand up comedy) sobre sua história, a criação do Não Salvo e a consequência de seus atos, e o poder incontrolável de um viral. Palestra que me ajudou a descontrair a mente, que já estava ficando quente de tanto assunto denso e novo. Não sei se o pessoal da área teve essa mesma sensação.&lt;/p&gt;
+
+&lt;h4 id=&quot;martha-gabriel---mestre-e-phd-em-artes-absurdo-o-que-essa-mulher-faz&quot;&gt;Martha Gabriel - Mestre e PhD em artes (Absurdo o que essa mulher faz!)&lt;/h4&gt;
+
+&lt;h5 id=&quot;growth-hacking-o-que-vem-por-trás-das-empresas-do-vale-do-silício&quot;&gt;Growth Hacking: O que vem por trás das empresas do Vale do Silício&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/martha-gabriel.jpg&quot; alt=&quot;Martha Gabriel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Empresas que focam em crescer vem tendo mais resultados em empresas que focam em ganhar dinheiro.  Mas por que isso? Como o Growth Hacking pode ajudar nisso? Originário do Vale do Silício, esse tipo de estratégia alavancou o crescimento de empresas como Airbnb, Dropbox, Twitter, entre outras.&lt;/p&gt;
+
+&lt;p&gt;Palestrante de alto nível, muito bem preparada. De um estilo elegante e didático. Falando sobre um assunto tão complexo, de uma forma tão simples que faz você ter vontade de chegar em casa e criar uma empresa só pra aplicar aquilo.&lt;/p&gt;
+
+&lt;p&gt;Fiquei assustado com o que essa mulher fez na vida já. PhD, professora, pós graduada em Marketing e Design, palestrante internacional, escritora, blogueira… Se ela dissesse que assistia seriados no Netflix eu teria levantado e ido embora.&lt;/p&gt;
+
+&lt;p&gt;Sério.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Ainda teve a sala Dev que não assisti nenhuma palestra, embora tenha tido palestrantes fantásticos, alguns eu já tinha visto como o Sérgio Lopes e o Jean Carlo Emer e os temas foram interessantes, mas não posso falar muito. Se você foi e puder comentar um pouco do que achou, deixe ai nos comentários, vamos manter esse post completinho.&lt;/p&gt;
+
+&lt;p&gt;Primeiro evento da Locaweb que fui, e pretendo ir no próximo ano se tiver oportunidade. Se tiver as novidades prometidas, será ainda mais fantástico do que foi esse ano.&lt;/p&gt;
+
+&lt;p&gt;E pessoal, foi R$100,00 o ingresso. Consegui cupom com o parceiro &lt;a href=&quot;http://rafaramos.com/&quot;&gt;Rafa Ramos&lt;/a&gt; e paguei 50%. Depois de fazer a inscrição ainda recebi um e-mail com 70% de desconto. Ou seja, era só economizar um Club House da McDonald’s.&lt;/p&gt;
+
+&lt;p&gt;Parabéns a Locaweb e parceiros que fizeram o evento acontecer.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 07 May 2016 22:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/18-encontro-locaweb/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/18-encontro-locaweb/</guid>
+        
+        <category>eventos</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Sobre Front Enders e Unicórnios</title>
+        <description>&lt;p&gt;Não tenho uma história bacana, como muitos outros possuem, de ter anos de experiência em áreas de programação e/ou design. Comecei nessa área já velho para os padrões das idades dos novos (ou nem tão novos) desenvolvedores/ designers. Na verdade por muito tempo quis ser jornalista. Isso me fez ler e escrever muito, e de certa forma me ajudou a realmente amar estudar.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/full-stack.png&quot; alt=&quot;full stack dev&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Passei por muita coisa antes de abrir pela primeira vez o editor e escrever o &lt;em&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/em&gt; lá no alto da tela.&lt;/p&gt;
+
+&lt;p&gt;Conserto de PCS, curso técnico de eletrônica, Linux, formatação de Windows, shell script, &lt;em&gt;Splinter Cell&lt;/em&gt;, mais formatações no Windows…&lt;/p&gt;
+
+&lt;blockquote&gt;when you land interviews explain what skills you have, what problems you enjoy solving, and what topics you’re passionate about.&lt;br /&gt;&lt;q&gt;Brad Frost&lt;/q&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Caí na área de interfaces meio que sem querer. Mas o fato é que eu decidi fazer carreira na área já com 28 anos. Como eu disse, comecei velho. No momento decidi largar o emprego onde estava para melhorar minhas skills e procurar entrar em um lugar onde eu possa participar de projetos desafiadores e que me force a &lt;a href=&quot;http://jonathanslima.github.io/2016/projeto-coding-everyday/&quot;&gt;melhorar todo dia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eis que então no último mês comecei a me sentir angustiado. Eu precisava me rotular. Logo eu que possuo o perfil de um generalista (embora venha procurando me tornar um especialista). Procurei estudar e tentar entender todas as partes do processo, da pesquisa, ideação, prototipação até o desenvolvimento. Li um pouco sobre marketing, publicidade, empreendedorismo, metodologias… e foi sensacional estudar cada uma dessas disciplinas.&lt;/p&gt;
+
+&lt;h2 id=&quot;então-como-se-rotula-alguém&quot;&gt;Então como se rotula alguém?&lt;/h2&gt;
+
+&lt;p&gt;Eu precisava disso para o mercado me conhecer. E acabei optando por uma agenda complexa pra evoluir. Decidi que iria ser o tipo de profissional que tentaria transitar pelo maior número de áreas, conversando de igual para igual com todos os envolvidos no projeto.&lt;/p&gt;
+
+&lt;p&gt;Mas e se o mercado me visse como alguém perdido e sem foco? Alguém que ainda não conseguiu se encontrar?&lt;/p&gt;
+
+&lt;p&gt;E se eu fosse um… unicórnio?&lt;/p&gt;
+
+&lt;h2 id=&quot;ainda-sobre-o-tal-rótulo&quot;&gt;Ainda sobre o tal rótulo&lt;/h2&gt;
+
+&lt;p&gt;Entendida a questão, o que colocar? No começo me identificava com o termo Front End. Mas tinha o front end developer, front end engineer, front end architect… fui de desenvolvedor front end mesmo.&lt;/p&gt;
+
+&lt;blockquote&gt;A frontend designer (who may also go by UI developer, client-side developer, UI engineer, design engineer, frontend architect, designer/developer, prototyper, unicorn, or Bo Jackson) lives in a sort of purgatory between worlds. &lt;br /&gt;&lt;q&gt;Brad Frost&lt;/q&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Mas mesmo assim ainda não refletia bem o que estudava. Principalmente naquele momento estava debruçado sobre UX e fundamentos de Design.&lt;/p&gt;
+
+&lt;h2 id=&quot;sobre-o-front-end-designer&quot;&gt;Sobre o Front End Designer&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/frontend-design.gif&quot; alt=&quot;front end designer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Eis que me deparo com esse &lt;a href=&quot;http://bradfrost.com/blog/post/frontend-design/&quot;&gt;belíssimo artigo do ótimo Brad Frost&lt;/a&gt;, onde ele fala do “Front End Designer” e sobre qual seria seu papel dentro de um time, sendo um profissional que flutua entre o código e o design.&lt;/p&gt;
+
+&lt;blockquote&gt;Frontend design involves creating the HTML, CSS, and presentational JavaScript code that makes up a user interface. &lt;br /&gt;&lt;q&gt;Brad Frost&lt;/q&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Esse texto é daqueles que abrem uma mente. Indico muito a leitura. Segundo Brad Frost, um front end designer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Entende de princípios de UX e &lt;a href=&quot;http://jonathanslima.github.io/2016/padroes-de-interface-web/&quot;&gt;melhores práticas&lt;/a&gt;, mas não gasta seu tempo conduzindo pesquisas, criando fluxos e planejando cenários;&lt;/li&gt;
+  &lt;li&gt;Têm um olhar afiado sobre estética, mas não gasta seu tempo testando fontes, comparando paletas de cores ou criando ilustrações ou ícones.&lt;/li&gt;
+  &lt;li&gt;Pode &lt;a href=&quot;http://jonathanslima.github.io/2016/projeto-coding-everyday/&quot;&gt;escrever Javascript&lt;/a&gt;, mas não gasta seu tempo escrevendo códigos de nível de aplicação ou debugando.&lt;/li&gt;
+  &lt;li&gt;Entende a importância do desenvolvimento backend, mas não gasta seu tempo escrevendo lógica backend, com servidores ou testando carregamento.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ainda no artigo, ele explica como há um mal entendido fundamental, sobre generalizar que todo coder é um “programador ultra-geek”.&lt;/p&gt;
+
+&lt;blockquote&gt;HTML is not a programming language. CSS is not a programming language. But because HTML and CSS are still technically code, frontend development is often put in the same bucket as Python, Java, PHP, Ruby, C++, and other programming languages. This misunderstanding tends to give many frontend developers, myself included, a severe identity crisis.&lt;br /&gt;&lt;q&gt;Brad Frost&lt;/q&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;o-que-esses-rótulos-dizem-sobre-mim&quot;&gt;O que esses rótulos dizem sobre mim&lt;/h2&gt;
+
+&lt;p&gt;Nada!&lt;/p&gt;
+
+&lt;p&gt;Brincadeira…&lt;/p&gt;
+
+&lt;p&gt;Não, é sério…&lt;/p&gt;
+
+&lt;p&gt;Fiz uma breve pesquisa (sem fundamento científico), para ver o que as pessoas estavam colocando nos cargos em sites de vagas de emprego. &lt;strong&gt;Front end&lt;/strong&gt; ganhou disparado. Embora aqui em Recife geralmente se encontre vagas para web designers. Passei um bom tempo aqui no blog usando os termos &lt;strong&gt;web designer&lt;/strong&gt; e aquele que pareceu mais coerente para mim, &lt;strong&gt;designer de interfaces&lt;/strong&gt;, embora quase ninguém use esse título. Pelo menos alguém que eu conheça.&lt;/p&gt;
+
+&lt;p&gt;Hoje, como vocês podem ver, sou apenas “Front End Designer”. Mas amanhã pode estar outra coisa. Não quero ter escopo limitado por expressões ou rótulos. Não ligo muito pra isso. Pra mim o conhecimento é muito mais importante do que qualquer termo que você decida usar no Linkedin. O ideal é reconhecer as próprias limitações e buscar uma agenda de evolução contínua.&lt;/p&gt;
+
+&lt;p&gt;Mas as pessoas necessitam de rótulos para se adequarem e se posicionarem.&lt;/p&gt;
+
+&lt;p&gt;Algo que lhes conceda um lugar de destaque entre seus pares.&lt;/p&gt;
+
+&lt;p&gt;Algo que não as façam se sentirem como um… unicórnio.&lt;/p&gt;
+
+&lt;h3 id=&quot;referências&quot;&gt;Referências&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rodrigomedeiros.com.br/designer-de-que/&quot;&gt;Rodrigo Medeiros: Designer… de que?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bradfrost.com/blog/post/frontend-design/&quot;&gt;Brad Frost: Front End Designer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bradfrost.com/blog/post/email-responses-3-ux-designer-or-front-end-developer/&quot;&gt;Brad Frost: Email Responses #3: UX Designer or Front-End Developer?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://snook.ca/archives/opinion/design-engineering%0A&quot;&gt;Snook: Design Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 30 Mar 2016 19:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/sobre-front-enders-e-unicornios/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/sobre-front-enders-e-unicornios/</guid>
+        
+        <category>front end</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Projeto Coding Everyday</title>
+        <description>&lt;p&gt;Tenho tido problemas pra organizar minha agenda e focar no que realmente tenho que focar. Sou extremamente motivado a desafios e análises de métricas do que faço. Tomando essas características como qualidades, decidi usá-las em prol de coisas que venho procrastinando há algum tempo. Um exemplo foi sobre aprender Python, conforme &lt;a href=&quot;http://jonathanslima.github.io/2015/Porque-um-novo-blog/&quot;&gt;escrevi sobre isso aqui&lt;/a&gt;. Desde então tive dificuldades em conciliar horários pra estudar a linguagem e acabei parando no tempo.&lt;/p&gt;
+
+&lt;p&gt;Possuo mil desculpas, mas elencá-las aqui e eleger os vilões, seria inútil. Não há culpados além de mim mesmo. Quando consigo focar vou longe, conforme aconteceu quando decidi virar Forrest Gump e saí por aí correndo todo dia.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/nike-running.jpg&quot; alt=&quot;print da minha tela do app nike running&quot; /&gt;
+
+  &lt;figcaption&gt;&lt;i&gt;Resultado: passei de 89,5kg em 80,3kg em 3 meses&lt;/i&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Baseado nos projetos de &lt;a href=&quot;http://jenniferdewalt.com/&quot;&gt;Jennifer Dewalt&lt;/a&gt; e de &lt;a href=&quot;http://ejohn.org/&quot;&gt;John Resig&lt;/a&gt; sobre escrever código útil diariamente, decidi me propor desafio similar. Dessa vez vou deixar o Python de lado por um tempo e vou focar em Javascript, pra procurar melhorar bastante minhas skills nessa linguagem. Além de continuar estudando HTML e CSS.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/terminator.jpg&quot; alt=&quot;Arnold Schwarzenegger&quot; /&gt;
+
+  &lt;figcaption&gt;&lt;i&gt;I'll be back Python!&lt;/i&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Assim como John Resig, vou colocar alguns parâmetros que seguirei à risca:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Código tem que ser &lt;strong&gt;útil&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Posso incrementar código antigo, mas tem que ser com uma &lt;strong&gt;técnica aprendida recentemente&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;O código não será necessariamente em JS, já que também estou estudando HTML e CSS;&lt;/li&gt;
+  &lt;li&gt;Escrever &lt;strong&gt;um post por trimestre&lt;/strong&gt; aqui, contando minha evolução;&lt;/li&gt;
+  &lt;li&gt;Código deverá ser &lt;strong&gt;comentado em inglês&lt;/strong&gt; (praticar o idioma);&lt;/li&gt;
+  &lt;li&gt;Sempre que possível, &lt;strong&gt;subir diariamente antes da 00:00h&lt;/strong&gt;, o código no Github e colocar o link no meu daily-log;&lt;/li&gt;
+  &lt;li&gt;Se não for código, &lt;strong&gt;tem que ser algo trabalhado em um projeto&lt;/strong&gt;. (Por exemplo técnicas, métodos e entregáveis de UX, UI).&lt;/li&gt;
+  &lt;li&gt;Obrigatório &lt;strong&gt;uma folga na semana&lt;/strong&gt; :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;agora-vai&quot;&gt;Agora vai!&lt;/h2&gt;
+
+&lt;p&gt;O livro que vou estudar inicialmente vai ser o Javascript - Guia Definitivo de David Flanagan. Vou acompanhar o processo demonstrado no “guia” do
+&lt;a href=&quot;https://codeinbrasil.wordpress.com/2013/04/28/como-aprender-javascript-corretamente-javascript-is-sexy/&quot;&gt;Javascript is Sexy&lt;/a&gt;, mas ficarei livre para tentar outra abordagem, caso fique muito custoso para mim.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/images/javascript-livro.jpg&quot; alt=&quot;livro do flanagan, Javascript o Guia definitivo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Segue abaixo os links para vocês me acompanharem nessa jornada.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/jonathan_slima&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jonathanslima/projeto-coding-everyday&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jonathanslima/daily-logs&quot;&gt;Daily-logs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 06 Mar 2016 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/projeto-coding-everyday/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/projeto-coding-everyday/</guid>
+        
+        <category>motivacional</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>10 Princípios de Design de Interface Mobile</title>
+        <description>&lt;p&gt;&lt;em&gt;Esse texto é uma tradução do artigo &lt;a href=&quot;https://jonathanstark.com/blog/the-10-principles-of-mobile-interface-design&quot;&gt;10 princípios de design de interface mobile&lt;/a&gt;, que o consultor mobile, Jonathan Stark, compilou de seus workshops.&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/jonathanstark.jpg&quot; alt=&quot;Foto de Jonathan Stark&quot; /&gt;
+
+  &lt;figcaption&gt;&lt;i&gt;Fonte: https://jonathanstark.com/images/jonathanstark-helmet.jpg&lt;/i&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Desde o lançamento do Motorola Dynatec 8000x há mais de trinta anos, os dispositivos móveis partiram de geringonças de proporções e pesos absurdos para dispositivos cada vez mais finos, sofisticados, potentes e de alcance mundial. Em &lt;a href=&quot;http://www.nielsen.com/br/pt/press-room/2015/Brasileiros-com-internet-no-smartphone-ja-sao-mais-de-70-milhoes.html&quot;&gt;pesquisa realizada em setembro de 2015 pelo NIELSEN IBOPE&lt;/a&gt;, o total de pessoas que utilizam Internet por um smartphone aqui no Brasil chegou a 72,4 milhões no segundo trimestre de 2015 e esse número tende a crescer cada vez mais.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;../../assets/images/smartphone-evolution.jpg&quot; alt=&quot;Evolucão dos smartphones&quot; /&gt;
+
+  &lt;figcaption&gt;&lt;i&gt;Fonte: http://bestmobs.com/html/uploads/smartphone-evolution1.jpg&lt;/i&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Partindo das diferenças óbvias, buscando-se pontos positivos e negativos em relação aos dispositivos móveis e computadores como, tamanho de tela, diferença de consumo de banda de internet, o uso de dispositivos periféricos, pode se ter a impressão que um smartphone/ tablet/ phablet é um computador miniaturizado com capacidade limitada. E isso é um erro. Você facilmente encontra dispositivos móveis mais poderosos que máquinas desktops.&lt;/p&gt;
+
+&lt;p&gt;Mas não estamos falando só em hardware e software, mas em produtos altamente pessoais, sempre à mão, que nos permite acesso a qualquer pessoa, fato ou situação em segundos. Além de possuir sensores que detectam localização, movimentação, aceleração, orientação, proximidade, condições ambientais dentre outras coisas. Os apps se utilizam desses sensores pra nos ajudar a tomar decisões. Um app mostra que você deveria levar um casaco e um guarda chuva, pois a previsão indica que vai chover. Um app mostra que o ônibus que você quer pegar vai passar na parada em poucos minutos, evitando assim o uso de outro app pra chamar um táxi. Ao se exercitar um app monitora seus batimentos cardíacos, pulsação, quantos passos foram dados, se você correu ou caminhou…&lt;/p&gt;
+
+&lt;p&gt;Abaixo seguem os 10 princípios de design de interface mobile.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-mentalidade-mobile&quot;&gt;1. Mentalidade mobile&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Mantenha o foco:&lt;/strong&gt; Mais não é melhor. Você vai ter que deixar coisas de fora.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Seja único:&lt;/strong&gt; Saiba o que o torna único e realce isso. Se não houver nada que o torne especial, por que alguém o usaria?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Seja charmoso:&lt;/strong&gt; Dispositivos móveis são bastante pessoais. Estão em nossa constante companhia. Apps amistosos, confiáveis e divertidos causam prazer nos seus usuários.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Seja atencioso:&lt;/strong&gt; Coloque-se no lugar de seus usuários caso deseje criar experiências cativantes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-contexto&quot;&gt;2. Contexto&lt;/h2&gt;
+
+&lt;p&gt;A imagem de um profissional extremamente ocupado, correndo pelo aeroporto com uma mala na mão e o telefone na outra, é o que a maioria pensa quando se fala no contexto de uso de um dispositivo mobile. Certamente é um contexto, mas não o único. Para nos colocarmos no lugar dos usuários, devemos imaginar três contextos: Entediado, Ocupado e Perdido.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Entediado:&lt;/strong&gt; Há milhares de pessoas usando seu smartphone no sofá agora. Neste contexto, apostar no imersivo e prazeroso é uma excelente escolha. &lt;em&gt;Exemplos: Facebook, Angry Birds, Twitter…&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ocupado:&lt;/strong&gt; Este é o do “cenário do aeroporto”. Oferecer a possibilidade de se utilizar o aparelho com uma mão em um ambiente caótico é crítico. &lt;em&gt;Exemplo: Email, banco, calendário…&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Perdido:&lt;/strong&gt; Usuários em trânsito, em ambientes desconhecidos. Aqui o usuário se preocupa com conectividade e vida da bateria. Então você deve oferecer algum suporte offline e ser econômico ao usar recursos do sistema. &lt;em&gt;Exemplos: Mapas, Foursquare…&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-guidelines-globais&quot;&gt;3. Guidelines globais&lt;/h2&gt;
+
+&lt;p&gt;Capacidade de resposta: Isso é algo absolutamente crítico. Se seu usuário faz algo o sistema deve responder à interação logo. Perceba, que capacidade de resposta é diferente de velocidade. É normal se uma tarefa demorar um pouco para ser realizada. O importante é o usuário saber que o app está trabalhando.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Polimento:&lt;/strong&gt; Polimento é extremamente valioso, por causa do nosso constante relacionamento com smartphones, percebemos os pequenos perfeitos detalhes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Polegares:&lt;/strong&gt; Com o advento das interfaces touch, todos estão falando &lt;em&gt;“toque aqui”&lt;/em&gt; e &lt;em&gt;“toque ali”&lt;/em&gt;. Na realidade projetamos para o polegar. Polegares são o padrão.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Alvos:&lt;/strong&gt; Olhe para seu polegar direito. Não a ponta, mas a face – parte que entra em contato com a tela. Ele parece grande ou pequeno demais para interagir com os elementos da interface do seu smartphone? O número mágico para oferecer uma experiência amistosa é de 44px. Também cuide da disposição destes elementos, por exemplo, colocar um botão de backspace junto ao botão enviar em um app de SMS, é uma péssima ideia.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conteúdo:&lt;/strong&gt; A revolução das interfaces touch vem do fato de que podemos interagir diretamente com nosso próprio conteúdo. Isto remove abstrações (como mouses e trackpads) e está mais alinhado com como nosso cérebro está conectado. Não é necessário ir longe pra entender isso. Dê um tablet a uma criança de dois anos e você vai ver como ela, em poucos minutos estará ambientada ao uso desse dispositivo. Agora deixe essa mesma criança interagir com um laptop e você verá como a curva de aprendizado será maior e mais difícil.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Controles:&lt;/strong&gt; Quando tiver de colocar controles, opte por colocar no final da tela. Pense em alguns dispositivos como balança de banheiro, calculadora, TV, laptops… Os comandos são após o visor. Se não fosse assim, não conseguiríamos ver o que acontecia enquanto estivéssemos realizando uma interação.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rolagem:&lt;/strong&gt; Evite a rolagem. Ter uma tela sem rolagem oferece uma sensação de mais sólida e confiável por causa de sua previsibilidade. Claro que algumas telas terão de utilizar scroll, mas é bom evitá-las sempre que possível. Se tiver que ter rolagem, procure informar de uma forma sutil de que há mais conteúdo além do que aquele que está apresentado na tela.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4-modelos-navegacionais&quot;&gt;4. Modelos navegacionais&lt;/h2&gt;
+
+&lt;p&gt;Se tiver de utilizar um dos modelos mais comuns de navegação, certifique-se de utilizar aquele que faz mais sentido para o seu app.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Nenhum:&lt;/strong&gt; Tela única de apps utilitários. &lt;em&gt;Exemplo: Previsão tempo (Weather app) no iPhone.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Barra de Abas:&lt;/strong&gt; Três a seis áreas de conteúdos distintos. &lt;em&gt;Exemplo: Twitter no iPhone.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drill Down:&lt;/strong&gt; Conteúdos hierárquicos listados e detalhados. &lt;em&gt;Exemplo: Configurações no iPhone.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5-entrada-do-usuário&quot;&gt;5. Entrada do usuário&lt;/h2&gt;
+
+&lt;p&gt;Mesmo nos melhores dispositivos, digitação ainda é algo custoso, então por que não buscar facilitar essa tarefa?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Existe uma dúzia de variações de dados que podem ser digitados nos teclados dos smartphones (texto, número, email, URL, etc). Considere disponibilizar o teclado mais útil de acordo com o tipo de informação digitada pelo usuário.&lt;/li&gt;
+  &lt;li&gt;Considere disponibilizar para cada campo de entrada do usuário, opções de auto-entrada (como auto-capitalização, auto-correção e auto-complete).&lt;/li&gt;
+  &lt;li&gt;Se seu app tiver que receber uma quantidade grande de dados digitados, procure suportar orientação em modo paisagem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;6-gestos&quot;&gt;6. Gestos&lt;/h2&gt;
+
+&lt;p&gt;Um dos mais icônicos aspectos das interfaces touch é o suporte à interação baseada em gestos. Então há algumas coisas que se deve ter em mente:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Invisível:&lt;/strong&gt; Gestos são invisíveis. Você deve encontrar uma maneira de revelar sua existência para o usuário.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Duas mãos:&lt;/strong&gt; Operações multi-toques requerem o uso de duas mãos. Um exemplo prático, são alguns aplicativos que utilizam o gesto de “pinçar” para dar &lt;em&gt;zoom in&lt;/em&gt; ou &lt;em&gt;zoom out&lt;/em&gt; em algum elemento (foto, mapas, etc). Quando se está usando o smartphone com apenas uma das mãos, isso pode ser um limitador, então se devem buscar outras maneiras de oferecer a mesma experiência como, nesse caso, botões que aumentarão/ diminuirão o elemento.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bom de ter (Nice to have):&lt;/strong&gt; Na maioria dos casos, gestos são considerados &lt;em&gt;nice to have&lt;/em&gt;, mas não como algo crítico. Deve funcionar como atalhos de teclados. Usuários avançados adorarão, mas a maioria das pessoas talvez nem saibam que isso exista.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sem substituição:&lt;/strong&gt; Um vocabulário comum para interface gestual ainda não existe, então ainda é cedo para ignorar controles visíveis que possam ser utilizadas com apenas um dedo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;7-orientação&quot;&gt;7. Orientação&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Orientação retrato é de longe a mais popular, otimize para esse caso primeiro.&lt;/li&gt;
+  &lt;li&gt;Como dito mais acima, se seu app tiver que receber uma quantidade grande de dados digitados, procure suportar orientação em modo paisagem, pois assim o usuário tem acesso a um teclado mais largo.&lt;/li&gt;
+  &lt;li&gt;Se seu app for utilizado por um longo período de tempo em uma posição, considere colocar uma opção de travar, evitando assim, uma mudança de orientação repentina.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;8-comunicações&quot;&gt;8. Comunicações&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Prover feeedback:&lt;/strong&gt; Ofereça feedback para cada interação. Caso não ofereça, o usuário pensará que seu app travou ou que ele errou o alvo que tentava atingir. Pode ser tátil (como a “pancada” vibrante do Android), ou visual (destacando o botão apertado). Se ele fizer uma interação cuja resposta demore um pouco, coloque uma barra de progresso para que ele saiba que sua solicitação está em andamento.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modais de alerta:&lt;/strong&gt; Modais de alerta são extremamente agressivos e intrusivos para o fluxo do usuário, então você só deveria usá-los quando algo extremamente sério ocorresse. Caso seja necessário o uso desse artifício, tente utilizar uma linguagem tranquila e amistosa.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Confirmações:&lt;/strong&gt; Quando você precisa confirmar uma ação iniciada pelo usuário, é aceitável o uso de uma janela modal (tipo: &lt;em&gt;“Você deseja realmente deletar arquivox.txt”&lt;/em&gt;). Confirmações são menos intrusivas do que alertas.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;9-lançamento&quot;&gt;9. Lançamento&lt;/h2&gt;
+
+&lt;p&gt;Quando um usuário retorna ao seu app após um período, você deve oferecer o prosseguimento da operação exatamente do ponto onde o usuário o deixou. Isso passará a impressão de velocidade e de ótima capacidade de resposta.&lt;/p&gt;
+
+&lt;p&gt;Qualquer coisa que pareça interativo (como botões, links, ícones, conteúdo) irá criar frustração pelo convite a interações falhas.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;10-primeiras-impressões&quot;&gt;10. Primeiras impressões&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Seu ícone:&lt;/strong&gt; Seu ícone vai competir por atenção em um mar de ícones. Seja literal, mostre o que seu app faz. Use uma silhueta forte, pouco texto. Um ícone polido remete a um app polido, então vale a pena gastar tempo e dinheiro para fazê-lo correto.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Primeiro lançamento:&lt;/strong&gt; Se novos usuários tiverem dificuldades de se familiarizarem com seu app, eles rapidamente o enterrarão. Se seu app fornece funcionalidades complexas, você pode incluir dicas e truques, ou talvez alguns poucos painéis de orientação. Perceba que isso não é uma substituição para um bom design. Se você se pegar escrevendo um monte de texto de ajuda, isso é um indicativo de que sua interface do usuário precisa ser melhorada.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;###Referências:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.creativebloq.com/mobile/10-principles-mobile-interface-design-4122910&quot;&gt;10 Principles of Mobile Interface Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.nielsen.com/br/pt/press-room/2015/Brasileiros-com-internet-no-smartphone-ja-sao-mais-de-70-milhoes.html&quot;&gt;Brasileiros com internet no smartphone já são mais de 70 milhoes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 27 Feb 2016 21:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2016/10-principios-de-design-de-interface-mobile/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/10-principios-de-design-de-interface-mobile/</guid>
+        
+        <category>ux</category>
+        
+        <category>design</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

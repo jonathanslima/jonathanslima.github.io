@@ -1,0 +1,42 @@
+# Site settings
+title: Jonathan
+description: 'Desenvolvedor Front End'
+url: 'https://jonathanslima.github.io/'
+baseurl: ''
+google_analytics: 'UA-66392540-1'
+disqus_shortname: 'jonathanslima'
+
+author:
+  name: 'Jonathan Lima'
+  email: ola@jonathanslima.com.br
+  twitter_username: jonathan_slima
+  github_username:  jonathanslima
+  linkedin_username:  jonathanlima
+
+defaults:
+  -
+    scope:
+      path: ''
+      type: 'posts'
+    values:
+        layout: 'post'
+
+# Build settings
+destination: _site
+paginate: 10
+permalink: /:year/:title/
+markdown: kramdown
+highlighter: rouge
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
+
+plugins: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']

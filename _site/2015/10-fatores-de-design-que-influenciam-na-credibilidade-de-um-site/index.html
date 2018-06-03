@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Desenvolvedor Front End em Recife- 10 Fatores de Design que influenciam na credibilidade de um site</title>
+  <meta name="description" content="
+
+">
+  <meta name="author" content="Jonathan Lima">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="10 Fatores de Design que influenciam na credibilidade de um site">
+  <meta name="twitter:description" content="
+
+">
+  
+  <meta name="twitter:creator" content="jonathan_slima">
+  
+  <meta name="twitter:image" content="/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="10 Fatores de Design que influenciam na credibilidade de um site">
+  <meta property="og:description" content="
+
+">
+  <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/css/main.css?1528062731169247154">
+  <link rel="canonical" href="http://localhost:4000/2015/10-fatores-de-design-que-influenciam-na-credibilidade-de-um-site/">
+  <link rel="alternate" type="application/rss+xml" title="Jonathan" href="/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/" title="link to home of Jonathan">
+          <img src="/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Jonathan</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Desenvolvedor Front End</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="link to Jonathan blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+              <!-- Twitter -->
+              <li class="navigation__item">
+                <a href="http://twitter.com/jonathan_slima" title="@jonathan_slima on Twitter" target="_blank">
+                  <i class="icon icon-social-twitter"></i>
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+            
+
+            
+
+            
+              <!-- LinkedIn -->
+              <li class="navigation__item">
+                <a href="https://www.linkedin.com/in/jonathanlima" title="jonathanlima on LinkedIn" target="_blank">
+                  <i class="icon icon-social-linkedin"></i>
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/jonathanslima" title="jonathanslima on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            <!--
+               Email 
+              <li class="navigation__item">
+                <a href="mailto:ola@jonathanslima.com.br" title="Email ola@jonathanslima.com.br" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            RSS 
+            <li class="navigation__item">
+              <a href="/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>-->
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2015-11-01 11:05" class="post-meta__date date">1 Nov 2015</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#ux">ux</a> <a href="/tags/#design">design</a> </span>
+      
+    </div>
+    <h1 class="post-title">10 Fatores de Design que influenciam na credibilidade de um site</h1>
+  </header>
+
+  <section class="post">
+    <p><img src="../../assets/images/homem-na-lua.jpg" alt="Imagem de astronauta na lua" /></p>
+
+<p>Os websites tem nos dias atuais uma importância absurda dentro de uma estratégia de negócios de uma empresa. Através deles podem ser fornecidos serviços, produtos, divulgação de eventos, servir como intermediário entre relações interpessoais, dentre milhares de outras coisas.</p>
+
+<p>Mas você já parou pra pensar, por que dentre milhares de sites de determinado segmento, você sempre tem uma pequena lista, contendo um, dois ou três sites, cujo conteúdo é presumivelmente confiável?</p>
+
+<p>Agora que você concordou comigo, pense como essa lista pessoal foi montada? Foi algo intencional ou de uma hora pra outra, você se via dentro desses sites, pesquisando e consumindo seu conteúdo?</p>
+
+<p>A Universidade de Stanford, tem um grupo que estuda os fatores que influenciam os usuários na hora de dizer se determinado site tem credibilidade ou não. Eles levantaram questões como:</p>
+
+<ul>
+  <li>O que leva as pessoas a acreditarem se a fonte daquela informação é confiável?</li>
+  <li>Quais estratégias utilizadas por usuários pra avaliar credibilidade em fontes online?</li>
+  <li>Qual o contexto e os fatores de design que influenciam nisso?</li>
+  <li>Como e por que o processo de avaliação de credibilidade na web, é diferente do processo de avaliação utilizada no contexto offline, na interação face a face entre as pessoas?</li>
+</ul>
+
+<p>O estudo revelou que elementos visuais, podem influenciar para o bem e para o mal, os visitantes e suas avaliações pertinentes à credibilidade daquele site.</p>
+
+<p>Por causa disso, eles desenvolveram uma lista com <strong>10 fatores de design que influenciam na credibilidade de um site</strong>. Essas guidelines foram baseadas em três anos de pesquisa com mais de 4.500 pessoas.</p>
+
+<h3 id="1---deixe-de-fácil-acesso-as-verificações-de-informações-do-seu-site">1 - Deixe de fácil acesso as verificações de informações do seu site.</h3>
+
+<p>Você pode construir a credibilidade de seu site, oferecendo formas (citações, referências, materiais) de comprovar que aquela informação é de confiança. Mesmo se ninguém acessar esse material de apoio, isso já faz com que seu site seja bem visto.</p>
+
+<h3 id="2---mostre-que-existe-uma-organização-real-por-trás-daquela-interface-digital">2 - Mostre que existe uma organização real por trás daquela interface digital.</h3>
+
+<p>Mostre que sua organização é legítima e real. A maneira mais fácil, é você possuir um endereço físico.</p>
+
+<h3 id="3---destaque-a-expertise-da-sua-organização-nos-produtos-e-serviços-oferecidos">3 - Destaque a <em>expertise</em> da sua organização nos produtos e serviços oferecidos.</h3>
+
+<p>Deixe clara a qualidade do serviço ou produto oferecido.  Cerque-se de pessoas capacitadas e de credibilidade. Não indique sites externos que não são confiáveis.</p>
+
+<h3 id="4---mostre-que-há-pessoas-honestas-e-honradas-comandando-aquela-organização-real">4 - Mostre que há pessoas honestas e honradas comandando aquela organização real.</h3>
+
+<p>Descubra uma forma de passar para as pessoas que as pessoas por trás daquele produto são pessoas reais e confiáveis. Forneça meios de identificar os responsáveis pelo conteúdo.</p>
+
+<h3 id="5---ofereça-formas-simples-e-eficientes-de-ser-contatado">5 - Ofereça formas simples e eficientes de ser contatado.</h3>
+
+<p>Números de telefone, endereço físico, endereço de e-mail, redes sociais, área de suporte, reclamação…</p>
+
+<h3 id="6---o-design-do-seu-site-deve-ser-profissional">6 - O design do seu site deve ser profissional.</h3>
+
+<p>As pessoas avaliam seu site primeiro pelo design. Invista em um layout profissional.</p>
+
+<h3 id="7---faça-com-que-seu-site-seja-útil-e-de-boa-usabilidade">7 - Faça com que seu site seja útil e de boa usabilidade.</h3>
+
+<p>Forneça um produto ou serviço realmente útil e que seja simples de utilizar. Seja único para seu cliente/ usuário.</p>
+
+<h3 id="8---mantenha-seu-conteúdo-constantemente-atualizado">8 - Mantenha seu conteúdo constantemente atualizado.</h3>
+
+<p>Conteúdo constantemente atualizado e revisado, causa sempre boa impressão. Mas cuidado para não sufocar as pessoas com informação em excesso.</p>
+
+<h3 id="9---seja-cauteloso-com-conteúdos-promocionais">9 - Seja cauteloso com conteúdos promocionais.</h3>
+
+<p>Se possível evite <i>ads</i> no seu site. Se tiver, cuide para que ele forneça algo realmente útil e voltado para o público do seu site. Cuidado para não sobrecarregar visualmente e sobrepujar o conteúdo.</p>
+
+<h3 id="10---elimine-erros-de-todos-os-tipos-por-menor-que-pareçam">10 - Elimine erros de todos os tipos, por menor que pareçam.</h3>
+
+<p>Erros ortográficos e links quebrados, são alguns dos principais fatores que ferem a credibilidade do seu site. Elimine-os.</p>
+
+<p>Fonte: <a href="http://credibility.stanford.edu/guidelines/index.html">Stanford Guidelines</a></p>
+
+
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/2015/10-fatores-de-design-que-influenciam-na-credibilidade-de-um-site/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/2015/10-fatores-de-design-que-influenciam-na-credibilidade-de-um-site'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//jonathanslima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2018 Jonathan Lima.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js?1528062731169247154"></script>
+
+
+    </div>
+  </body>
+</html>

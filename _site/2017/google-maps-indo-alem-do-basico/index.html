@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Desenvolvedor Front End em Recife- Google Maps - Indo um pouco além do básico</title>
+  <meta name="description" content="Voltando a escrever aqui após um pequeno hiato. Tempo esse que foi bastante proveitoso, mas isso fica pra outro post. Eis que estou de volta pra trazer algo que foi bem bacana de desenvolver. Surgiu essa demanda em um site da agência onde trabalho e achei legal compartilhar aqui.
+
+">
+  <meta name="author" content="Jonathan Lima">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Google Maps - Indo um pouco além do básico">
+  <meta name="twitter:description" content="Voltando a escrever aqui após um pequeno hiato. Tempo esse que foi bastante proveitoso, mas isso fica pra outro post. Eis que estou de volta pra trazer algo que foi bem bacana de desenvolver. Surgiu essa demanda em um site da agência onde trabalho e achei legal compartilhar aqui.
+
+">
+  
+  <meta name="twitter:creator" content="jonathan_slima">
+  
+  <meta name="twitter:image" content="/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Google Maps - Indo um pouco além do básico">
+  <meta property="og:description" content="Voltando a escrever aqui após um pequeno hiato. Tempo esse que foi bastante proveitoso, mas isso fica pra outro post. Eis que estou de volta pra trazer algo que foi bem bacana de desenvolver. Surgiu essa demanda em um site da agência onde trabalho e achei legal compartilhar aqui.
+
+">
+  <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/css/main.css?1528062731169247154">
+  <link rel="canonical" href="http://localhost:4000/2017/google-maps-indo-alem-do-basico/">
+  <link rel="alternate" type="application/rss+xml" title="Jonathan" href="/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/" title="link to home of Jonathan">
+          <img src="/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Jonathan</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Desenvolvedor Front End</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="link to Jonathan blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+              <!-- Twitter -->
+              <li class="navigation__item">
+                <a href="http://twitter.com/jonathan_slima" title="@jonathan_slima on Twitter" target="_blank">
+                  <i class="icon icon-social-twitter"></i>
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+            
+
+            
+
+            
+              <!-- LinkedIn -->
+              <li class="navigation__item">
+                <a href="https://www.linkedin.com/in/jonathanlima" title="jonathanlima on LinkedIn" target="_blank">
+                  <i class="icon icon-social-linkedin"></i>
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/jonathanslima" title="jonathanslima on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            <!--
+               Email 
+              <li class="navigation__item">
+                <a href="mailto:ola@jonathanslima.com.br" title="Email ola@jonathanslima.com.br" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            RSS 
+            <li class="navigation__item">
+              <a href="/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>-->
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-14 00:00" class="post-meta__date date">14 May 2017</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#code">code</a> <a href="/tags/#api">api</a> <a href="/tags/#google maps">google maps</a> </span>
+      
+    </div>
+    <h1 class="post-title">Google Maps - Indo um pouco além do básico</h1>
+  </header>
+
+  <section class="post">
+    <p>Voltando a escrever aqui após um pequeno hiato. Tempo esse que foi bastante proveitoso, mas isso fica pra outro post. Eis que estou de volta pra trazer algo que foi bem bacana de desenvolver. Surgiu essa demanda em um site da agência onde trabalho e achei legal compartilhar aqui.</p>
+
+<p><img src="../../assets/images/post16-mapa.png" alt="Mapa finalizado" /></p>
+
+<h2 id="objetivo">Objetivo</h2>
+<p>O job era pra ajudar Nicholas Cage a achar pontos importantes em Hollywood, e talvez até ajudá-lo a achar um bom filme pra atuar…</p>
+
+<p>Mentira, mas seria bem legal se fosse isso…</p>
+
+<p>Mas o espírito era esse. Por exemplo, você tem um hotel e pode colocar as opções do que tem nas redondezas do seu estabelecimento, como as academias, os shoppings, os restaurantes e por aí vai. Tudo de forma mais amigável, intuitiva e personalizada.</p>
+
+<h2 id="gerando-o-mapa-e-o-html-dos-controles">Gerando o mapa e o HTML dos controles</h2>
+<p>Primeiramente você deve <a href="https://developers.google.com/maps/documentation/javascript/reference">gerar uma key</a>. Você pode pegar mais referências <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">aqui</a>.</p>
+
+<p>Gerado sua chave, vamos chamar a API:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">defer</span> <span class="na">src=</span><span class="s">"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&amp;libraries=places"</span>
+  <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Onde tem YOUR_API_KEY substitua pela chave que você acabou de gerar. Se não tiver, você precisa adicionar o parâmetro <code class="highlighter-rouge">libraries=places</code> no final.</p>
+
+<p>Vamos gerar nosso html. Também bastante simples.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map-location"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Seria bacana estilizar esse mapa até mesmo para que ele apareça.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#map-location</span><span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Chame também o jQuery acima da chamada da API. Vamos utilizá-la pra criarmos o evento de clique em nossas opções.</p>
+
+<p>Essa é minha lista de opções. Crio um id para cada um:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"lista-interesses"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">"gym"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"img/icons/gym.png"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;b&gt;</span>Academias<span class="nt">&lt;/b&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">"bank"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"img/icons/bank.png"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;b&gt;</span>Bancos<span class="nt">&lt;/b&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">"bar"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"img/icons/bar.png"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;b&gt;</span>Bares<span class="nt">&lt;/b&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">"school"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"img/icons/school.png"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;b&gt;</span>Escolas<span class="nt">&lt;/b&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<h2 id="vamos-para-o-js">Vamos para o JS</h2>
+
+<p>Primeiramente criaremos as variáveis. O código está comentado pra dar uma força no entendimento. Esse código é quase <a href="https://developers.google.com/maps/documentation/javascript/places#place_search_requests">todo oferecido aqui</a>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Chamamos as imagens aqui */</span>
+<span class="kd">var</span> <span class="nx">baseURL</span> <span class="o">=</span> <span class="s1">'img/mapa/icons'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">icones</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">gym</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-gym.png'</span><span class="p">,</span>
+  <span class="na">bank</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-bank.png'</span><span class="p">,</span>
+  <span class="na">bar</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-bar.png'</span><span class="p">,</span>
+  <span class="na">school</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-school.png'</span><span class="p">,</span>
+  <span class="na">university</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-university.png'</span><span class="p">,</span>
+  <span class="na">pharmacy</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-pharmacy.png'</span><span class="p">,</span>
+  <span class="na">hospital</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-hospital.png'</span><span class="p">,</span>
+  <span class="na">bakery</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-bakery.png'</span><span class="p">,</span>
+  <span class="na">park</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-park.png'</span><span class="p">,</span>
+  <span class="na">restaurant</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-restaurant.png'</span><span class="p">,</span>
+  <span class="na">shopping</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-shopping.png'</span><span class="p">,</span>
+  <span class="na">gas</span><span class="p">:</span>  <span class="nx">baseURL</span> <span class="o">+</span> <span class="s1">'/pin-gas.png'</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">iconeAtual</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="cm">/* Aqui o pin principal, da localização do seu estabelecimento, lugar */</span>
+<span class="kd">var</span> <span class="nx">nicholasCage</span> <span class="o">=</span>  <span class="s1">'img/icons/map-marker.png'</span><span class="p">;</span>
+
+<span class="cm">/* Essas serão utilizadas mais a frente */</span>
+<span class="kd">var</span> <span class="nx">mapLocation</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">infowindow</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Vamos chamar a função que vai iniciar o mapa:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Chamo a função com um parâmetro (pinPlace) */</span>
+<span class="cm">/* Esse parâmetro vai ser um atributo que vai identificar qual */</span>
+<span class="cm">/* pin vai aparecer após o clique em uma das opções de nossa lista de lugares */</span>
+
+<span class="kd">function</span> <span class="nx">initMap</span><span class="p">(</span><span class="nx">pinPlace</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">iconeAtual</span> <span class="o">=</span> <span class="nx">pinPlace</span><span class="p">;</span>
+  <span class="cm">/* Aqui você seta latitude e longitude */</span>
+  <span class="kd">var</span> <span class="nx">pyrmont</span> <span class="o">=</span> <span class="p">{</span><span class="na">lat</span><span class="p">:</span> <span class="mf">34.092809</span><span class="p">,</span> <span class="na">lng</span><span class="p">:</span> <span class="o">-</span><span class="mf">118.328661</span><span class="p">};</span>
+
+    <span class="cm">/* Cria uma referência para o elemento #map-location */</span>
+    <span class="nx">mapLocation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nb">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'map-location'</span><span class="p">),</span> <span class="p">{</span>
+      <span class="cm">/* Seu local baseado nas coordenadas */</span>
+      <span class="na">center</span><span class="p">:</span> <span class="nx">pyrmont</span><span class="p">,</span>
+      <span class="cm">/* O zoom no mapa */</span>
+      <span class="na">zoom</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+      <span class="cm">/* Disabilita o scroll */</span>
+      <span class="na">scrollwheel</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">});</span>
+
+  <span class="cm">/* Se houve um evento de clique na lista */</span>
+  <span class="cm">/* E essa lista enviou o parâmetro que vai */</span>
+  <span class="cm">/* Setar quais lugares vão aparecer no mapa */</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">pinPlace</span><span class="p">){</span>
+    <span class="nx">infowindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">InfoWindow</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">places</span><span class="p">.</span><span class="nx">PlacesService</span><span class="p">(</span><span class="nx">mapLocation</span><span class="p">);</span>
+    <span class="nx">service</span><span class="p">.</span><span class="nx">nearbySearch</span><span class="p">({</span>
+    	<span class="cm">/* O local (baseado nas coordenadas) */</span>
+      <span class="na">location</span><span class="p">:</span> <span class="nx">pyrmont</span><span class="p">,</span>
+      <span class="cm">/* O raio em metros  */</span>
+      <span class="na">radius</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+      <span class="cm">/* Os types oferecidos (Ver link após esse código) */</span>
+      <span class="cm">/* type: ['gym', 'bank', 'bar', 'school', 'university', 'pharmacy', 'hospital', 'bakery', 'park', 'restaurant', 'shopping_mall', '', 'gas_station', '', ''] */</span>
+      <span class="na">type</span><span class="p">:</span> <span class="p">[</span><span class="nx">pinPlace</span><span class="p">]</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">places</span><span class="p">.</span><span class="nx">PlacesServiceStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">)</span> <span class="p">{</span>
+      	<span class="cm">/* Adicione Nicholas Cage */</span>
+        <span class="nx">pinBuild</span><span class="p">();</span>
+        <span class="cm">/* Adicione os marcadores na página */</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">results</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">createMarker</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+  	<span class="cm">/* Se não foi selecionado nenhum pin, então mostre Só Nicholas Cage */</span>
+    <span class="nx">pinBuild</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Aqui estão alguns <a href="https://developers.google.com/places/supported_types?hl=pt-br">types suportados</a>. Achei bizarro porque não tem supermercado, foi removido recentemente.</p>
+
+<p>Logo em seguida vem a função que coloca literalmente Nicholas Cage no mapa.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">pinBuild</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* Mesma localização usada na varável pyrmont */</span>
+  <span class="kd">var</span> <span class="nx">placeLoc</span> <span class="o">=</span> <span class="p">{</span><span class="na">lat</span><span class="p">:</span> <span class="mf">34.092809</span><span class="p">,</span> <span class="na">lng</span><span class="p">:</span> <span class="o">-</span><span class="mf">118.328661</span><span class="p">};</span>
+  <span class="kd">var</span> <span class="nx">marker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Marker</span><span class="p">({</span>
+    <span class="na">map</span><span class="p">:</span> <span class="nx">mapLocation</span><span class="p">,</span>
+    <span class="na">position</span><span class="p">:</span> <span class="nx">placeLoc</span><span class="p">,</span>
+    <span class="na">icon</span><span class="p">:</span> <span class="nx">nicholasCage</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Função que cria o pin no mapa, que já foi invocada logo acima:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">createMarker</span><span class="p">(</span><span class="nx">place</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">placeLoc</span> <span class="o">=</span> <span class="nx">place</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">marker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Marker</span><span class="p">({</span>
+    <span class="na">map</span><span class="p">:</span> <span class="nx">mapLocation</span><span class="p">,</span>
+    <span class="na">position</span><span class="p">:</span> <span class="nx">place</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">location</span><span class="p">,</span>
+    <span class="na">icon</span><span class="p">:</span> <span class="nx">icones</span><span class="p">[</span><span class="nx">iconeAtual</span><span class="p">]</span>
+  <span class="p">});</span>
+
+  <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">marker</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">infowindow</span><span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">place</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">infowindow</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">mapLocation</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>E por último e não menos importante, vamos disparar nosso evento de clique:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Seleciono a lista a cada clique em uma "li" dessa lista */</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.lista-interesses'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'li'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="cm">/* Pego o valor do seu atributo */</span>
+    <span class="kd">var</span> <span class="nx">$attr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">);</span>
+
+    <span class="cm">/* E invoco a função repassando o valor do atributo por parâmetro
+    Esse valor é que vai definir a lista de locais que vão 
+    Aparecer no mapa */</span>
+    <span class="nx">initMap</span><span class="p">(</span><span class="nx">$attr</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Bacana não? E também não tão complicado quanto parece.</p>
+
+<ul>
+  <li><a href="../../assets/downloads/mapa-nicholas-cage.zip">Download do código</a></li>
+  <li><a href="https://github.com/jonathanslima/google-maps">Código no Github</a></li>
+</ul>
+
+<p>Não sou expert no Google Maps (aliás, bem longe disso), nem mergulhei tão a fundo assim na documentação. Fui apenas um pouco além do básico e me surpreendi do quão fantástico é essa ferramenta, e do absurdo de opções que ela pode oferecer.</p>
+
+<p>Por isso não desista pelo tamanho do código, nem se não entender todos os pormenores. Vá com calma que dá pra chegar lá, não é coisa de outro mundo.</p>
+
+<p>E se você só fez pegar o código, fez copy%paste pra entregar a demanda, volte outra vez, com um pouco mais de tempo e calma e tente entender o que acontece por baixo dos panos. Da próxima vez, vai sair melhor e com mais opções. Você pode melhorar isso bastante, talvez até mesmo desenvolvendo aquela pequena feature que pode ser matadora para seu cliente. E ainda proporcionando uma melhor experiência para o usuário ;)</p>
+
+<p>Bem é isso, espero que ajude você, deixa um feedback bacana, sua dúvida, sua crítica aew embaixo nos comentários, se puder ajudar em algo mais, ficarei bastante satisfeito.</p>
+
+<p><img src="https://media.giphy.com/media/cEYFeDB8PpXqYekMuPK/giphy.gif" alt="Nicholas cage dançando" />
+Nick agradece sua ajuda</p>
+
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/2017/google-maps-indo-alem-do-basico/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/2017/google-maps-indo-alem-do-basico'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//jonathanslima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2018 Jonathan Lima.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js?1528062731169247154"></script>
+
+
+    </div>
+  </body>
+</html>

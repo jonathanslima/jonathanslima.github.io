@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Desenvolvedor Front End em Recife- 10 Princípios de Design de Interface Mobile</title>
+  <meta name="description" content="Esse texto é uma tradução do artigo 10 princípios de design de interface mobile, que o consultor mobile, Jonathan Stark, compilou de seus workshops.
+
+">
+  <meta name="author" content="Jonathan Lima">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="10 Princípios de Design de Interface Mobile">
+  <meta name="twitter:description" content="Esse texto é uma tradução do artigo 10 princípios de design de interface mobile, que o consultor mobile, Jonathan Stark, compilou de seus workshops.
+
+">
+  
+  <meta name="twitter:creator" content="jonathan_slima">
+  
+  <meta name="twitter:image" content="/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="10 Princípios de Design de Interface Mobile">
+  <meta property="og:description" content="Esse texto é uma tradução do artigo 10 princípios de design de interface mobile, que o consultor mobile, Jonathan Stark, compilou de seus workshops.
+
+">
+  <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/css/main.css?1528062731169247154">
+  <link rel="canonical" href="http://localhost:4000/2016/10-principios-de-design-de-interface-mobile/">
+  <link rel="alternate" type="application/rss+xml" title="Jonathan" href="/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/" title="link to home of Jonathan">
+          <img src="/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Jonathan</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Desenvolvedor Front End</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="link to Jonathan blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+              <!-- Twitter -->
+              <li class="navigation__item">
+                <a href="http://twitter.com/jonathan_slima" title="@jonathan_slima on Twitter" target="_blank">
+                  <i class="icon icon-social-twitter"></i>
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+            
+
+            
+
+            
+              <!-- LinkedIn -->
+              <li class="navigation__item">
+                <a href="https://www.linkedin.com/in/jonathanlima" title="jonathanlima on LinkedIn" target="_blank">
+                  <i class="icon icon-social-linkedin"></i>
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/jonathanslima" title="jonathanslima on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            <!--
+               Email 
+              <li class="navigation__item">
+                <a href="mailto:ola@jonathanslima.com.br" title="Email ola@jonathanslima.com.br" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            RSS 
+            <li class="navigation__item">
+              <a href="/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>-->
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-02-28 00:00" class="post-meta__date date">28 Feb 2016</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#ux">ux</a> <a href="/tags/#design">design</a> </span>
+      
+    </div>
+    <h1 class="post-title">10 Princípios de Design de Interface Mobile</h1>
+  </header>
+
+  <section class="post">
+    <p><em>Esse texto é uma tradução do artigo <a href="https://jonathanstark.com/blog/the-10-principles-of-mobile-interface-design">10 princípios de design de interface mobile</a>, que o consultor mobile, Jonathan Stark, compilou de seus workshops.</em></p>
+
+<figure>
+	<img src="../../assets/images/jonathanstark.jpg" alt="Foto de Jonathan Stark" />
+
+  <figcaption><i>Fonte: https://jonathanstark.com/images/jonathanstark-helmet.jpg</i></figcaption>
+</figure>
+<p><br /></p>
+
+<p>Desde o lançamento do Motorola Dynatec 8000x há mais de trinta anos, os dispositivos móveis partiram de geringonças de proporções e pesos absurdos para dispositivos cada vez mais finos, sofisticados, potentes e de alcance mundial. Em <a href="http://www.nielsen.com/br/pt/press-room/2015/Brasileiros-com-internet-no-smartphone-ja-sao-mais-de-70-milhoes.html">pesquisa realizada em setembro de 2015 pelo NIELSEN IBOPE</a>, o total de pessoas que utilizam Internet por um smartphone aqui no Brasil chegou a 72,4 milhões no segundo trimestre de 2015 e esse número tende a crescer cada vez mais.</p>
+
+<figure>
+	<img src="../../assets/images/smartphone-evolution.jpg" alt="Evolucão dos smartphones" />
+
+  <figcaption><i>Fonte: http://bestmobs.com/html/uploads/smartphone-evolution1.jpg</i></figcaption>
+</figure>
+<p><br /></p>
+
+<p>Partindo das diferenças óbvias, buscando-se pontos positivos e negativos em relação aos dispositivos móveis e computadores como, tamanho de tela, diferença de consumo de banda de internet, o uso de dispositivos periféricos, pode se ter a impressão que um smartphone/ tablet/ phablet é um computador miniaturizado com capacidade limitada. E isso é um erro. Você facilmente encontra dispositivos móveis mais poderosos que máquinas desktops.</p>
+
+<p>Mas não estamos falando só em hardware e software, mas em produtos altamente pessoais, sempre à mão, que nos permite acesso a qualquer pessoa, fato ou situação em segundos. Além de possuir sensores que detectam localização, movimentação, aceleração, orientação, proximidade, condições ambientais dentre outras coisas. Os apps se utilizam desses sensores pra nos ajudar a tomar decisões. Um app mostra que você deveria levar um casaco e um guarda chuva, pois a previsão indica que vai chover. Um app mostra que o ônibus que você quer pegar vai passar na parada em poucos minutos, evitando assim o uso de outro app pra chamar um táxi. Ao se exercitar um app monitora seus batimentos cardíacos, pulsação, quantos passos foram dados, se você correu ou caminhou…</p>
+
+<p>Abaixo seguem os 10 princípios de design de interface mobile.</p>
+
+<p><br /></p>
+
+<h2 id="1-mentalidade-mobile">1. Mentalidade mobile</h2>
+
+<ul>
+  <li><strong>Mantenha o foco:</strong> Mais não é melhor. Você vai ter que deixar coisas de fora.</li>
+  <li><strong>Seja único:</strong> Saiba o que o torna único e realce isso. Se não houver nada que o torne especial, por que alguém o usaria?</li>
+  <li><strong>Seja charmoso:</strong> Dispositivos móveis são bastante pessoais. Estão em nossa constante companhia. Apps amistosos, confiáveis e divertidos causam prazer nos seus usuários.</li>
+  <li><strong>Seja atencioso:</strong> Coloque-se no lugar de seus usuários caso deseje criar experiências cativantes.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="2-contexto">2. Contexto</h2>
+
+<p>A imagem de um profissional extremamente ocupado, correndo pelo aeroporto com uma mala na mão e o telefone na outra, é o que a maioria pensa quando se fala no contexto de uso de um dispositivo mobile. Certamente é um contexto, mas não o único. Para nos colocarmos no lugar dos usuários, devemos imaginar três contextos: Entediado, Ocupado e Perdido.</p>
+
+<ul>
+  <li><strong>Entediado:</strong> Há milhares de pessoas usando seu smartphone no sofá agora. Neste contexto, apostar no imersivo e prazeroso é uma excelente escolha. <em>Exemplos: Facebook, Angry Birds, Twitter…</em></li>
+  <li><strong>Ocupado:</strong> Este é o do “cenário do aeroporto”. Oferecer a possibilidade de se utilizar o aparelho com uma mão em um ambiente caótico é crítico. <em>Exemplo: Email, banco, calendário…</em></li>
+  <li><strong>Perdido:</strong> Usuários em trânsito, em ambientes desconhecidos. Aqui o usuário se preocupa com conectividade e vida da bateria. Então você deve oferecer algum suporte offline e ser econômico ao usar recursos do sistema. <em>Exemplos: Mapas, Foursquare…</em></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="3-guidelines-globais">3. Guidelines globais</h2>
+
+<p>Capacidade de resposta: Isso é algo absolutamente crítico. Se seu usuário faz algo o sistema deve responder à interação logo. Perceba, que capacidade de resposta é diferente de velocidade. É normal se uma tarefa demorar um pouco para ser realizada. O importante é o usuário saber que o app está trabalhando.</p>
+
+<ul>
+  <li><strong>Polimento:</strong> Polimento é extremamente valioso, por causa do nosso constante relacionamento com smartphones, percebemos os pequenos perfeitos detalhes.</li>
+  <li><strong>Polegares:</strong> Com o advento das interfaces touch, todos estão falando <em>“toque aqui”</em> e <em>“toque ali”</em>. Na realidade projetamos para o polegar. Polegares são o padrão.</li>
+  <li><strong>Alvos:</strong> Olhe para seu polegar direito. Não a ponta, mas a face – parte que entra em contato com a tela. Ele parece grande ou pequeno demais para interagir com os elementos da interface do seu smartphone? O número mágico para oferecer uma experiência amistosa é de 44px. Também cuide da disposição destes elementos, por exemplo, colocar um botão de backspace junto ao botão enviar em um app de SMS, é uma péssima ideia.</li>
+  <li><strong>Conteúdo:</strong> A revolução das interfaces touch vem do fato de que podemos interagir diretamente com nosso próprio conteúdo. Isto remove abstrações (como mouses e trackpads) e está mais alinhado com como nosso cérebro está conectado. Não é necessário ir longe pra entender isso. Dê um tablet a uma criança de dois anos e você vai ver como ela, em poucos minutos estará ambientada ao uso desse dispositivo. Agora deixe essa mesma criança interagir com um laptop e você verá como a curva de aprendizado será maior e mais difícil.</li>
+  <li><strong>Controles:</strong> Quando tiver de colocar controles, opte por colocar no final da tela. Pense em alguns dispositivos como balança de banheiro, calculadora, TV, laptops… Os comandos são após o visor. Se não fosse assim, não conseguiríamos ver o que acontecia enquanto estivéssemos realizando uma interação.</li>
+  <li><strong>Rolagem:</strong> Evite a rolagem. Ter uma tela sem rolagem oferece uma sensação de mais sólida e confiável por causa de sua previsibilidade. Claro que algumas telas terão de utilizar scroll, mas é bom evitá-las sempre que possível. Se tiver que ter rolagem, procure informar de uma forma sutil de que há mais conteúdo além do que aquele que está apresentado na tela.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="4-modelos-navegacionais">4. Modelos navegacionais</h2>
+
+<p>Se tiver de utilizar um dos modelos mais comuns de navegação, certifique-se de utilizar aquele que faz mais sentido para o seu app.</p>
+
+<ul>
+  <li><strong>Nenhum:</strong> Tela única de apps utilitários. <em>Exemplo: Previsão tempo (Weather app) no iPhone.</em></li>
+  <li><strong>Barra de Abas:</strong> Três a seis áreas de conteúdos distintos. <em>Exemplo: Twitter no iPhone.</em></li>
+  <li><strong>Drill Down:</strong> Conteúdos hierárquicos listados e detalhados. <em>Exemplo: Configurações no iPhone.</em></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="5-entrada-do-usuário">5. Entrada do usuário</h2>
+
+<p>Mesmo nos melhores dispositivos, digitação ainda é algo custoso, então por que não buscar facilitar essa tarefa?</p>
+
+<ul>
+  <li>Existe uma dúzia de variações de dados que podem ser digitados nos teclados dos smartphones (texto, número, email, URL, etc). Considere disponibilizar o teclado mais útil de acordo com o tipo de informação digitada pelo usuário.</li>
+  <li>Considere disponibilizar para cada campo de entrada do usuário, opções de auto-entrada (como auto-capitalização, auto-correção e auto-complete).</li>
+  <li>Se seu app tiver que receber uma quantidade grande de dados digitados, procure suportar orientação em modo paisagem.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="6-gestos">6. Gestos</h2>
+
+<p>Um dos mais icônicos aspectos das interfaces touch é o suporte à interação baseada em gestos. Então há algumas coisas que se deve ter em mente:</p>
+
+<ul>
+  <li><strong>Invisível:</strong> Gestos são invisíveis. Você deve encontrar uma maneira de revelar sua existência para o usuário.</li>
+  <li><strong>Duas mãos:</strong> Operações multi-toques requerem o uso de duas mãos. Um exemplo prático, são alguns aplicativos que utilizam o gesto de “pinçar” para dar <em>zoom in</em> ou <em>zoom out</em> em algum elemento (foto, mapas, etc). Quando se está usando o smartphone com apenas uma das mãos, isso pode ser um limitador, então se devem buscar outras maneiras de oferecer a mesma experiência como, nesse caso, botões que aumentarão/ diminuirão o elemento.</li>
+  <li><strong>Bom de ter (Nice to have):</strong> Na maioria dos casos, gestos são considerados <em>nice to have</em>, mas não como algo crítico. Deve funcionar como atalhos de teclados. Usuários avançados adorarão, mas a maioria das pessoas talvez nem saibam que isso exista.</li>
+  <li><strong>Sem substituição:</strong> Um vocabulário comum para interface gestual ainda não existe, então ainda é cedo para ignorar controles visíveis que possam ser utilizadas com apenas um dedo.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="7-orientação">7. Orientação</h2>
+
+<ul>
+  <li>Orientação retrato é de longe a mais popular, otimize para esse caso primeiro.</li>
+  <li>Como dito mais acima, se seu app tiver que receber uma quantidade grande de dados digitados, procure suportar orientação em modo paisagem, pois assim o usuário tem acesso a um teclado mais largo.</li>
+  <li>Se seu app for utilizado por um longo período de tempo em uma posição, considere colocar uma opção de travar, evitando assim, uma mudança de orientação repentina.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="8-comunicações">8. Comunicações</h2>
+
+<ul>
+  <li><strong>Prover feeedback:</strong> Ofereça feedback para cada interação. Caso não ofereça, o usuário pensará que seu app travou ou que ele errou o alvo que tentava atingir. Pode ser tátil (como a “pancada” vibrante do Android), ou visual (destacando o botão apertado). Se ele fizer uma interação cuja resposta demore um pouco, coloque uma barra de progresso para que ele saiba que sua solicitação está em andamento.</li>
+  <li><strong>Modais de alerta:</strong> Modais de alerta são extremamente agressivos e intrusivos para o fluxo do usuário, então você só deveria usá-los quando algo extremamente sério ocorresse. Caso seja necessário o uso desse artifício, tente utilizar uma linguagem tranquila e amistosa.</li>
+  <li><strong>Confirmações:</strong> Quando você precisa confirmar uma ação iniciada pelo usuário, é aceitável o uso de uma janela modal (tipo: <em>“Você deseja realmente deletar arquivox.txt”</em>). Confirmações são menos intrusivas do que alertas.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="9-lançamento">9. Lançamento</h2>
+
+<p>Quando um usuário retorna ao seu app após um período, você deve oferecer o prosseguimento da operação exatamente do ponto onde o usuário o deixou. Isso passará a impressão de velocidade e de ótima capacidade de resposta.</p>
+
+<p>Qualquer coisa que pareça interativo (como botões, links, ícones, conteúdo) irá criar frustração pelo convite a interações falhas.</p>
+
+<p><br /></p>
+
+<h2 id="10-primeiras-impressões">10. Primeiras impressões</h2>
+
+<ul>
+  <li><strong>Seu ícone:</strong> Seu ícone vai competir por atenção em um mar de ícones. Seja literal, mostre o que seu app faz. Use uma silhueta forte, pouco texto. Um ícone polido remete a um app polido, então vale a pena gastar tempo e dinheiro para fazê-lo correto.</li>
+  <li><strong>Primeiro lançamento:</strong> Se novos usuários tiverem dificuldades de se familiarizarem com seu app, eles rapidamente o enterrarão. Se seu app fornece funcionalidades complexas, você pode incluir dicas e truques, ou talvez alguns poucos painéis de orientação. Perceba que isso não é uma substituição para um bom design. Se você se pegar escrevendo um monte de texto de ajuda, isso é um indicativo de que sua interface do usuário precisa ser melhorada.</li>
+</ul>
+
+<p><br /></p>
+
+<p>###Referências:</p>
+
+<ul>
+  <li><a href="http://www.creativebloq.com/mobile/10-principles-mobile-interface-design-4122910">10 Principles of Mobile Interface Design</a></li>
+  <li><a href="http://www.nielsen.com/br/pt/press-room/2015/Brasileiros-com-internet-no-smartphone-ja-sao-mais-de-70-milhoes.html">Brasileiros com internet no smartphone já são mais de 70 milhoes</a></li>
+</ul>
+
+
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/2016/10-principios-de-design-de-interface-mobile/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/2016/10-principios-de-design-de-interface-mobile'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//jonathanslima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2018 Jonathan Lima.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js?1528062731169247154"></script>
+
+
+    </div>
+  </body>
+</html>

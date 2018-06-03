@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Desenvolvedor Front End em Recife- Padrões de Interface Web</title>
+  <meta name="description" content="Padrões na sua definição em dicionário é, “modelo a ser seguido, exemplo a ser copiado, regras de execução de um produto”.
+
+">
+  <meta name="author" content="Jonathan Lima">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Padrões de Interface Web">
+  <meta name="twitter:description" content="Padrões na sua definição em dicionário é, “modelo a ser seguido, exemplo a ser copiado, regras de execução de um produto”.
+
+">
+  
+  <meta name="twitter:creator" content="jonathan_slima">
+  
+  <meta name="twitter:image" content="/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Padrões de Interface Web">
+  <meta property="og:description" content="Padrões na sua definição em dicionário é, “modelo a ser seguido, exemplo a ser copiado, regras de execução de um produto”.
+
+">
+  <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/css/main.css?1528062731169247154">
+  <link rel="canonical" href="http://localhost:4000/2016/padroes-de-interface-web/">
+  <link rel="alternate" type="application/rss+xml" title="Jonathan" href="/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/" title="link to home of Jonathan">
+          <img src="/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Jonathan</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Desenvolvedor Front End</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="link to Jonathan blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+              <!-- Twitter -->
+              <li class="navigation__item">
+                <a href="http://twitter.com/jonathan_slima" title="@jonathan_slima on Twitter" target="_blank">
+                  <i class="icon icon-social-twitter"></i>
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+            
+
+            
+
+            
+              <!-- LinkedIn -->
+              <li class="navigation__item">
+                <a href="https://www.linkedin.com/in/jonathanlima" title="jonathanlima on LinkedIn" target="_blank">
+                  <i class="icon icon-social-linkedin"></i>
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/jonathanslima" title="jonathanslima on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            <!--
+               Email 
+              <li class="navigation__item">
+                <a href="mailto:ola@jonathanslima.com.br" title="Email ola@jonathanslima.com.br" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            RSS 
+            <li class="navigation__item">
+              <a href="/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>-->
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-01-23 14:00" class="post-meta__date date">23 Jan 2016</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#ux">ux</a> <a href="/tags/#design">design</a> </span>
+      
+    </div>
+    <h1 class="post-title">Padrões de Interface Web</h1>
+  </header>
+
+  <section class="post">
+    <p>Padrões na sua definição em dicionário é, <em>“modelo a ser seguido, exemplo a ser copiado, regras de execução de um produto”</em>.</p>
+
+<p>Adaptando esse conceito para a área de estudo de design de interfaces, podemos dizer que padrões de interfaces são práticas comuns, recorrentes em diversos meios interativos dada a sua repetição e consistência de funcionamento em diversos modos de uso.</p>
+
+<p>Abrir e fechar uma torneira, plugar um pen-drive, observar as horas em um relógio analógico, ligar uma tomada na energia, são tarefas corriqueiras e simples, como tantas outras, em que não foram necessárias horas de treino e de repetição para poder realizá-las. Isso foi muito facilitado pelo uso dos padrões utilizados no processo de design desses produtos. Aprende-se a utilizar uma, aprende a se utilizar todas.</p>
+
+<h2 id="por-que-aplicar-padrões-nas-interfaces-web"><strong>Por que aplicar padrões nas interfaces web?</strong></h2>
+
+<p>Obtém-se diversos benefícios ao utilizar padrões reconhecidos de interface:</p>
+
+<ul>
+  <li>Diminui drasticamente a curva de aprendizado na sua interface;</li>
+  <li>Oferece um ambiente de uso agradável, pois os padrões já são reconhecidos pelos usuários;</li>
+  <li>Diminui o tempo de desenvolvimento;</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="alguns-padrões-de-interfaces-web"><strong>Alguns padrões de interfaces web</strong></h2>
+
+<p>Abaixo seguem alguns padrões de interface reconhecidos pelos usuários, e que você pode aplicar tranquilamente. Há centenas de padrões e não tem como falar de todos aqui, mas abaixo eu deixei alguns links de referência para consulta e aprofundamento.</p>
+
+<div class="unidade-padrao">
+
+	<h2><b>Abas</b></h2>
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Word</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/aba0.jpg" alt="Exemplo de abas no Word" /><br />
+
+	<span class="figcaption"><i>Submarino</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/aba1.jpg" alt="Exemplo de abas no site da Submarino" /><br />
+
+	<span class="figcaption"><i>Chrome</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/aba2.jpg" alt="Exemplo de abas no navegador Chrome" /><br />
+
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Breadcrumb</b></h2>
+
+	Traduzido como <i>migalhas de pão</i>, é um elemento de design que mostra o caminho percorrido pelo usuário até a página atual.
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Amazon</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/breadcrumb0.jpg" alt="Exemplo de breadcrumb no site Amazon" /><br />
+
+	<span class="figcaption"><i>Contos Peregrinos</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/breadcrumb1.jpg" alt="Exemplo de breadcrumb no site Contos Peregrinos" /><br />
+
+	<span class="figcaption"><i>Americanas</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/breadcrumb2.jpg" alt="Exemplo de breadcrumb no site Americanas" /><br />
+
+	<span class="figcaption"><i>Versos de Outubro</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/breadcrumb3.jpg" alt="Exemplo de breadcrumb no site Versos de Outubro" /><br />
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Botões</b></h2>
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Submarino</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/botao0.jpg" alt="Exemplo de botão no site da Submarino" /><br />
+
+	<span class="figcaption"><i>Amazon</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/botao1.jpg" alt="Exemplo de botão no site da Amazon" /><br />
+
+	<span class="figcaption"><i>Globo</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/botao2.jpg" alt="Exemplo de botão no site da Globo" /><br />
+
+	<span class="figcaption"><i>Amazon</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/botao3.jpg" alt="Exemplo de botão no site da Amazon" /><br />
+
+	<span class="figcaption"><i>Globo</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/botao4.jpg" alt="Exemplo de botão no site da Globo" /><br />
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Checkbox</b></h2>
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>OSx</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/checkbox0.jpg" alt="Exemplo de checkbox no OSx" /><br />
+
+	<span class="figcaption"><i>Amazon</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/checkbox1.jpg" alt="Exemplo de checkbox no site da Amazon" /><br />
+
+	<span class="figcaption"><i>Chrome</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/checkbox2.jpg" alt="Exemplo de checkbox no Chrome" /><br />
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Dropdown</b></h2>
+	Elemento com sub-níveis, muito utilizado em menus.
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Sublime Text</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/dropdown0.jpg" alt="Exemplo de dropdown no Sublime Text" /><br />
+
+	<span class="figcaption"><i>Sublime Text</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/dropdown1.jpg" alt="Exemplo de dropdown no Sublime Text" /><br />
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Droplist</b></h2>
+
+	Elementos agrupados em forma de lista para seleção de um único item.
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Word</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/droplist0.jpg" alt="Exemplo de droplist no Word" /><br />
+
+	<span class="figcaption"><i>OSx</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/droplist1.jpg" alt="Exemplo de droplist no OSx" /><br />
+</div>
+
+<div class="unidade-padrao">
+
+	<h2><b>Links</b></h2>
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Mercado Livre</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/links0.jpg" alt="Exemplo de link no site do Mercado Livre" /><br />
+
+	<span class="figcaption"><i>Amazon</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/links1.jpg" alt="Exemplo de link no site da Amazon" /><br />
+
+	<span class="figcaption"><i>Blog de AI</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/links2.jpg" alt="Exemplo de link no Blog de AI" /><br />
+</div>
+
+<div class="unidade-padrao">
+	<h2><b>Radio Button</b></h2>
+
+	<h3>Exemplos:</h3>
+
+	<span class="figcaption"><i>Chrome</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/radiobutton0.jpg" alt="Exemplo de radio button no Chrome" /><br />
+
+	<span class="figcaption"><i>OSx</i></span>
+	<img class="img-padroes-interface" src="../../assets/images/post-padroes-interface/radiobutton1.jpg" alt="Exemplo de radio button no OSx" /><br />
+</div>
+
+<h2 id="ponto-de-partida-pra-inovação"><strong>Ponto de partida pra inovação</strong></h2>
+
+<p>Cuidado ao confundir padrões com design antigo e ultrapassado. Conhecer padrões é extremamente necessário até para que você possa quebrá-los e estabelecer novos. Padrões não são estáticos. Cuidado quando for fazer essa relação.</p>
+
+<h4 id="referências"><strong>Referências</strong></h4>
+
+<ul>
+  <li><a href="http://zurb.com/patterntap">The Main Tap - Pattern Tap</a></li>
+  <li><a href="http://pttrns.com/">Pttrns - Mobile User Interface</a></li>
+  <li><a href="https://developer.yahoo.com/ypatterns/">Yahoo Design Pattern Library</a></li>
+  <li><a href="http://ui-patterns.com/">UI-Patterns.com</a></li>
+  <li><a href="http://www.welie.com/patterns/">Interaction Design Pattern Library</a></li>
+  <li><a href="http://www.smileycat.com/design_elements/">Elements of Design</a></li>
+</ul>
+
+<hr />
+
+<h4 id="créditos">[Créditos]</h4>
+
+<p>O conteúdo desse artigo foi inspirado <del>roubado</del> numa aula que assisti sobre padrões de interface no sensacional curso de <a href="http://www.uxacademy.com.br/">Ux para Webdesigner</a> do professor <a href="https://twitter.com/luisfelipe_f">Luis Felipe Fernandes</a>. Inclusive todas as referências desse artigo vieram de lá. Isso me deu a ideia de reunir todas as outras referências expostas no decorrer do curso e criar um <a href="https://github.com/jonathanslima/links-curso-ux-para-web-designers">repositório no Github</a>, ficou bem bacana. Deixe seu <i>star</i> lá no Github e seus comentários logo abaixo! Valeu!</p>
+
+
+  </section>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+</article>
+
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://localhost:4000/2016/padroes-de-interface-web/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/2016/padroes-de-interface-web'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//jonathanslima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+       })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2018 Jonathan Lima.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js?1528062731169247154"></script>
+
+
+    </div>
+  </body>
+</html>
