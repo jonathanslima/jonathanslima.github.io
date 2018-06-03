@@ -6,7 +6,7 @@ image: smartphone-evolution.jpg
 tags: [ux, design]
 ---
 
-*Esse texto é uma tradução do artigo [10 princípios de design de interface mobile](https://jonathanstark.com/blog/the-10-principles-of-mobile-interface-design), que o consultor mobile, Jonathan Stark, compilou de seus workshops.*
+*Esse texto é uma tradução do artigo [10 princípios de design de interface mobile](https://www.creativebloq.com/mobile/10-principles-mobile-interface-design-4122910), que o consultor mobile, Jonathan Stark, compilou de seus workshops.*
 
 <figure>
 	<img src="../../assets/images/jonathanstark.jpg" alt="Foto de Jonathan Stark" />
