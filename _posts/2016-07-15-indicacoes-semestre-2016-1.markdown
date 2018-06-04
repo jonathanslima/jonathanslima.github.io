@@ -6,7 +6,7 @@ image: ux-para-webdesigners.jpg
 tags: [ux, design, javascript, review]
 ---
 
-Passamos da metade do ano de 2016, [alguns planos/sonhos estão se concretizando](https://github.com/jonathanslima/lista-coisas-dev), outros [nem tanto](http://jonathanslima.github.io/2015/decidi-aprender-python/), hora de reavaliar algumas coisas, ajustar outras. Hora de fazer um balanço e valorizar as pequenas vitórias, mas de também olhar a bússola pra não se perder.
+Passamos da metade do ano de 2016, [alguns planos/sonhos estão se concretizando](https://github.com/jonathanslima/lista-coisas-dev), outros [nem tanto](https://jonathanslima.github.io/2015/decidi-aprender-python/), hora de reavaliar algumas coisas, ajustar outras. Hora de fazer um balanço e valorizar as pequenas vitórias, mas de também olhar a bússola pra não se perder.
 
 Enquanto o ano não acaba, vou começar aqui nesse espaço, uma série, onde vou indicar os três melhores materiais que eu consumi nos últimos seis meses. Antes de escolher decidi adotar alguns critérios:
 

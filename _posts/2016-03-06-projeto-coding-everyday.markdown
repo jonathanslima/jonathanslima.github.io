@@ -5,7 +5,7 @@ image: terminator.jpg
 tags: [motivacional]
 ---
 
-Tenho tido problemas pra organizar minha agenda e focar no que realmente tenho que focar. Sou extremamente motivado a desafios e análises de métricas do que faço. Tomando essas características como qualidades, decidi usá-las em prol de coisas que venho procrastinando há algum tempo. Um exemplo foi sobre aprender Python, conforme [escrevi sobre isso aqui](http://jonathanslima.github.io/2015/Porque-um-novo-blog/). Desde então tive dificuldades em conciliar horários pra estudar a linguagem e acabei parando no tempo.
+Tenho tido problemas pra organizar minha agenda e focar no que realmente tenho que focar. Sou extremamente motivado a desafios e análises de métricas do que faço. Tomando essas características como qualidades, decidi usá-las em prol de coisas que venho procrastinando há algum tempo. Um exemplo foi sobre aprender Python, conforme [escrevi sobre isso aqui](https://jonathanslima.github.io/2015/Porque-um-novo-blog/). Desde então tive dificuldades em conciliar horários pra estudar a linguagem e acabei parando no tempo.
 
 Possuo mil desculpas, mas elencá-las aqui e eleger os vilões, seria inútil. Não há culpados além de mim mesmo. Quando consigo focar vou longe, conforme aconteceu quando decidi virar Forrest Gump e saí por aí correndo todo dia.
 

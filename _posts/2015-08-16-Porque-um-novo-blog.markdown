@@ -37,5 +37,5 @@ Por isso vou espaçar mais o tempo das postagens, focando na qualidade e não na
 
 Bem, me alonguei demais. Nós vemos no próximo post.
 
-[blog]: http://jonathanlima.com.br
+[blog]: http://jonathanslima.com.br
 [jekyll]: http://jekyllrb.com/

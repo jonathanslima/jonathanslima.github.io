@@ -4,4 +4,3 @@ Sitemap: http://jonathanslima.github.io/sitemap.xml
 
 disallow: /sobre/
 disallow: /wallpapers-starwars.html
-disallow: /projetos/

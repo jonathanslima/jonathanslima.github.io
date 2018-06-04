@@ -6,7 +6,7 @@ image: post15-jsday.jpg
 tags: [eventos]
 ---
 
-Aconteceu no último dia 26/11, o JSDay Recife, evento realizado pelo CESAR, reunindo a comunidade Javascript recifense através de talks e networking. Fechando minha ida em eventos nesse ano de 2016 (tentei ir no mínimo em três), primeiro fui ao [18º Encontro Locaweb](http://jonathanslima.github.io/2016/18-encontro-locaweb/), depois a Campus Party, que decidi nem escrever sobre, tamanha a decepção, e agora o JSDay.
+Aconteceu no último dia 26/11, o JSDay Recife, evento realizado pelo CESAR, reunindo a comunidade Javascript recifense através de talks e networking. Fechando minha ida em eventos nesse ano de 2016 (tentei ir no mínimo em três), primeiro fui ao [18º Encontro Locaweb](https://jonathanslima.github.io/2016/18-encontro-locaweb/), depois a Campus Party, que decidi nem escrever sobre, tamanha a decepção, e agora o JSDay.
 
 ![JS Day Recife 2016](../../assets/images/post15-jsday.jpg)
 

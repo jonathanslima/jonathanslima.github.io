@@ -17,7 +17,7 @@ Conserto de PCS, curso técnico de eletrônica, Linux, formatação de Windows, 
 <blockquote>when you land interviews explain what skills you have, what problems you enjoy solving, and what topics you’re passionate about.<br><q>Brad Frost</q>
 </blockquote>
 
-Caí na área de interfaces meio que sem querer. Mas o fato é que eu decidi fazer carreira na área já com 28 anos. Como eu disse, comecei velho. No momento decidi largar o emprego onde estava para melhorar minhas skills e procurar entrar em um lugar onde eu possa participar de projetos desafiadores e que me force a [melhorar todo dia](http://jonathanslima.github.io/2016/projeto-coding-everyday/).
+Caí na área de interfaces meio que sem querer. Mas o fato é que eu decidi fazer carreira na área já com 28 anos. Como eu disse, comecei velho. No momento decidi largar o emprego onde estava para melhorar minhas skills e procurar entrar em um lugar onde eu possa participar de projetos desafiadores e que me force a [melhorar todo dia](https://jonathanslima.github.io/2016/projeto-coding-everyday/).
 
 Eis que então no último mês comecei a me sentir angustiado. Eu precisava me rotular. Logo eu que possuo o perfil de um generalista (embora venha procurando me tornar um especialista). Procurei estudar e tentar entender todas as partes do processo, da pesquisa, ideação, prototipação até o desenvolvimento. Li um pouco sobre marketing, publicidade, empreendedorismo, metodologias... e foi sensacional estudar cada uma dessas disciplinas. 
 
@@ -47,9 +47,9 @@ Eis que me deparo com esse [belíssimo artigo do ótimo Brad Frost](http://bradf
 
 Esse texto é daqueles que abrem uma mente. Indico muito a leitura. Segundo Brad Frost, um front end designer:
 
-* Entende de princípios de UX e [melhores práticas](http://jonathanslima.github.io/2016/padroes-de-interface-web/), mas não gasta seu tempo conduzindo pesquisas, criando fluxos e planejando cenários;
+* Entende de princípios de UX e [melhores práticas](https://jonathanslima.github.io/2016/padroes-de-interface-web/), mas não gasta seu tempo conduzindo pesquisas, criando fluxos e planejando cenários;
 * Têm um olhar afiado sobre estética, mas não gasta seu tempo testando fontes, comparando paletas de cores ou criando ilustrações ou ícones.
-* Pode [escrever Javascript](http://jonathanslima.github.io/2016/projeto-coding-everyday/), mas não gasta seu tempo escrevendo códigos de nível de aplicação ou debugando.
+* Pode [escrever Javascript](https://jonathanslima.github.io/2016/projeto-coding-everyday/), mas não gasta seu tempo escrevendo códigos de nível de aplicação ou debugando.
 * Entende a importância do desenvolvimento backend, mas não gasta seu tempo escrevendo lógica backend, com servidores ou testando carregamento.
 
 Ainda no artigo, ele explica como há um mal entendido fundamental, sobre generalizar que todo coder é um "programador ultra-geek". 

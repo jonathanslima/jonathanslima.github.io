@@ -6,7 +6,7 @@ image: contribution-github.jpg
 tags: [motivacional]
 ---
 
-Três meses se passaram desde que decidi [começar a escrever código todo dia](http://jonathanslima.github.io/2016/projeto-coding-everyday/). O intuito inicial havia sido melhorar minhas habilidades em HTML, CSS e JS, mas como todo e qualquer projeto que se preze, este também evoluiu, e teve seu propósito inicial um pouco modificado.
+Três meses se passaram desde que decidi [começar a escrever código todo dia](https://jonathanslima.github.io/2016/projeto-coding-everyday/). O intuito inicial havia sido melhorar minhas habilidades em HTML, CSS e JS, mas como todo e qualquer projeto que se preze, este também evoluiu, e teve seu propósito inicial um pouco modificado.
 
 ![Commits efetuados](../../assets/images/contribution-github.jpg)
 
@@ -14,7 +14,7 @@ Não mudei a regra do jogo com o campeonato iniciado, apenas [fiz um adendo](htt
 
 Apareceram jobs no meio do caminho, [novos projetos](https://github.com/training-projects), e nem sempre eu escrevia código. Havia prótotipos, desenhos da interface, enfim, um monte de outras coisas a se fazer que muitas vezes não envolviam código.
 
-Enfim, decidi que os commits seriam com código, ou com algum outro tipo de processo, contanto que fosse diário, respeitando as outras resoluções das regras impostas por mim mesmo. Ainda me comprometi a explicar todo dia no [log do projeto](http://jonathanslima.github.io/2016/projeto-coding-everyday/) o que estava sendo feito, independente do projeto em que eu estivesse trabalhando.
+Enfim, decidi que os commits seriam com código, ou com algum outro tipo de processo, contanto que fosse diário, respeitando as outras resoluções das regras impostas por mim mesmo. Ainda me comprometi a explicar todo dia no [log do projeto](https://jonathanslima.github.io/2016/projeto-coding-everyday/) o que estava sendo feito, independente do projeto em que eu estivesse trabalhando.
 
 Houve dias que não deu pra fazer o *push* para o repositório, mas o mais importante é que o trabalho diário estava sendo feito, sempre respeitando, às vezes até a contragosto, a folga semanal.
 
