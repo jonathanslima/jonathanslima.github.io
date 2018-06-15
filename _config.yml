@@ -1,5 +1,5 @@
 # Site settings
-title: Jonathan Lima
+title: jonathanslima
 description: 'Desenvolvedor Front End'
 url: 'https://jonathanslima.github.io/'
 baseurl: ''
@@ -7,7 +7,7 @@ google_analytics: 'UA-66392540-1'
 disqus_shortname: 'jonathanslima'
 
 author:
-  name: 'Jonathan Lima'
+  name: 'jonathanslima'
   email: ola@jonathanslima.com.br
   twitter_username: jonathan_slima
   github_username:  jonathanslima
