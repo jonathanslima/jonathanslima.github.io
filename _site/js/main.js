@@ -33,4 +33,7 @@ $(document).ready(function () {
     $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
   })
 
+  numRand = Math.floor(Math.random() * 7);
+  $('.panel-cover').attr('style', 'background-image: url(/images/cover-' + numRand + '.jpg)');
+
 })
