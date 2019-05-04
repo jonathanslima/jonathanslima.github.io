@@ -18,6 +18,7 @@ permalink: /projetos.html
 - [<i class="icon icon-link"></i> Fernanda Durães](http://www.fernandaduraes.com.br/) *(Wordpress)*
 
 ## Projetos
+- [<i class="icon icon-link"></i> Valinor - Biblioteca em VueJs](https://valinor-vuejs.herokuapp.com/index.html#/) *(Em desenvolvimento)
 - [<i class="icon icon-link"></i> Dashboard using Github's Api](http://dashboard-github-api.herokuapp.com/dashboard-vue/dashboard.html) *(Em desenvolvimento)
 - [<i class="icon icon-link"></i> Criptografia](https://projects-2019.herokuapp.com/velocicriptor/criptor.html)
 - [<i class="icon icon-link"></i> Relógio Hexadecimal Analógico](https://projects-2019.herokuapp.com/relogio_hex/relogio_analogico.html)
