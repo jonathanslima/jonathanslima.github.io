@@ -20,7 +20,7 @@ Dado o disclaimer, imagino que essa postagem vá me servir para algumas coisas:
 * Instigar-me a ir além, e aprender um pouco mais sobre essa stack, talvez implementando novas camadas de deenvl
 * Voltar a escrever por aqui
 
-Espero que essa postagem o ajude a dar o pontapé inicial nessa stack bacana e simples de entender.
+Espero que essa postagem o ajude também a dar o pontapé inicial nessa stack bacana e simples de entender.
 
 ## O que é necessário para seguir adiante
 
@@ -74,10 +74,10 @@ const app = express();
 Para iniciarmos o servidor, chamaremos o método *listen()* do Express.
 
 ```
-app.listen('3001')
+app.listen('3002')
 ```
 
-3001 é a porta que vamos setar na nossa url, então ficaria assim: **http://localhost:3001**. Rode no terminal:
+3001 é a porta que vamos setar na nossa url, então ficaria assim: **http://localhost:3002**. Rode no terminal:
 
 ```
 node server.js
@@ -89,7 +89,7 @@ Acessando o navegador, veriamos a imagem abaixo:
 ![servidor sem rota](../../assets/images/cannot-get.jpg)
 
 
-Isso acontece pois ainda não criamos nenhuma rota. Vamos criar a primeira:
+Isso acontece pois ainda não criamos nenhuma rota. Vamos criar a primeira. Antes de *app.listen('3001')* digite:
 
 ```
 app.get('/', (req, res)=> {
