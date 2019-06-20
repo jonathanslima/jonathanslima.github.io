@@ -154,8 +154,31 @@ Vamos instalar essas duas ferramentas que vão nos auxiliar. O Robo3T com a visu
 - [https://robomongo.org/download](https://robomongo.org/download)
 - [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
 
+## Conexão com o banco de dados
+
+Precisamos conectar nossa aplicação ao banco de dados. Para isso vamos instalar uma ferramenta bem útil e que facilita bastante várias ações que fomos tomar com o Mongo.
+
 ### Mongoose
 
+Tão simples como instalar *npm install mongoose*, precisamos importá-lo e em seguida realizar a conexão.
+
+```
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
+// Conectar com o banco
+mongoose.connect('mongodb://localhost:27017/nodeapi', {useNewUrlParser: true})
+
+
+app.get('/', (req, res)=> {
+  res.send('Hello World!');
+});
+
+app.listen('3002', ()=> console.log('server running at localhost:3002'))
+```
+
+Vamos pegar o *mongoose* e conectar ao endereco 'mongodb://localhost:27017/nodeapi', *mongodb* é o protocolo.
 
 ## Models
 
