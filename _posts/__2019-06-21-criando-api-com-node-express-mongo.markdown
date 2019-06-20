@@ -44,7 +44,9 @@ Ir para a próxima parte: [PART 2]().
 PART 2 
 ******************* ---------------------- ************************
 
-Já leu a parte 1? Não? Confira aqui: [PARTE 1]().
+Já leu a parte 1? Não? Confira aqui: 
+
+- [PARTE 1]()
 
 ## Setup do ambiente
 
@@ -77,7 +79,7 @@ Para iniciarmos o servidor, chamaremos o método *listen()* do Express.
 app.listen('3002')
 ```
 
-3001 é a porta que vamos setar na nossa url, então ficaria assim: **http://localhost:3002**. Rode no terminal:
+3002 é a porta que vamos setar na nossa url, então ficaria assim: **http://localhost:3002**. Rode no terminal:
 
 ```
 node server.js
@@ -89,7 +91,7 @@ Acessando o navegador, veriamos a imagem abaixo:
 ![servidor sem rota](../../assets/images/cannot-get.jpg)
 
 
-Isso acontece pois ainda não criamos nenhuma rota. Vamos criar a primeira. Antes de *app.listen('3001')* digite:
+Isso acontece pois ainda não criamos nenhuma rota. Vamos criar a primeira. Antes de *app.listen('3002')* digite:
 
 ```
 app.get('/', (req, res)=> {
@@ -117,7 +119,7 @@ No package.json, vamos adicionar um novo comando em script. No final ficará ass
   "dev": "nodemon server.js"
 },
 ``` 
-Volte para o terminal agora, e rode *npm run server*. Atualize a página no navegador e você verá que nada foi alterado.
+Volte para o terminal agora, e rode *npm run dev*. Atualize a página no navegador e você verá que nada foi alterado.
 
 ## Ferramentas utilizadas
 
@@ -142,9 +144,10 @@ docker run --name nome-sua-api -p 27017:27017 -d mongo
 Vamos entender os comandos acima. 
 
 O primeiro baixa uma imagem do MongoDB e deixa disponível no Docker. Se for em sistemas Unix é necessário ser root.
-O segundo, o Docker vai rodar (**run**) um processo com um nome a sua escolha (**--name nome-sua-api**), coloquei *--name api-base*, na porta 27017:27017. Essa porta que configuramos significa que quando tentarmos acessar a porta padrão local do MongoDB (27017) ele redirecione (:) para a porta padrão do MongoDb instalado no Docker (27017), e o **-d mongo** é o nome da imagem que baixamos no primeiro comando. Comigo tinha dado que o primeiro parâmetro da porta estava em uso, então troquei para *27013:27017*.
 
-*docker run --name nome-sua-api -p 27017:27017 -d mongo*
+O segundo, o Docker vai rodar (**run**) um processo com um nome a sua escolha (**--name nome-sua-api**), coloquei *--name api-base*, na porta 27017:27017. 
+
+Essa porta que configuramos significa que quando tentarmos acessar a porta padrão local do MongoDB (27017) ele redirecione (:) para a porta padrão do MongoDb instalado no Docker (27017), e o **-d mongo** é o nome da imagem que baixamos no primeiro comando. Comigo tinha dado que o primeiro parâmetro da porta estava em uso, então troquei para *27013:27017*.
 
 Tendo tudo dado certo, rode no terminal:
 
@@ -204,7 +207,7 @@ Vamos criar toda nossa estrutura para conseguirmos salvar no banco um novo item.
 
 ### Models
 
-Na pasta raiz, vamos criar uma outra chamada *src*. Dentro desta, ficará todo o código da nossa API,com exceção do *server.js*.
+Na pasta raiz, vamos criar uma outra pasta chamada *src*. Dentro desta, ficará todo o código da nossa API,com exceção do *server.js*.
 
 Dentro de src cria a pasta *models*, e dentro dela um arquivo chamado *Item.js* ou qualquer outro nome, que faça sentido a seu projeto. Esta pasta será utilizada para armazenarmos o Schema através do Mongoose. Para mais detalhes sobre Schema e seus tipos, [veja aqui](https://mongoosejs.com/docs/guide.html). 
 
@@ -235,7 +238,7 @@ const itemSchema = new mongoose.Schema({
 });
 ```
 
-E por fim, exporte esse Schema:
+E por fim, exporte esse Schema, dando-lhe um nome:
 
 ```
 mongoose.model('Item', itemSchema);
@@ -258,9 +261,7 @@ No momento temos a seguinte estrutura:
 
 ```
 
-Dentro de itemController,vamos fazer o seguinte:
-
-Comece importando o Mongoose e o modelo que criamos no tópico anterior:
+Dentro de *itemController*, vamos fazer o seguinte, comece importando o Mongoose e o modelo que criamos no tópico anterior:
 
 ```
 const mongoose = require('mongoose');
@@ -273,7 +274,11 @@ Em seguida vamos usar a exportação de módulos para que as funções estejam d
 module.exports = {}
 ```
 
-Dentro desse objeto, vamos criar os vários métodos que ficarão responsáveis para fazer todo o CRUD. No método abaixo, usamos o *async*, para deixarmos a função assíncrona. Chamaremos de *createItem* que vai exatamente criar um novo item no banco de acordo com o model que configuramos, usando a função **.create** e passando como parâmetro o corpo da requisição, ou seja os dados que vamos enviar. O Await faz com que o return da função só seja invocada quando o *.create* for finalizado.
+Dentro desse objeto, vamos criar os vários métodos que ficarão responsáveis para fazer todo o CRUD. 
+
+No método abaixo, usamos o *async*, para deixarmos a função assíncrona. Chamaremos de *createItem* que vai exatamente criar um novo item no banco de acordo com o model que configuramos, usando a função **.create** e passando como parâmetro o corpo da requisição, ou seja os dados que vamos enviar. 
+
+O Await faz com que o retorno da função só seja invocada quando o *.create* for finalizado.
 
 ```
 module.exports = {
@@ -283,7 +288,7 @@ module.exports = {
 	},
 }
 ```
-Com um model e um controller para criação de um item no banco configurado, precisamos ajustar a rota e chamar no arquivo server.js, que vamos ver aqui no próximo post. 
+Com um model e um controller para criação de um item no banco configurado, precisamos ajustar a rota e chamar no arquivo server.js. Mas isso vamos ver só no próximo post. 
 
 [PARTE 3]()
 
@@ -291,7 +296,10 @@ Com um model e um controller para criação de um item no banco configurado, pre
 PART 3 
 ******************* ---------------------- ************************
 
-Já leu a parte 2? Não? Confira aqui: [PARTE 2]().
+Já leu as partes 1 e 2? Não? Confira aqui: 
+
+- [PARTE 1]()
+- [PARTE 2]()
 
 Com um model e um controller para criação de um item no banco configurado, precisamos ajustar a rota. Primeiramente vamos criar um arquivo chamado *routes.js* dentro de */src*. Começaremos importando o express, para chamar seu método Router() e vamos importar também o controller que acabamos de criar.
 
@@ -309,7 +317,7 @@ routes.post('/itemsList', ItemList.createItem)
 
 Nossa rota, como estamos enviando dados, o verbo HTTP que vamos usar é o *POST*. Esse método recebe como primeiro parâmetro o caminho relativo, e como segundo, recebe o método *createItem* que está dentro de nosso controller.
 
-Essa será a primeira rota, faremos a rota de listagem (GET), a de delete (DELETE) e a de update (PUT).
+Essa será a primeira rota, mais tarde faremos a rota de listagem (GET), a de delete (DELETE) e a de update (PUT).
 
 Por fim, exporte as rotas:
 
@@ -372,7 +380,11 @@ Feito isso, podemos testar nosso CREATE no Postman, mas vamos ver isso no próxi
 PART 4 
 ******************* ---------------------- ************************
 
-Já leu a parte 3? Não? Confira aqui: [PARTE 3]().
+Já leu as partes 1, 2 e 3? Não? Confira aqui: 
+
+- [PARTE 1]()
+- [PARTE 2]()
+- [PARTE 3]()
 
 Vamos testar se conseguimos criar um item no nosso banco via Postman, mas antes vamos entender um pouco mais sobre a interface dessa ferramenta.
 
