@@ -93,6 +93,6 @@ async deleteItem(req, res){
 },
 ```
 
-Pronto, podemos brincar com a api agora. É só ir adicionando, editando, listando ou deletando. O projeto ten escopo pra implementar muita coisa boa ainda, mas acho que aqui pode ser um bom start pra continuar seus estudos. O link da API no Github está mais abaixo. Até a proxima.
+Pronto, podemos brincar com a api agora. É só ir adicionando, editando, listando ou deletando. O projeto tem escopo pra implementar muita coisa boa ainda, mas acho que aqui pode ser um bom start pra começar/continuar os estudos. O link da API no Github está mais abaixo. Até a proxima.
 
 [API BASE - Github](https://github.com/jonathanslima/apibase) 
