@@ -71,7 +71,7 @@ Temos já uma para listar, outra para criar, mais uma para update e por fim a re
 
 O método de update consistem em enviar dados para o servidor para que possa ser feita a alteração de um determinado item pré-criado. 
 
-Começamos igual as outras, com uma *async function*, que vai pegar o model e é através do método *findByIdAndUpdate*, que recebe como parâmetros, o **id** (req.params.id), o *corpo da requisição* (req.body) e por fim, o objeto **{new: true}**, que vai retornar para a genteos dados atualizados.
+Começamos igual as outras, com uma *async function*, que vai pegar o model e é através do método *findByIdAndUpdate*, que recebe como parâmetros, o **id** (req.params.id), o *corpo da requisição* (req.body) e por fim, o objeto **{new: true}**, que vai retornar para a gente os dados atualizados.
 
 ```
 async updateItem(req, res){
@@ -84,7 +84,7 @@ async updateItem(req, res){
 
 O método de delete consistem em enviar o item, identificado pelo seu *id* e removê-lo. 
 
-Começamos igual as outras, com uma *async function*, que vai pegar o model e é através do método *findByIdAndRemove* que vamos fazer a remoção do arquivo no banco. Não recebe parâmetro.
+Começamos igual as outras, com uma *async function*, que vai pegar o model e é através do método *findByIdAndRemove* que vamos fazer a remoção do arquivo no banco passando como parâmetro o ID do item.
 
 ```
 async deleteItem(req, res){
@@ -93,6 +93,6 @@ async deleteItem(req, res){
 },
 ```
 
-Pronto, pode ir brincar com a api agora. É só ir adicionando, editando, listando ou deletando. O link da API no Github está mais abaixo. Até a proxima.
+Pronto, podemos brincar com a api agora. É só ir adicionando, editando, listando ou deletando. O projeto ten escopo pra implementar muita coisa boa ainda, mas acho que aqui pode ser um bom start pra continuar seus estudos. O link da API no Github está mais abaixo. Até a proxima.
 
 [API BASE - Github](https://github.com/jonathanslima/apibase) 
