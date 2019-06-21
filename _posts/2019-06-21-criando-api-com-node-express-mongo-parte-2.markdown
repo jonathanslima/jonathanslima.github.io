@@ -1,52 +1,14 @@
 ---
-title:  "Criando API's com NodeJs, MongoDB e Express"
-description: Criação de uma API na visão de quem aprendeu a fazer isso literalmente ontem
+title:  "Criando API's com NodeJs, MongoDB e Express - Parte 2"
+description: Setup do ambiente, ferramentas e models/ controllers
 date: 2019-06-21 00:00:00
-image: post16-mapa.png
-tags: [nodejs, api, express, mongodb, docker, postman] 
+image: node-express-mongo.jpg
+tags: [nodejs, api, express, mongodb, docker, postman, robo3t] 
 ---
-<!--
-//NODE+EXPRESS+MONGO https://cdn-images-1.medium.com/max/1200/1*LkU6JjfNdYxv3Q8weUcnEg.jpeg
-//ROBO3T https://dashboard.snapcraft.io/site_media/appmedia/2018/09/logo-256x256.png
-//POSTMAN https://www.getpostman.com/img/v2/logo-glyph.png
--->
-E aew pessoal.
-
-Vou falar aqui sobre como criar uma API, com NodeJS, Express e MongoDB, e vamos ver algumas ferramentas no processo, como Postman e Docker. Esse post é baseado num aprendizado inicial, se você conhece bem essas tecnologias, esse conteúdo deve ser muito básico pra você. 
-
-Dado o disclaimer, imagino que essa postagem vá me servir para algumas coisas: 
-
-* Fixar o conteúdo que aprendi literalmente ontem (escrevo esse post no dia 19/06/19)
-* Instigar-me a ir além, e aprender um pouco mais sobre essa stack, talvez implementando novas camadas de deenvl
-* Voltar a escrever por aqui
-
-Espero que essa postagem o ajude também a dar o pontapé inicial nessa stack bacana e simples de entender.
-
-## O que é necessário para seguir adiante
-
-- Javascript/ ES6, não vou dizer que precisa do básico, mas quanto mais experiência, mais simples vai ficar de entender. Se você nunca ouviu falar em *arrow functions* por exemplo, acaba que a sintaxe pode ficar um pouco complicada.
-
-E só.
-
-Node, MongoDB, Express, Docker, Postman, se tiver um mínimo conhecimento prévio, ajuda, mas não é necessário, até porque se você está lendo isso aqui, é porque você deve ser iniciante nessas tecnologias/ ferramentas.
-
-## Algumas considerações
-
-Ao ler esse post e tentar reproduzir, sugiro que você tenha algo em mente e tente seguir baseado nesse seu projeto. Só copiar e colar não vai te levar muito longe.
-Vou falar aqui, baseado nas minha experiências e dores. Espero que sejam as mesmas das suas. Mas se aparecerem outras, compartilhe aqui embaixo e vamos tentar resolver juntos.
-
-Tá no Github um """boilerplate""" que fiz pra me ajudar a criar novas apis, com uma certa estrutura pré configurada. Não é um projeto, não é uma ideia ficar mantendo, só se der muito certo, o que não acredito e nem é o intuito, pois existem várias alternativas melhores e já disponíveis. Talvez vá implementando algumas coisas com o passar do tempo e com a experiência que vou adquirindo, mas se você baixar hoje, terá exatamente a mesma coisa que vou mostrar aqui.
-
-
-Ir para a próxima parte: [PART 2](). 
-
-******************* ---------------------- ************************
-PART 2 
-******************* ---------------------- ************************
 
 Já leu a parte 1? Não? Confira aqui: 
 
-- [PARTE 1]()
+- [PARTE 1](https://jonathanslima.github.io/2019/criando-api-com-node-express-mongo-parte-1/)
 
 ## Setup do ambiente
 
@@ -169,6 +131,10 @@ docker start nome-sua-api
 
 Vamos instalar essas duas ferramentas que vão nos auxiliar. O Robo3T com a visualização do que acontece com o nosso banco e o Postman para testarmos nossas rotas. Voltaremos a ambos mais a frente.
 
+![Criando API's com NodeJs, MongoDB e Express](../../assets/images/robo3t.png)
+![Criando API's com NodeJs, MongoDB e Express](../../assets/images/postman-icon.png)
+
+
 - [https://robomongo.org/download](https://robomongo.org/download)
 - [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
 
@@ -290,101 +256,4 @@ module.exports = {
 ```
 Com um model e um controller para criação de um item no banco configurado, precisamos ajustar a rota e chamar no arquivo server.js. Mas isso vamos ver só no próximo post. 
 
-[PARTE 3]()
-
-******************* ---------------------- ************************
-PART 3 
-******************* ---------------------- ************************
-
-Já leu as partes 1 e 2? Não? Confira aqui: 
-
-- [PARTE 1]()
-- [PARTE 2]()
-
-Com um model e um controller para criação de um item no banco configurado, precisamos ajustar a rota. Primeiramente vamos criar um arquivo chamado *routes.js* dentro de */src*. Começaremos importando o express, para chamar seu método Router() e vamos importar também o controller que acabamos de criar.
-
-```
-const express = require('express');
-const routes = express.Router();
-const ItemList = require('./controllers/ItemController');
-```
-
-Depois vamos criar nossa primeira rota do nosso endpoint. Vamos destrinchar essa linha a seguir:
-
-```
-routes.post('/itemsList', ItemList.createItem)
-```
-
-Nossa rota, como estamos enviando dados, o verbo HTTP que vamos usar é o *POST*. Esse método recebe como primeiro parâmetro o caminho relativo, e como segundo, recebe o método *createItem* que está dentro de nosso controller.
-
-Essa será a primeira rota, mais tarde faremos a rota de listagem (GET), a de delete (DELETE) e a de update (PUT).
-
-Por fim, exporte as rotas:
-
-```
-module.exports = routes;
-```
-
-### Finalizando Server.js
-
-Antes de passarmos para os próximos requests da API, precisamos chamar algumas coisas no server.js. Estamos com o seguinte código lá, primeiramente vamos remover a rota que colocamos e usar nosso arquivo de rotas:
-
-<small>server.js</small>
-```
-// Remover essa rota
-
-app.get('/', (req, res)=> {
-  res.send('Hello World!');
-});
-// ****************************************
-
-// Adicionar a lista de rotas
-
-app.use('/api', require('./src/routes.js'))
-// ****************************************
-```
-
-Precisamos também importar nosso model:
-
-```
-require('./src/models/Item');
-```
-
-Nosso server agora vai ficar assim:
-
-```
-const express = require('express');
-const mongoose = require('mongoose');
-const app = express();
-
-// Permite envio de json para o servidor
-app.use(express.json());
-
-// Conectar com o banco
-mongoose.connect('mongodb://localhost:27017/apibase', {useNewUrlParser: true})
-
-// Importação dos models
-require('./src/models/Item');
-
-// Importação das rotas
-app.use('/api', require('./src/routes.js'))
-
-app.listen('3002', ()=> console.log('server running at localhost:3002'))
-```
-
-Feito isso, podemos testar nosso CREATE no Postman, mas vamos ver isso no próximo post. 
-
-[PARTE 4]()
-
-******************* ---------------------- ************************
-PART 4 
-******************* ---------------------- ************************
-
-Já leu as partes 1, 2 e 3? Não? Confira aqui: 
-
-- [PARTE 1]()
-- [PARTE 2]()
-- [PARTE 3]()
-
-Vamos testar se conseguimos criar um item no nosso banco via Postman, mas antes vamos entender um pouco mais sobre a interface dessa ferramenta.
-
+[PARTE 3](https://jonathanslima.github.io/2019/criando-api-com-node-express-mongo-parte-3/)
