@@ -6,6 +6,12 @@ image: node-express-mongo.jpg
 tags: [nodejs, api, express, mongodb, docker, postman, robo3t] 
 ---
 
+<style>
+	pre.highlight, .highlight pre{
+		color: #00ff00;
+	}
+</style>
+
 Já leu a parte 1? Não? Confira aqui: 
 
 - [PARTE 1](https://jonathanslima.github.io/2019/criando-api-com-node-express-mongo-parte-1/)
@@ -105,7 +111,7 @@ docker run --name nome-sua-api -p 27017:27017 -d mongo
 
 Vamos entender os comandos acima. 
 
-O primeiro baixa uma imagem do MongoDB e deixa disponível no Docker. Se for em sistemas Unix é necessário ser root.
+O primeiro baixa uma imagem do MongoDB e deixa disponível no Docker. Se for em sistemas Unix, caso necessário instale como root.
 
 O segundo, o Docker vai rodar (**run**) um processo com um nome a sua escolha (**--name nome-sua-api**), coloquei *--name api-base*, na porta 27017:27017. 
 

@@ -6,6 +6,12 @@ image: node-express-mongo.jpg
 tags: [nodejs, api, express, mongodb, docker, postman, robo3t] 
 ---
 
+<style>
+	pre.highlight, .highlight pre{
+		color: #00ff00;
+	}
+</style>
+
 Já leu as partes 1, 2 e 3? Não? Confira aqui: 
 
 - [PARTE 1](https://jonathanslima.github.io/2019/criando-api-com-node-express-mongo-parte-1/)
