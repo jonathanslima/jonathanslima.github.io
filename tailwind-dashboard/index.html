@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/main.css">
+	<title>Modern CSS</title>
+</head>
+
+<body class="bg-gray-200">
+	<div class="w-full flex flex-wrap h-screen">
+		<nav class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 shadow bg-white">
+			<div class="perfil mb-4 mt-12">
+				<img src="https://avatars2.githubusercontent.com/u/5257225?s=460&v=4" class="mb-4 rounded-full mx-auto w-24" alt="Jonathan">
+				<div class="usuario-nome open-menu text-center mb-12 uppercase text-gray-700">
+					<b>Jonathan </b>
+					<img src="icons/cheveron-down.svg" class="w-6 block sm:hidden inline" alt="">
+				</div>
+			</div>
+
+			<ul id="lista-nav" class="hidden sm:block flex flex-col">
+				<li class="text-gray-700 uppercase w-full cursor-pointer bg-gray-300 item item1 p-4 pl-6 pr-6"><b>Dashboard</b></li>
+				<li class="text-gray-500 uppercase w-full cursor-pointer hover:bg-gray-300 hover:text-gray-700 item item2 p-4 pl-6 pr-6"><b>My Task</b></li>
+				<li class="text-gray-500 uppercase w-full cursor-pointer hover:bg-gray-300 hover:text-gray-700 item item3 p-4 pl-6 pr-6"><b>Client</b></li>
+				<li class="text-gray-500 uppercase w-full cursor-pointer hover:bg-gray-300 hover:text-gray-700 item item4 p-4 pl-6 pr-6"><b>Inbox</b></li>
+				<li class="text-gray-500 uppercase w-full cursor-pointer hover:bg-gray-300 hover:text-gray-700 item item5 p-4 pl-6 pr-6"><b>More</b></li>
+			</ul>
+		</nav>
+
+		<section class="w-full sm:w-1/2 md:w-2/3 lg:w-2/4 xl:w-3/6 pr-8 pl-8 pt-16">
+			<header class="w-full mb-6 pl-2">
+				<h1 class="text-gray-700 text-2xl">Stats</h1>
+			</header>
+
+			<div class="flex flex-wrap justify-between">
+				<div class="card w-full md:w-1/2">
+					<div class="m-2 p-8 pt-4 pb-4 bg-white rounded-lg">
+						<div class="stats1 text-right text-2xl text-red-500">50</div>
+						<div class="stats2">
+							<h2 class="text-gray-700"><b>Completed</b></h2>
+							<p class="text-gray-500 text-sm">Project</p>
+						</div>
+					</div>
+				</div>
+				<div class="card w-full md:w-1/2">
+					<div class="m-2 p-8 pt-4 pb-4 bg-white rounded-lg">
+						<div class="stats1 text-right text-2xl text-green-500">10</div>
+						<div class="stats2">
+							<h2 class="text-gray-700"><b>Running</b></h2>
+							<p class="text-gray-500 text-sm">Client</p>
+						</div>
+					</div>
+				</div>
+				<div class="card w-full md:w-1/2">
+					<div class="m-2 p-8 pt-4 pb-4 bg-white rounded-lg">
+						<div class="stats1 text-right text-2xl text-blue-500">700</div>
+						<div class="stats2">
+							<h2 class="text-gray-700"><b>Hours</b></h2>
+							<p class="text-gray-500 text-sm">Work</p>
+						</div>
+					</div>
+				</div>
+				<div class="card w-full md:w-1/2">
+					<div class="m-2 p-8 pt-4 pb-4 bg-white rounded-lg">
+						<div class="stats1 text-right text-2xl text-orange-500">170</div>
+						<div class="stats2">
+							<h2 class="text-gray-700"><b>Hours</b></h2>
+							<p class="text-gray-500 text-sm">Coffe</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<section class="w-full mt-6 mb-6 pl-2">
+				<h2 class="text-gray-700 text-sm"><b>Earning Statmant</b></h2>
+
+				<img class="mt-6" src="img/chart.png" alt="">
+			</section>
+		</section>
+
+		<aside class="w-full md:w-full lg:w-1/4 xl:w-2/6 pr-8 pl-8 lg:pl-0 pt-8 lg:pt-16">
+			<header class="w-full mb-6 pl-2">
+				<h1 class="text-gray-700 text-2xl">My Task</h1>
+			</header>
+
+			<ul class="lista-tasks mt-8">
+				<li class="bg-white p-4 flex md:justify-start justify-center items-center">
+					<span class="numero-task text-gray-500 border-solid border-gray-500 border-2 p-4 rounded-full h-6 w-6 flex items-center justify-center">1</span>
+					<div class="conteudo-task">
+						<span class="w-full date text-gray-500 text-xs pl-4">Today - 14:30</span>
+						<p class="text-gray-700 text-sm pl-4"><b>Website redesign concept by Desing Dash</b></p>
+					</div>
+				</li>
+				<li class="bg-white p-4 flex md:justify-start justify-center items-center">
+					<span class="numero-task text-gray-500 border-solid border-gray-500 border-2 p-4 rounded-full h-6 w-6 flex items-center justify-center">2</span>
+					<div class="conteudo-task">
+						<span class="w-full date text-gray-500 text-xs pl-4">Today - 14:30</span>
+						<p class="text-gray-700 text-sm pl-4"><b>Admin Dashboard Desing by Creative Mind</b></p>
+					</div>
+				</li>
+				<li class="bg-white p-4 flex md:justify-start justify-center items-center">
+						<span class="numero-task text-gray-500 border-solid border-gray-500 border-2 p-4 rounded-full h-6 w-6 flex items-center justify-center">3</span>
+						<div class="conteudo-task">
+							<span class="w-full date text-gray-500 text-xs pl-4">Today - 14:30</span>
+							<p class="text-gray-700 text-sm pl-4"><b>Landing page design by Themeforest</b></p>
+						</div>
+					</li>
+					<li class="bg-white p-4 flex md:justify-start justify-center items-center">
+						<span class="numero-task text-gray-500 border-solid border-gray-500 border-2 p-4 rounded-full h-6 w-6 flex items-center justify-center">4</span>
+						<div class="conteudo-task">
+							<span class="w-full date text-gray-500 text-xs pl-4">Today - 14:30</span>
+							<p class="text-gray-700 text-sm pl-4"><b>Minimal design apps by Jakub Antica</b></p>
+						</div>
+					</li>
+					<li class="bg-white p-4 flex md:justify-start justify-center items-center">
+							<span class="numero-task text-gray-500 border-solid border-gray-500 border-2 p-4 rounded-full h-6 w-6 flex items-center justify-center">5</span>
+							<div class="conteudo-task">
+								<span class="w-full date text-gray-500 text-xs pl-4">Today - 14:30</span>
+								<p class="text-gray-700 text-sm pl-4"><b>Admin Dashboard Desing by Creative Mind</b></p>
+							</div>
+						</li>
+			</ul>			
+		</aside>
+	</div>
+
+	<script>
+		window.onload = function(){
+			let btnOpen = document.querySelector('.open-menu'),
+					isRotateChevron;
+
+			let check = {
+				isRotate: function(el){
+					if(!isRotateChevron){
+						el.querySelector('img').style.transform = 'rotate(180deg)';
+						isRotateChevron = true;
+					}else{ 
+						el.querySelector('img').style.transform = 'rotate(0deg)' 
+						isRotateChevron = false;
+					};
+				}
+			}
+
+			btnOpen.addEventListener('click', function(){
+				check.isRotate(this);
+				document.querySelector('#lista-nav').classList.toggle('hidden')
+			})
+		}
+	</script>
+</body>
+</html>
