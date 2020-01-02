@@ -20,9 +20,10 @@ permalink: /projetos.html
 
 ## Projetos
 
-- [<i class="icon icon-link"></i> Valinor - Biblioteca em VueJs](https://valinor-vuejs.herokuapp.com/index.html#/) \*(Em desenvolvimento)
+- [<i class="icon icon-link"></i> Joker Movie - Feito com Angular](https://joker-movie.herokuapp.com/home) \*
+- [<i class="icon icon-link"></i> Valinor - Feito com VueJs](https://valinor-vuejs.herokuapp.com/index.html#/) \*(Em desenvolvimento)
+- [<i class="icon icon-link"></i> Timeline Marvel - Feito com React](https://timeline-marvel-react.herokuapp.com/)
 - [<i class="icon icon-link"></i> Dashboard using Github's Api](http://dashboard-github-api.herokuapp.com/dashboard-vue/dashboard.html) \*(Em desenvolvimento)
-- [<i class="icon icon-link"></i> Timeline Marvel em React](https://timeline-marvel-react.herokuapp.com/)
 - [<i class="icon icon-link"></i> Dashboard usando o framework CSS Tailwind](/tailwind-dashboard/index.html)
 - [<i class="icon icon-link"></i> Criptografia](https://projects-2019.herokuapp.com/velocicriptor/criptor.html)
 - [<i class="icon icon-link"></i> Relógio Hexadecimal Analógico](https://projects-2019.herokuapp.com/relogio_hex/relogio_analogico.html)
