@@ -20,6 +20,7 @@ permalink: /projetos.html
 
 ## Projetos
 
+- [<i class="icon icon-link"></i> Superhero Battle - Feito com Angular](https://superhero-battle.herokuapp.com)
 - [<i class="icon icon-link"></i> Trello Clone - Feito com Angular](https://trello-xp.herokuapp.com)
 - [<i class="icon icon-link"></i> Joker Movie - Feito com Angular](https://joker-movie.herokuapp.com/home)
 - [<i class="icon icon-link"></i> Valinor - Feito com VueJs](https://valinor-vuejs.herokuapp.com/index.html#/) \*(Em desenvolvimento)
