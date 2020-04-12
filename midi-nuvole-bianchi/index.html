@@ -89,7 +89,7 @@
 X: 1
 T: Nuvole Bianchi
 M: 1/1
-L:3/16
+L:8/10
 R: Ludovico Eunadi
 K: E
 |: =A=G2=G2 =G=A=G2=G2 =G:|\
@@ -113,19 +113,31 @@ F =E2 =E2=E1 F =E2 =E2=E1 =D =B2=B2=B1=c1=B2=B2 =B1=B1 =A2=A2=A1 =c1 =B1-B1=A2
     </div>
 
     <script type="text/javascript">
-      let initEditor = () => {
-        new ABCJS.Editor("abc", {
-          paper_id: "paper0",
-          generate_midi: true,
-          midi_id: "midi",
-          midi_download_id: "midi-download",
+      function selectionCallback(abcelem) {
+        var note = {};
+        for (var key in abcelem) {
+          if (abcelem.hasOwnProperty(key) && key !== "abselem")
+            note[key] = abcelem[key];
+        }
+        console.log(abcelem);
+        var el = document.getElementById("selection");
+        el.innerHTML = "<b>selectionCallback parameter:</b><br>" + JSON.stringify(note);
+      }
+
+      function initEditor() {
+        new ABCJS.Editor("abc", { paper_id: "paper0",
+          synth: {
+            el: "#midi",
+            options: { displayLoop: false, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
+          },
           generate_warnings: true,
-          warnings_id: "warnings",
+          warnings_id:"warnings",
           abcjsParams: {
-            generateDownload: true
+            generateDownload: true,
+            clickListener: selectionCallback
           }
         });
-      };
+      }
 
       window.addEventListener("load", initEditor, false);
     </script>
