@@ -123,19 +123,31 @@ E2G2E2 D2A4\
     
 
     <script type="text/javascript">
-      let initEditor = () => {
-        new ABCJS.Editor("abc", {
-          paper_id: "paper0",
-          generate_midi: true,
-          midi_id: "midi",
-          midi_download_id: "midi-download",
+      function selectionCallback(abcelem) {
+        var note = {};
+        for (var key in abcelem) {
+          if (abcelem.hasOwnProperty(key) && key !== "abselem")
+            note[key] = abcelem[key];
+        }
+        console.log(abcelem);
+        var el = document.getElementById("selection");
+        el.innerHTML = "<b>selectionCallback parameter:</b><br>" + JSON.stringify(note);
+      }
+
+      function initEditor() {
+        new ABCJS.Editor("abc", { paper_id: "paper0",
+          synth: {
+            el: "#midi",
+            options: { displayLoop: false, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
+          },
           generate_warnings: true,
-          warnings_id: "warnings",
+          warnings_id:"warnings",
           abcjsParams: {
-            generateDownload: true
+            generateDownload: true,
+            clickListener: selectionCallback
           }
         });
-      };
+      }
 
       window.addEventListener("load", initEditor, false);
     </script>
