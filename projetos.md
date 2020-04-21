@@ -14,7 +14,6 @@ permalink: /projetos.html
 - [<i class="icon icon-link"></i> HOPE - Landpage](https://www.hope.com.br/cursotransplanteendotelial/) _(Wordpress)_
 - [<i class="icon icon-link"></i> Cardioin](https://www.cardioin.com.br/) _(Wordpress)_
 - [<i class="icon icon-link"></i> Capitalize](http://www.capitalizeconsultores.com.br/) _(Wordpress)_
-- [<i class="icon icon-link"></i> Pousadas Ecocharme](http://pousadasecocharme.com.br/)
 - [<i class="icon icon-link"></i> Fernanda Durães](http://www.fernandaduraes.com.br/) _(Wordpress)_
 -[<i class="icon icon-link"></i> RM Diagnóstico](https://www.rmdiagnostico.com.br)_(Wordpress)_
 
