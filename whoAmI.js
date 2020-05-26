@@ -11,7 +11,7 @@ function whoAmI() {
     {
       company: "Accenture",
       jobTitle: "Front End Developer",
-      period: "current ",
+      period: "current (almost 2y)",
     },
     {
       company: "Cartello",
@@ -25,15 +25,23 @@ function whoAmI() {
     },
   ];
 
-  let skills = [
+  let softSkills = [
+    "Focused",
+    "Passioned for learning and share",
+		"Leadership",
+    "Colaboration",
+    "Flexibility"
+	];
+	
+	let techSkills = [
     "HTML",
     "CSS",
     "Javascript",
-    "UX",
     "React",
     "Angular",
     "Vue",
     "Typescript",
+    "UX"
   ];
 
   let info = {
