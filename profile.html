@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jonathan Lima - Front End Developer</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+
+	<style>
+		body {
+			color: #fff;
+			font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100vh; 
+			background: #232526;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+
+		.wrapper{
+			letter-spacing: 1px;
+			padding: 30px 15px;
+			font-size: .9em;
+		}
+
+		.btn-box{
+			margin-bottom: 30px;
+		}
+
+		ul{
+			list-style-type: none;
+			margin: 0;
+		}
+		.leftSpace { margin-left: 15px; }
+
+		@media(min-width: 900px){
+			.wrapper{
+				padding: 30px 200px;
+			}
+
+			ul{
+				margin: 0px 0px 0px 30px;
+			}
+
+			.leftSpace { margin-left: 30px; }
+
+		}
+
+
+		.blockCode { color: lightgreen }
+		.keyword, .let{ color: #3873be; font-style: italic}
+		.bracket { color: purple }
+		.objectKeys { color: #e428dd }
+		.braces { color: #fff }
+		.back { 
+			padding: 15px 30px;
+			border: none;
+			background: #414345;
+			border-radius: 20px;
+			box-shadow: 1px 1px 3px #232526;
+			font-size: 16px;
+			color: #fafafa;
+			margin: 30px 0 0 200px;
+			text-decoration: none;
+			display: inline-block;
+			transition: 500ms all ease;
+		}
+
+		.back:hover{
+			background-color: #414345;
+			box-shadow: 0px 0px 0px #232526;
+
+		}
+
+		a { color: lightgreen; word-wrap: break-word;}
+		p { margin-top: 15px; margin-bottom: 5px; } 
+		b { color: #aaa }
+
+		.noMt { margin-top: 0; }
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<span class="opening"></span>
+		<p><span class="keyword">function</span> <i><b>who_Am_I</b></i> ( ) {</p>
+			<p class="leftSpace"><span class="keyword">const</span> <i><b>NAME</b></i> = <span class="blockCode">"Jonathan Lima"</span>;</p>
+			<p class="leftSpace"><span class="let">let</span> <b>jobTitle</b> = <span class="blockCode">"Front End Developer"</span>;</p>
+			<p class="leftSpace"><span class="let">let</span> <b>about</b> = <span class="blockCode">"I currently work as a Front End Developer at Accenture. I am responsible for developing new solutions and maintaining projects for large national and international companies."</span>;</p>
+		
+			<p class="leftSpace"><span class="let">let</span> <b>profile</b> = <span class="bracket">[</span></p>
+			<ul>
+				<li><span class="blockCode">"Learner"</span>,</li>
+				<li><span class="blockCode">"Developer"</span>,</li>
+				<li><span class="blockCode">"Futuristic"</span>,</li>
+				<li><span class="blockCode">"Intellection"</span>,</li>
+				<li><span class="blockCode">"Input"</span></li>
+			</ul>
+			<p class="leftSpace noMt"><span class="bracket">]</span>;</p>
+
+			<p class="leftSpace"><span class="let">let</span> <b>experience</b> = <span class="bracket">[</span></p>
+				<ul>
+					<li>{</li>
+					<li class="leftSpace"><span class="objectKeys">company:</span> <span class="blockCode">"Accenture"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">jobTitle:</span> <span class="blockCode">"Front End Developer"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">period:</span> <span class="blockCode">"current (since 2018)"</span>,</li>
+					<li>},</li>
+				</ul>
+				<ul>
+					<li>{</li>
+					<li class="leftSpace"><span class="objectKeys">company:</span> <span class="blockCode">"Cartello"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">jobTitle:</span> <span class="blockCode">"Front End Technical Leader"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">period:</span> <span class="blockCode">"2017 - 2018"</span>,</li>
+					<li>},</li>
+				</ul>
+				<ul>
+					<li>{</li>
+					<li class="leftSpace"><span class="objectKeys">company:</span> <span class="blockCode">"Bold"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">jobTitle:</span> <span class="blockCode">"Front End trainee"</span>,</li>
+					<li class="leftSpace"><span class="objectKeys">period:</span> <span class="blockCode">"2016 - 2017"</span>,</li>
+					<li>},</li>
+				</ul>
+			<p class="leftSpace noMt"><span class="bracket">]</span>;</p>
+		
+			<p class="leftSpace"><span class="let">let</span> <b>softSkills</b> = <span class="bracket">[</span></p>
+			<ul>
+				<li><span class="blockCode">"Focused",</span></li>
+				<li><span class="blockCode">"Passioned for learning and share",</span></li>
+				<li><span class="blockCode">"Leadership",</span></li>
+				<li><span class="blockCode">"Colaboration",</span></li>
+				<li><span class="blockCode">"Flexibility"</span></li>
+			</ul>
+			<p class="leftSpace noMt"><span class="bracket">]</span>;</p>
+
+			<p class="leftSpace"><span class="let">let</span> <b>techSkills</b> = <span class="bracket">[</span></p>
+			<ul>
+				<li><span class="blockCode">"HTML",</span></li>
+				<li><span class="blockCode">"CSS",</span></li>
+				<li><span class="blockCode">"Javascript",</span></li>
+				<li><span class="blockCode">"React",</span></li>
+				<li><span class="blockCode">"Angular",</span></li>
+				<li><span class="blockCode">"Vue",</span></li>
+				<li><span class="blockCode">"Typescript",</span></li>
+				<li><span class="blockCode">"UX"</span></li>
+			</ul>
+			<p class="leftSpace noMt"><span class="bracket">]</span>;</p>
+
+			<p class="leftSpace"><span class="let">let</span> <b>info</b> = {</p>
+				<ul>
+					<li class=""><span class="objectKeys">github:</span> <a href="https://github.com/jonathanslima">"https://github.com/jonathanslima"</a>,</li>
+					<li class=""><span class="objectKeys">linkedin:</span> <a href="https://www.linkedin.com/in/jonathanlima/">"https://www.linkedin.com/in/jonathanlima/"</a>,</li>
+					<li class=""><span class="objectKeys">site:</span> <a href="https://jonathanslima.github.io">"https://jonathanslima.github.io"</a></li>
+				</ul>
+			<p class="leftSpace noMt">};</p>
+			<p class="noMt">};</p>
+	</div>
+
+	<div class="btn-box">
+		<a href="#" class="back">back</a>
+	</div>
+</body>
+</html>
